@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!--<settings> <setting name="logImpl" value="LOG4J"/> </settings> -->
+
+	<properties resource="config.properties">
+	</properties>
+	<typeAliases>
+		<typeAlias type='clasesJava.TipoUsuario;' alias='Usuario' />
+		<typeAlias type='clasesJava.Idea' alias='idea' />
+		<typeAlias type='clasesJava.TipoIdea' alias='TipoIdea' />
+		<typeAlias type='clasesJava.TipoUsuario' alias='TipoUsuario' />
+	</typeAliases>
+
+
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="org.postgresql.Driver" />
+				<property name="url"
+					value="postgres://ucqksgldbffyhl:df48ae62b659dc76d481232663b6a45321781240b168cf30131c96fc709c4335@ec2-23-23-253-106.compute-1.amazonaws.com:5432/ddf5fuf27fkq65" />
+				<property name="username" value="ucqksgldbffyhl" />
+				<property name="password"
+					value="df48ae62b659dc76d481232663b6a45321781240b168cf30131c96fc709c4335" />
+			</dataSource>
+		</environment>
+	</environments>
+
+	<mappers>
+		<mapper resource="mappers/usuarioMapper.xml"></mapper>
+		<mapper resource="mappers/ideaMapper.xml"></mapper>
+		<mapper resource="mappers/TipoIdeaMapper.xml"></mapper>
+		<mapper resource="mappers/TipoUsuarioMapper.xml"></mapper>
+	</mappers>
+
+
+</configuration>

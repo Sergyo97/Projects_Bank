@@ -8,13 +8,13 @@ import org.apache.ibatis.annotations.Param;
 import clasesJava.TipoIdea;
 import clasesJava.TipoUsuario;
 
-public interface tipoIdeaMappers {
+public interface TipoIdeaMappers {
 	
 	public List<TipoIdea> consultarTipoIdeas();
     
     public TipoIdea getTipoIdea(@Param("id")int id);
     
-    public void addTipoItem(@Param("ti")TipoIdea ti);
+    public void addTipoIdea(@Param("ti")TipoIdea ti);
     
     public void agregarPropuestaUsuario(@Param("idus")int id, 
     		@Param("nombre_iniciativa")String nombre_iniciativa, 

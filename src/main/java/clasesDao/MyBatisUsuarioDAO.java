@@ -4,6 +4,9 @@ import java.util.Date;
 
 import javax.persistence.PersistenceException;
 
+import com.google.inject.Inject;
+
+import Mappers.UsuarioMapper;
 import clasesJava.TipoIdea;
 import clasesJava.TipoUsuario;
 import clasesJava.Usuario;
@@ -11,17 +14,21 @@ import interfacesDAO.UsuarioDAO;
 
 public class MyBatisUsuarioDAO implements UsuarioDAO {
 
+	
+	
+	@Inject
+	private UsuarioMapper usuarioMapper;
+	
 	@Override
 	public Usuario consultarUsuario(int id) throws PersistenceException {
-		// TODO Auto-generated method stub
-		return null;
+		return usuarioMapper.consultarUsuario(id);
 	}
 
 	
 
 	@Override
 	public void insertarUsuario(Usuario usuario) {
-		// TODO Auto-generated method stub
+		usuarioMapper.insertarUsuario(usuario);
 		
 	}
 

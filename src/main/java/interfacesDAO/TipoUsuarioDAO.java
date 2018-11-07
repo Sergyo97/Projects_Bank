@@ -4,13 +4,12 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import clasesJava.TipoIdea;
 import clasesJava.TipoUsuario;
 
 public interface TipoUsuarioDAO {
 
-	public List<TipoUsuario> consultarTiposItem();
+	public List<TipoUsuario> consultarTiposUsuario();
 
-	public TipoUsuario getTipoItem(int id);
-
-	public void addTipoItem(TipoUsuario tUsuario);
+	public TipoUsuario getTipoUsuario(int id);
 }

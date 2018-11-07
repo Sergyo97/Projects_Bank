@@ -13,7 +13,6 @@ public class Usuario implements Serializable {
 
 	
 	public Usuario(String nombre, String correo, long carne, TipoUsuario tipoId, boolean activo, ArrayList<Idea> ideasDeUsuario) {
-		super();
 		this.nombre = nombre;
 		this.correo = correo;
 		this.carne = carne;

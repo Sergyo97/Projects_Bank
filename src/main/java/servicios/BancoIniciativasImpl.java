@@ -9,14 +9,13 @@ import com.google.inject.Inject;
 
 import clasesJava.Idea;
 import clasesJava.TipoIdea;
-import clasesJava.TipoUsuario;
 import clasesJava.Usuario;
 import interfacesDAO.IdeaDAO;
 import interfacesDAO.TipoIdeaDAO;
 import interfacesDAO.TipoUsuarioDAO;
 import interfacesDAO.UsuarioDAO;
 
-public class BancoIniciativas {
+public class BancoIniciativasImpl {
 
 	@Inject
 	private TipoIdeaDAO tipoIdeaDao;
