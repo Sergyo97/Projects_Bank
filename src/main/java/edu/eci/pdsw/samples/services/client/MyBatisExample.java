@@ -12,7 +12,6 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import edu.eci.pdsw.sampleprj.dao.mybatis.mappers.IdeaMapper;
-import edu.eci.pdsw.samples.entities.Idea;
 
 
 /**

@@ -11,7 +11,6 @@ public interface TipoUsuarioMapper {
 	public List<TipoUsuario> consultarTiposUsuario();
     
     public TipoUsuario getTipoUsuario(@Param("id")int id);
-    
-    public void addTipoUsuario(@Param("tUsuario")TipoUsuario tUsuario);
+  
 
 }

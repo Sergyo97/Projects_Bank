@@ -51,9 +51,9 @@ public class IdeaBean extends BasePageBean{
 		}
 
 	};
-	public void insertarIdea(int id,String nombreIniciativa, String estado, TipoIdea tIdeaId,int votos,Date fechaCreacion,int usuarioCarne) throws Exception{
+	public void insertarIdea(int id,String nombreIniciativa, String estado, TipoIdea tIdeaId,int votos,Date fechaCreacion,int usuarioCarne, String descripcion) throws Exception{
 		HttpServletRequest request = (HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest();
-		idea = new Idea(id, nombreIniciativa, estado, tIdeaId, votos, fechaCreacion, usuarioCarne);
+		idea = new Idea(id, nombreIniciativa, estado, tIdeaId, votos, fechaCreacion, usuarioCarne, descripcion);
 		try {				
 			bancoini.insertarIdea(idea);
 		} catch (Exception e) {

@@ -10,4 +10,20 @@
 		<result property='tipo' column='tipo' />
 	</resultMap>
 
+
+	<select id="consultarTipoIdeas" resultMap="TipoIdeaResult">
+		select * from t_idea;
+	</select>
+
+	<select id="getTipoIdea" resultMap="TipoIdeaResult">
+		select * from t_idea where id
+		= #{id};
+	</select>
+
+	<insert id="addTipoIdea">
+		insert into t_idea (id, tipo) values
+		(#{ti.id},#{ti.tipo});
+	</insert>
+
+
 </mapper>

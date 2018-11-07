@@ -17,4 +17,22 @@
 			resultMap='IdeaResult'></collection>
 	</resultMap>
 
+
+	<select id="consultarUsuario" resultMap="UsuarioResult">
+		select * from usuario;
+	</select>
+
+	<insert id="insertarUsuario">
+		insert into usuario (carne, nombre,
+		correo,
+		tipo_usuario_id, activo) values
+		(#{usuario.carne},#{usuario.nombre},#{usuario.correo},#{usuario.tipo_usuario_id},#{usuario.activo});
+	</insert>
+
+
+
+
+
+
+
 </mapper>

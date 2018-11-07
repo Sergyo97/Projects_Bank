@@ -10,4 +10,15 @@
 		<result property='desc' column='tipo' />
 	</resultMap>
 
+	<select id="consultarTiposUsuario" resultMap="TipoUsuarioResult">
+		select * from
+		tipo_usuario;
+	</select>
+
+	<select id="getTipoUsuario" resultMap="TipoUsuarioResult">
+		select * from tipo_usuario
+		where id = #{id};
+	</select>
+
+
 </mapper>
