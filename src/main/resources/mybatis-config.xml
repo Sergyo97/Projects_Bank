@@ -5,13 +5,11 @@
 <configuration>
 	<!--<settings> <setting name="logImpl" value="LOG4J"/> </settings> -->
 
-	<properties resource="config.properties">
-	</properties>
 	<typeAliases>
-		<typeAlias type='clasesJava.TipoUsuario;' alias='Usuario' />
-		<typeAlias type='clasesJava.Idea' alias='idea' />
-		<typeAlias type='clasesJava.TipoIdea' alias='TipoIdea' />
-		<typeAlias type='clasesJava.TipoUsuario' alias='TipoUsuario' />
+		<typeAlias type='edu.eci.pdsw.samples.entities.Usuario;' alias='Usuario' />
+		<typeAlias type='edu.eci.pdsw.samples.entities.Idea' alias='Idea' />
+		<typeAlias type='edu.eci.pdsw.samples.entities.TipoIdea' alias='TipoIdea' />
+		<typeAlias type='edu.eci.pdsw.samples.entities.TipoUsuario' alias='TipoUsuario' />
 	</typeAliases>
 
 
@@ -30,8 +28,8 @@
 	</environments>
 
 	<mappers>
-		<mapper resource="mappers/usuarioMapper.xml"></mapper>
-		<mapper resource="mappers/ideaMapper.xml"></mapper>
+		<mapper resource="mappers/UsuarioMapper.xml"></mapper>
+		<mapper resource="mappers/IdeaMapper.xml"></mapper>
 		<mapper resource="mappers/TipoIdeaMapper.xml"></mapper>
 		<mapper resource="mappers/TipoUsuarioMapper.xml"></mapper>
 	</mappers>

@@ -3,55 +3,18 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="edu.eci.pdsw.sampleprj.dao.mybatis.mappers.ClienteMapper">
-
-	<select id="consultarMultaAlquiler" resultType="java.lang.Long">
-		SELECT
-		CASE WHEN DAY(#{fechaDevolucion})-DAY (fechafinrenta)>0 THEN
-		DAY(#{fechaDevolucion})-DAY (fechafinrenta) ELSE 0 END *tarifaxdia as
-		multa
-		FROM
-		VI_ITEMS AS i,VI_ITEMRENTADO AS ir
-		WHERE
-		(ir.ITEMS_id=#{iitem} AND ir.ITEMS_id=i.id );
-	</select>
-
-
-	<insert id="insertarCliente">
-		INSERT INTO VI_CLIENTES (documento,nombre,telefono,direccion,email,vetado)
-		VALUES
-		(#{cliente.documento},#{cliente.nombre},#{cliente.telefono},#{cliente.direccion},#{cliente.email},#{cliente.vetado});
-	</insert>
-
-
-	<resultMap type='Idea' id='IdeaResult'>
-		<id property='id' column='id' />
-		<result property='nombre_iniciativa' column='nombreIniciativa' />
-		<result property='estado' column='estado' />
-		<result property='t_idea_id' column='t_idea_id' />
-		<result property='votos' column='votos' />
-		<result property='fecha_creacion' column='fecha_creacion' />
-		<result property='usuario_carne' column='usuario_carne' />
-	</resultMap>
+<mapper namespace="edu.eci.pdsw.sampleprj.dao.mybatis.mappers.UsuarioMapper">
 
 	<resultMap type='Usuario' id='UsuarioResult'>
 		<id property='carne' column='carne' />
 		<result property='nombre' column='nombre' />
 		<result property='correo' column='correo' />
-		<result property='tipoId' column='tipo_usuario_id' />
 		<result property='activo' column='activo' />
-		<collection property='ideasDeUsuario' ofType='Idea'	resultMap='IdeaResult'></collection>
-	</resultMap>
-	
-	<resultMap type='TipoIdea' id='TipoIdeaResult'>
-		<id property='id' column='id' />
-		<result property='tipo' column='tipo' />
-	</resultMap>
-
-
-	<resultMap type='TipoUsuario' id='TipoUsuarioResult'>
-		<id property='id' column='id' />
-		<result property='desc' column='tipo' />
+		<association property="tipoUsuarioId" column="tipo_usuario_id"
+			javaType="TipoUsuario"
+			resultMap="edu.eci.pdsw.sampleprj.dao.mybatis.mappers.TipoUsuarioMapper"></association>
+		<collection property='ideasDeUsuario' ofType='Idea'
+			resultMap='IdeaResult'></collection>
 	</resultMap>
 
 </mapper>

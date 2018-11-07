@@ -27,7 +27,6 @@ public class IdeaBean extends BasePageBean{
 	
 	@ManagedProperty(value="#{param.id}")
 	private int id;	
-	private long valor=0;
 	private Idea idea;
 	
 	@Inject
@@ -52,9 +51,9 @@ public class IdeaBean extends BasePageBean{
 		}
 
 	};
-	public void insertarIdea(int id,String nombre_iniciativa,String estado,	TipoIdea t_idea_id,int votos,Date fecha_creacion,int usuario_carne) throws Exception{
+	public void insertarIdea(int id,String nombreIniciativa, String estado, TipoIdea tIdeaId,int votos,Date fechaCreacion,int usuarioCarne) throws Exception{
 		HttpServletRequest request = (HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest();
-		idea = new Idea(id, nombre_iniciativa, estado, t_idea_id, votos, fecha_creacion, usuario_carne);
+		idea = new Idea(id, nombreIniciativa, estado, tIdeaId, votos, fechaCreacion, usuarioCarne);
 		try {				
 			bancoini.insertarIdea(idea);
 		} catch (Exception e) {

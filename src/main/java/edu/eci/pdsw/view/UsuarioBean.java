@@ -27,8 +27,6 @@ public class UsuarioBean extends BasePageBean{
 	@ManagedProperty(value = "#{param.usuario}")
 	private String usuario;
 	private Usuario us;
-	private long valor=0;
-	private long l;
 
 	//ACCION DUDOSA
 	@Inject

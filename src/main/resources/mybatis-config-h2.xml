@@ -10,10 +10,10 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	</properties> -->
 
 	<typeAliases>
-		<typeAlias type='clasesJava.Usuario;' alias='Usuario' />
-		<typeAlias type='clasesJava.Idea' alias='idea' />
-		<typeAlias type='clasesJava.TipoIdea' alias='TipoIdea' />
-		<typeAlias type='clasesJava.TipoUsuario' alias='TipoUsuario' />
+		<typeAlias type='edu.eci.pdsw.samples.entities.Usuario;' alias='Usuario' />
+		<typeAlias type='edu.eci.pdsw.samples.entities.Idea' alias='Idea' />
+		<typeAlias type='edu.eci.pdsw.samples.entities.TipoIdea' alias='TipoIdea' />
+		<typeAlias type='edu.eci.pdsw.samples.entities.TipoUsuario' alias='TipoUsuario' />
 	</typeAliases>
 
 
