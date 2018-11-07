@@ -14,7 +14,6 @@ public class Idea implements Serializable{
 	int usuario_carne;
 	
 	public Idea(int id, String nombre_iniciativa, String estado, TipoIdea t_idea_id, int votos, Date fecha_creacion, int usuario_carne) {
-		super();
 		this.id = id;
 		this.nombre_iniciativa = nombre_iniciativa;
 		this.estado = estado;

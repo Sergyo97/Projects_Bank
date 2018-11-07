@@ -1,5 +1,6 @@
 package Beans;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 import javax.faces.bean.ManagedBean;
@@ -16,7 +17,7 @@ import clasesJava.TipoIdea;
 import clasesJava.TipoUsuario;
 import clasesJava.Usuario;
 
-import servicios.BancoIniciativas;
+import servicios.BancoIniciativasImpl;
 
 @SuppressWarnings("deprecation")
 @ManagedBean(name = "usuarioBean")
@@ -33,11 +34,9 @@ public class UsuarioBean extends BasePageBean{
 	private long valor=0;
 	private long l;
 
-
-
 	//ACCION DUDOSA
 	@Inject
-	private BancoIniciativas bancoini;
+	private BancoIniciativasImpl bancoini;
 
 	public Usuario consultarUsuario(int id) throws Exception{
 		try {
@@ -48,12 +47,14 @@ public class UsuarioBean extends BasePageBean{
 	};
 
 	
-	
-	
-	public void insertarUsuario(Usuario usuario) {
-		
+	public void insertarUsuario(String nombre, String correo, long carne, TipoUsuario tipoId, boolean activo, ArrayList<Idea> ideasDeUsuario) throws Exception {
+		HttpServletRequest request = (HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest();
+		us = new Usuario(nombre, correo, carne, tipoId, activo, ideasDeUsuario);
+		try {
+			bancoini.insertarUsuario(us);
+		} catch (Exception e) {
+			throw e;
+		}
 	};
-
-
 
 }

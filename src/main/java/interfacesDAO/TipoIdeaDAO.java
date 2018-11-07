@@ -12,6 +12,6 @@ public interface TipoIdeaDAO {
     
     public TipoIdea getTipoIdea(int id);
     
-    public void addTipoItem(TipoIdea ti);
+    public void addTipoIdea(TipoIdea ti);
 	
 }

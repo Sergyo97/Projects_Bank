@@ -9,11 +9,12 @@ import clasesJava.Idea;
 
 
 
-public interface ideaMapper {
+public interface IdeaMapper {
 
-
-	public List<Idea> consultarIdeas(@Param("idid")int id);
+	public List<Idea> consultarIdeas();
+	
 	public void insertarIdea(@Param("Idea") Idea idea);
-
+	
+	public Idea consultarIdea(@Param("idid")int id);
 
 }

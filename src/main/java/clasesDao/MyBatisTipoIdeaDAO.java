@@ -2,26 +2,31 @@ package clasesDao;
 
 import java.util.List;
 
+import com.google.inject.Inject;
+
+import Mappers.TipoIdeaMappers;
 import clasesJava.TipoIdea;
 import interfacesDAO.TipoIdeaDAO;
 
 public class MyBatisTipoIdeaDAO implements TipoIdeaDAO {
+	
+	
+	@Inject
+	private TipoIdeaMappers tipoIdeaMapper;
 
 	@Override
 	public List<TipoIdea> consultarTipoIdeas() {
-		// TODO Auto-generated method stub
-		return null;
+		return tipoIdeaMapper.consultarTipoIdeas();
 	}
 
 	@Override
 	public TipoIdea getTipoIdea(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return tipoIdeaMapper.getTipoIdea(id);
 	}
 
 	@Override
-	public void addTipoItem(TipoIdea ti) {
-		// TODO Auto-generated method stub
+	public void addTipoIdea(TipoIdea ti) {
+		tipoIdeaMapper.addTipoIdea(ti);
 
 	}
 

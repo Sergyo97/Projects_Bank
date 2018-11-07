@@ -8,7 +8,7 @@ import clasesJava.TipoIdea;
 import clasesJava.TipoUsuario;
 import clasesJava.Usuario;
 
-public interface usuarioMapper {
+public interface UsuarioMapper {
 
 		
 		

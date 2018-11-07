@@ -2,27 +2,34 @@ package clasesDao;
 
 import java.util.List;
 
+import org.apache.ibatis.exceptions.PersistenceException;
+
+import com.google.inject.Inject;
+
+import Mappers.TipoUsuarioMapper;
 import clasesJava.TipoUsuario;
 import interfacesDAO.TipoUsuarioDAO;
 
 public class MyBatisTipoUsuarioDAO implements TipoUsuarioDAO {
+	
+	@Inject
+	private TipoUsuarioMapper tipoUsuarioMapper;
+	
 
 	@Override
-	public List<TipoUsuario> consultarTiposItem() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<TipoUsuario> consultarTiposUsuario() {
+		
+		return tipoUsuarioMapper.consultarTiposUsuario();
+		
 	}
 
 	@Override
-	public TipoUsuario getTipoItem(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void addTipoItem(TipoUsuario tUsuario) {
-		// TODO Auto-generated method stub
-
+	public TipoUsuario getTipoUsuario(int id) {
+		try {
+			return tipoUsuarioMapper.getTipoUsuario(id);
+		} catch (Exception e) {
+			throw new PersistenceException("Error al consultar tipo usuario :" + id, e);
+		}
 	}
 
 }

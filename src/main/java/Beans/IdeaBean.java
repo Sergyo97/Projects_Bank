@@ -1,18 +1,21 @@
 package Beans;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
+import javax.persistence.PersistenceException;
 import javax.servlet.http.HttpServletRequest;
 
 import com.google.inject.Inject;
 
+import clasesJava.Idea;
 import clasesJava.TipoIdea;
 import clasesJava.TipoUsuario;
-import servicios.BancoIniciativas;
+import servicios.BancoIniciativasImpl;
 
 @SuppressWarnings("deprecation")
 @ManagedBean(name = "IdeaBean")
@@ -22,19 +25,40 @@ public class IdeaBean extends BasePageBean{
 	@ManagedProperty(value="#{param.id}")
 	private int id;	
 	private long valor=0;
-
+	private Idea idea;
+	
 	@Inject
-	private BancoIniciativas bancoini;
+	private BancoIniciativasImpl bancoini;
 
-	//Usuario Bean o IdeaBean
-	public void agregarPropuestaUsuario(int id,String nombre_iniciativa,String estado,	TipoIdea t_idea_id,int votos,Date fecha_creacion,TipoUsuario usuario_carne) throws Exception{
-		HttpServletRequest request = (HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest();		
-		try {				
-			bancoini.agregarPropuestaUsuario(id, nombre_iniciativa, estado, t_idea_id, votos, fecha_creacion, usuario_carne);  
-		} catch (Exception e) {
+	
+	public Idea consultarIdeas(int id) throws Exception{
+		try {
+			return bancoini.consultarIdea(id);
+		}catch (Exception e) {
 			throw e;
 		}
+
 	};
+	
+	
+	public List<Idea> consultarIdeas() throws Exception{
+		try {
+			return bancoini.consultarIdeas();
+		}catch (Exception e) {
+			throw e;
+		}
+
+	};
+	public void insertarIdea(int id,String nombre_iniciativa,String estado,	TipoIdea t_idea_id,int votos,Date fecha_creacion,int usuario_carne) throws Exception{
+		HttpServletRequest request = (HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest();
+		idea = new Idea(id, nombre_iniciativa, estado, t_idea_id, votos, fecha_creacion, usuario_carne);
+		try {				
+			bancoini.insertarIdea(idea);
+		} catch (Exception e) {
+			throw e;
+		}		
+	};
+
 
 
 }

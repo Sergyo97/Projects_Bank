@@ -5,6 +5,9 @@ import java.util.List;
 
 import javax.persistence.PersistenceException;
 
+import com.google.inject.Inject;
+
+import Mappers.IdeaMapper;
 import clasesJava.Idea;
 import clasesJava.TipoIdea;
 import clasesJava.TipoUsuario;
@@ -12,23 +15,23 @@ import interfacesDAO.IdeaDAO;
 
 public class MyBatisIdeaDAO implements IdeaDAO {
 
+	
+	@Inject
+	private IdeaMapper ideaMapper;
+	
 	@Override
-	public List<Idea> consultarIdeas(int id) throws PersistenceException {
-		// TODO Auto-generated method stub
-		return null;
+	public Idea consultarIdea(int id) throws PersistenceException {
+		return ideaMapper.consultarIdea(id);
 	}
 
 	@Override
 	public void insertarIdea(Idea idea) throws PersistenceException {
-		// TODO Auto-generated method stub
-		
+		ideaMapper.insertarIdea(idea);
 	}
 
 	@Override
-	public void agregarPropuestaUsuario(int id, String nombre_iniciativa, String estado, TipoIdea t_idea_id, int votos,
-			Date fecha_creacion, TipoUsuario usuario_carne) throws PersistenceException {
-		// TODO Auto-generated method stub
-		
+	public List<Idea> consultarIdeas() throws PersistenceException {
+		return ideaMapper.consultarIdeas();
 	}
-
+	
 }
