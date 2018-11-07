@@ -10,21 +10,21 @@ public class Idea implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	int id;
-	String nombre_iniciativa;
+	String nombreIniciativa;
 	String estado;
-	TipoIdea t_idea_id;
+	TipoIdea tIdeaId;
 	int votos;
-	Date fecha_creacion;
-	int usuario_carne;
+	Date fechaCreacion;
+	int usuarioCarne;
 	
-	public Idea(int id, String nombre_iniciativa, String estado, TipoIdea t_idea_id, int votos, Date fecha_creacion, int usuario_carne) {
+	public Idea(int id, String nombreIniciativa, String estado, TipoIdea tIdeaId, int votos, Date fechaCreacion, int usuarioCarne) {
 		this.id = id;
-		this.nombre_iniciativa = nombre_iniciativa;
+		this.nombreIniciativa = nombreIniciativa;
 		this.estado = estado;
-		this.t_idea_id = t_idea_id;
+		this.tIdeaId = tIdeaId;
 		this.votos = votos;
-		this.fecha_creacion = fecha_creacion;
-		this.usuario_carne = usuario_carne;
+		this.fechaCreacion = fechaCreacion;
+		this.usuarioCarne = usuarioCarne;
 	}
 
 	public int getId() {
@@ -35,12 +35,12 @@ public class Idea implements Serializable{
 		this.id = id;
 	}
 
-	public String getNombre_iniciativa() {
-		return nombre_iniciativa;
+	public String getnombreIniciativa() {
+		return nombreIniciativa;
 	}
 
-	public void setNombre_iniciativa(String nombre_iniciativa) {
-		this.nombre_iniciativa = nombre_iniciativa;
+	public void setnombreIniciativa(String nombreIniciativa) {
+		this.nombreIniciativa = nombreIniciativa;
 	}
 
 	public String getEstado() {
@@ -51,12 +51,12 @@ public class Idea implements Serializable{
 		this.estado = estado;
 	}
 
-	public TipoIdea getT_idea_id() {
-		return t_idea_id;
+	public TipoIdea gettIdeaId() {
+		return tIdeaId;
 	}
 
-	public void setT_idea_id(TipoIdea t_idea_id) {
-		this.t_idea_id = t_idea_id;
+	public void settIdeaId(TipoIdea tIdeaId) {
+		this.tIdeaId = tIdeaId;
 	}
 
 	public int getVotos() {
@@ -67,27 +67,27 @@ public class Idea implements Serializable{
 		this.votos = votos;
 	}
 
-	public Date getFecha_creacion() {
-		return fecha_creacion;
+	public Date getfechaCreacion() {
+		return fechaCreacion;
 	}
 
-	public void setFecha_creacion(Date fecha_creacion) {
-		this.fecha_creacion = fecha_creacion;
+	public void setfechaCreacion(Date fechaCreacion) {
+		this.fechaCreacion = fechaCreacion;
 	}
 
-	public int getUsuario_carne() {
-		return usuario_carne;
+	public int getusuarioCarne() {
+		return usuarioCarne;
 	}
 
-	public void setUsuario_carne(int usuario_carne) {
-		this.usuario_carne = usuario_carne;
+	public void setusuarioCarne(int usuarioCarne) {
+		this.usuarioCarne = usuarioCarne;
 	}
 
 	@Override
 	public String toString() {
-		return "Idea [id=" + id + ", nombre_iniciativa=" + nombre_iniciativa + ", estado=" + estado + ", t_idea_id="
-				+ t_idea_id + ", votos=" + votos + ", fecha_creacion=" + fecha_creacion + ", usuario_carne="
-				+ usuario_carne + "]";
+		return "Idea [id=" + id + ", nombreIniciativa=" + nombreIniciativa + ", estado=" + estado + ", tIdeaId="
+				+ tIdeaId + ", votos=" + votos + ", fechaCreacion=" + fechaCreacion + ", usuarioCarne="
+				+ usuarioCarne + "]";
 	}
 	
 	

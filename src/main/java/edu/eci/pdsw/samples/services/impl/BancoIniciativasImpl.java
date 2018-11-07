@@ -73,7 +73,7 @@ public class BancoIniciativasImpl {
 			try {
 				ideaDAO.insertarIdea(idea);
 			} catch (PersistenceException e) {
-				throw new ExcepcionBancoIniciativas("Error al intentar insertar la idea :" + idea.getNombre_iniciativa(), e);
+				throw new ExcepcionBancoIniciativas("Error al intentar insertar la idea :" + idea.getnombreIniciativa(), e);
 			}
 		};
 		

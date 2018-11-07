@@ -9,6 +9,7 @@ public class TipoUsuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 	int id;
 	String descripcion;
+
 	public TipoUsuario(int id, String descripcion) {
 		this.id = id;
 		this.descripcion = descripcion;
@@ -25,12 +26,12 @@ public class TipoUsuario implements Serializable {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "tipoUsuario [id=" + id + ", descripcion=" + descripcion + "]";
 	}
-	
-	
+
+
 
 }

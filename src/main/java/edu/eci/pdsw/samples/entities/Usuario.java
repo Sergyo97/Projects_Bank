@@ -11,16 +11,16 @@ public class Usuario implements Serializable {
 	String nombre;
 	String correo;
 	long carne;
-	TipoUsuario tipoId;
+	TipoUsuario tipoUsuarioId;
 	boolean activo;
 	ArrayList<Idea> ideasDeUsuario;
 
 	
-	public Usuario(String nombre, String correo, long carne, TipoUsuario tipoId, boolean activo, ArrayList<Idea> ideasDeUsuario) {
+	public Usuario(String nombre, String correo, long carne, TipoUsuario tipoUsuarioId, boolean activo, ArrayList<Idea> ideasDeUsuario) {
 		this.nombre = nombre;
 		this.correo = correo;
 		this.carne = carne;
-		this.tipoId = tipoId;
+		this.tipoUsuarioId = tipoUsuarioId;
 		this.activo = activo;
 		this.ideasDeUsuario = ideasDeUsuario;
 	}
@@ -43,11 +43,11 @@ public class Usuario implements Serializable {
 	public void setCarne(long carne) {
 		this.carne = carne;
 	}
-	public TipoUsuario getTipoId() {
-		return tipoId;
+	public TipoUsuario gettipoUsuarioId() {
+		return tipoUsuarioId;
 	}
-	public void setTipoId(TipoUsuario tipoId) {
-		this.tipoId = tipoId;
+	public void settipoUsuarioId(TipoUsuario tipoUsuarioId) {
+		this.tipoUsuarioId = tipoUsuarioId;
 	}
 	public boolean isActivo() {
 		return activo;
@@ -65,7 +65,7 @@ public class Usuario implements Serializable {
 
 	@Override
 	public String toString() {
-		return "usuario [nombre=" + nombre + ", correo=" + correo + ", carne=" + carne + ", tipoId=" + tipoId
+		return "usuario [nombre=" + nombre + ", correo=" + correo + ", carne=" + carne + ", tipoUsuarioId=" + tipoUsuarioId
 				+ ", activo=" + activo + "]";
 	}
 
