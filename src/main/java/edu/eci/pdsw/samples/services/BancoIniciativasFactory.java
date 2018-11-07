@@ -1,5 +1,6 @@
 package edu.eci.pdsw.samples.services;
 
+
 import static com.google.inject.Guice.createInjector;
 
 import java.util.Optional;
@@ -7,7 +8,6 @@ import java.util.Optional;
 import org.mybatis.guice.XMLMyBatisModule;
 
 import com.google.inject.Injector;
-
 import edu.eci.pdsw.sampleprj.dao.IdeaDAO;
 import edu.eci.pdsw.sampleprj.dao.TipoIdeaDAO;
 import edu.eci.pdsw.sampleprj.dao.TipoUsuarioDAO;
@@ -24,7 +24,7 @@ public class BancoIniciativasFactory {
 
 	private static Optional<Injector> optInjector;
 
-	private Injector myBatisInjector(String env, String pathResource) {
+	private Injector myBatisInjector(final String env, final String pathResource) {
 		return createInjector(new XMLMyBatisModule() {
 			@Override
 			protected void initialize() {
@@ -39,7 +39,7 @@ public class BancoIniciativasFactory {
 			}
 		});
 	}
-
+	
 	private BancoIniciativasFactory(){
 		optInjector = Optional.empty();
 	}

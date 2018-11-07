@@ -15,6 +15,6 @@ public interface IdeaMapper {
 	
 	public void insertarIdea(@Param("Idea") Idea idea);
 	
-	public Idea consultarIdea(@Param("idid")int id);
+	public Idea consultarIdea(@Param("id")int id);
 
 }

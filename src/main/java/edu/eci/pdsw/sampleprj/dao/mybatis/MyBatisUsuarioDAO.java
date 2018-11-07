@@ -1,5 +1,7 @@
 package edu.eci.pdsw.sampleprj.dao.mybatis;
 
+import java.util.List;
+
 import javax.persistence.PersistenceException;
 
 import com.google.inject.Inject;
@@ -20,12 +22,14 @@ public class MyBatisUsuarioDAO implements UsuarioDAO {
 		return usuarioMapper.consultarUsuario(id);
 	}
 
-	
-
 	@Override
 	public void insertarUsuario(Usuario usuario) {
 		usuarioMapper.insertarUsuario(usuario);
-		
+	}
+	
+	@Override
+	public List<Usuario> consultarUsuarios() {
+		return usuarioMapper.consultarUsuarios();
 	}
 
 }

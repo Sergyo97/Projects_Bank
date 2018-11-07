@@ -5,14 +5,14 @@ import java.util.List;
 import com.google.inject.Inject;
 
 import edu.eci.pdsw.sampleprj.dao.TipoIdeaDAO;
-import edu.eci.pdsw.sampleprj.dao.mybatis.mappers.TipoIdeaMappers;
+import edu.eci.pdsw.sampleprj.dao.mybatis.mappers.TipoIdeaMapper;
 import edu.eci.pdsw.samples.entities.TipoIdea;
 
 public class MyBatisTipoIdeaDAO implements TipoIdeaDAO {
 	
 	
 	@Inject
-	private TipoIdeaMappers tipoIdeaMapper;
+	private TipoIdeaMapper tipoIdeaMapper;
 
 	@Override
 	public List<TipoIdea> consultarTipoIdeas() {

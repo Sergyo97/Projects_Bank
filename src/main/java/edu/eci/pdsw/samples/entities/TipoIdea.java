@@ -14,8 +14,9 @@ public class TipoIdea implements Serializable{
 		this.id = id;
 		this.tipo = tipo;
 	}
-
 	
+	public TipoIdea() {
+	}
 
 	public int getId() {
 		return id;
@@ -37,9 +38,4 @@ public class TipoIdea implements Serializable{
 	public String toString() {
 		return "TipoIdea [id=" + id + ", tipo=" + tipo + "]";
 	}
-	
-	
-	
-	
-
 }

@@ -1,7 +1,5 @@
 package edu.eci.pdsw.samples.services.client;
 
-
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.SQLException;
@@ -12,6 +10,8 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import edu.eci.pdsw.sampleprj.dao.mybatis.mappers.IdeaMapper;
+import edu.eci.pdsw.sampleprj.dao.mybatis.mappers.TipoIdeaMapper;
+import edu.eci.pdsw.sampleprj.dao.mybatis.mappers.UsuarioMapper;
 
 
 /**
@@ -51,9 +51,12 @@ public class MyBatisExample {
 		SqlSession sqlss = sessionfact.openSession();
 
 		IdeaMapper im= sqlss.getMapper(IdeaMapper.class);
+		UsuarioMapper um = sqlss.getMapper(UsuarioMapper.class);
+		TipoIdeaMapper tim = sqlss.getMapper(TipoIdeaMapper.class);
 		
-		System.out.println(im.consultarIdeas());
-		
+		//System.out.println(im.consultarIdeas());
+		//System.out.println(um.consultarUsuarios());
+		System.out.println(tim.consultarTipoIdeas());
 		
 		
 		sqlss.commit();

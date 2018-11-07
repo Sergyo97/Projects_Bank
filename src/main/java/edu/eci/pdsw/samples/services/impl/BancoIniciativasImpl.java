@@ -34,18 +34,13 @@ public class BancoIniciativasImpl implements BancoIniciativas{
 
 
 	//USUARIOS
-
-	/**
-	public Usuario consultarUsuarios(int id) throws ExcepcionBancoIniciativas{
+	public List<Usuario> consultarUsuarios() throws ExcepcionBancoIniciativas{
 		try {
-			return usuarioDAO.consultarUsuario(id);
+			return usuarioDAO.consultarUsuarios();
 		} catch (PersistenceException e) {
-			throw new ExcepcionBancoIniciativas("Error al consultar el usuario :" + id, e);
+			throw new ExcepcionBancoIniciativas("Error al consultar los usuarios", e);
 		}
-	};*/
-
-
-
+	};
 
 	public Usuario consultarUsuario(int id) throws ExcepcionBancoIniciativas{
 		try {
