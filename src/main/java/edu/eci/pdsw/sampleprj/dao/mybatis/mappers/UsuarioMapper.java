@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import edu.eci.pdsw.samples.entities.Idea;
 import edu.eci.pdsw.samples.entities.Usuario;
 
 public interface UsuarioMapper {
@@ -13,6 +14,8 @@ public interface UsuarioMapper {
 	    public void insertarUsuario(@Param("usuario") Usuario us);
 	    
 	    public List<Usuario> consultarUsuarios();
+	    
+	    public List<Idea> consultarIdeasUsuario(@Param("ucarne") int carne);
 
 	}
 

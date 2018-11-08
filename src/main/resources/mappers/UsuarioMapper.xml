@@ -17,8 +17,7 @@
 			resultMap='IdeaResult'></collection>
 	</resultMap>
 
-
-	<select id="consultarUsuario" resultMap="UsuarioResult">
+	<select id="consultarUsuarios" resultMap="UsuarioResult">
 		select * from usuario;
 	</select>
 

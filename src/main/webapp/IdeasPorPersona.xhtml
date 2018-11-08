@@ -5,13 +5,12 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
-<head>
-<meta charset="ISO-8859-1">
+<h:head>
 <title></title>
-</head>
+</h:head>
 <h:body>
 	<h1>Ideas</h1>
-	<p:dataTable id="Ideas_table" var="ideas" value="#{IdeaBean.}">
+	<p:dataTable id="Ideas_table" var="ideas" value="#{IdeaBean.ideas}">
 		<p:column headerText="Iniciativa">
 			<h:outputText value="#{ideas.nombreIniciativa}" />
 		</p:column>
