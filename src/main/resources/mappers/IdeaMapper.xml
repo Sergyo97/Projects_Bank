@@ -5,7 +5,7 @@
 
 <mapper
 	namespace="edu.eci.pdsw.sampleprj.dao.mybatis.mappers.IdeaMapper">
-	
+
 	<resultMap type='Idea' id='IdeaResult'>
 		<id property='id' column='id' />
 		<result property='nombreIniciativa' column='nombre_iniciativa' />
@@ -19,6 +19,15 @@
 			resultMap='edu.eci.pdsw.sampleprj.dao.mybatis.mappers.TipoIdeaMapper.TipoIdeaResult'></association>
 	</resultMap>
 
+
+	<update id="actualizarEstado">
+		UPDATE
+		idea
+		SET
+		estado = #{nEstado}
+		WHERE
+		id = #{id}
+	</update>
 
 
 
@@ -39,5 +48,12 @@
 		select * from idea where id
 		= #{id};
 	</select>
+
+	<select id="consultarPalabrasClave" resultMap="IdeaResult">
+		select * from idea
+		where descripcion like '%' || #{clave} || '%';
+	</select>
+
+
 
 </mapper>

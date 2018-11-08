@@ -101,7 +101,24 @@ public class BancoIniciativasImpl implements BancoIniciativas{
 			throw new ExcepcionBancoIniciativas("Error al intentar consultar las ideas", e);
 		}
 	}
+	
+	
+	public List<Idea> consultarPalabrasClave(String palabraClave ) throws ExcepcionBancoIniciativas{
+		try {
+			return ideaDAO.consultarPalabrasClave(palabraClave);
+		} catch (PersistenceException e) {
+			throw new ExcepcionBancoIniciativas("Error al intentar consultar las ideas", e);
+		}
+	}
 
+	
+	public void actualizarEstado(String nuevoEstado, int id) throws ExcepcionBancoIniciativas{
+		try {
+			ideaDAO.actualizarEstado(nuevoEstado,id);
+		} catch (PersistenceException e) {
+			throw new ExcepcionBancoIniciativas("Error al intentar actualizar las ideas", e);
+		}
+	}
 
 	//TipoIdeas
 

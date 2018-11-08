@@ -16,5 +16,11 @@ public interface IdeaMapper {
 	public void insertarIdea(@Param("Idea") Idea idea);
 	
 	public Idea consultarIdea(@Param("id")int id);
+	
+	public List<Idea> consultarPalabrasClave(@Param("clave") String clave);	
+	
+	public void actualizarEstado(@Param("nEstado") String nuevoEstado,
+			@Param("id") int id);
+	
 
 }
