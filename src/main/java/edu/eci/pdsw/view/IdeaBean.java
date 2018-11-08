@@ -29,7 +29,7 @@ public class IdeaBean extends BasePageBean{
 	
 	@ManagedProperty(value="#{param.users}")
 	
-	private int users;		
+	private int users;	
 	
 	public int getUsers() {
 		return users;
