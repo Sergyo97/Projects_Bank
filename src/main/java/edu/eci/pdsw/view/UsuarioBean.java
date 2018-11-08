@@ -30,9 +30,9 @@ public class UsuarioBean extends BasePageBean{
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	@ManagedProperty(value = "#{param.usuario}")
-	private String usuario;
-	private Usuario us;
+//	@ManagedProperty(value = "#{param.usuario}")
+//	private String usuario;
+//	private Usuario us;
 
 	//ACCION DUDOSA
 	@Inject
@@ -55,6 +55,14 @@ public class UsuarioBean extends BasePageBean{
 	};
 
 	
-	
+	/*public void insertarUsuario(String nombre, String correo, long carne, TipoUsuario tipoId, boolean activo, ArrayList<Idea> ideasDeUsuario) throws Exception {
+		HttpServletRequest request = (HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest();
+		us = new Usuario(nombre, correo, carne, tipoId, activo, ideasDeUsuario);
+		try {
+			bancoini.insertarUsuario(us);
+		} catch (Exception e) {
+			throw e;
+		}
+	};*/
 
 }
