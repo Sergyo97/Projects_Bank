@@ -35,7 +35,7 @@ CREATE TABLE Usuario (
     Correo varchar(150)  NOT NULL,
     Tipo_Usuario_Id int  NOT NULL,
     Activo boolean  NOT NULL,
-    CONSTRAINT Correo_UK UNIQUE (Correo) INITIALLY IMMEDIATE,
+    CONSTRAINT Correo_UK UNIQUE (Correo),
     CONSTRAINT Usuario_pk PRIMARY KEY (Carne)
 );
 
