@@ -31,14 +31,16 @@ public class IdeaBean extends BasePageBean{
 	
 	private int users;		
 	
-	public int getUsuarioCarne() {
+	public int getUsers() {
 		return users;
 	}
 
-	public void setUsuarioCarne(int users) {
+
+	public void setUsers(int users) {
 		this.users = users;
-	}	
-	
+	}
+
+
 	@Inject
 	private BancoIniciativasImpl bancoini;
 

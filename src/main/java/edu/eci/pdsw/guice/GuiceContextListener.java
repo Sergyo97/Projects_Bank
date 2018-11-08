@@ -18,6 +18,8 @@ import edu.eci.pdsw.sampleprj.dao.mybatis.MyBatisIdeaDAO;
 import edu.eci.pdsw.sampleprj.dao.mybatis.MyBatisTipoIdeaDAO;
 import edu.eci.pdsw.sampleprj.dao.mybatis.MyBatisTipoUsuarioDAO;
 import edu.eci.pdsw.sampleprj.dao.mybatis.MyBatisUsuarioDAO;
+import edu.eci.pdsw.samples.services.BancoIniciativas;
+import edu.eci.pdsw.samples.services.impl.BancoIniciativasImpl;
 
 public class GuiceContextListener implements ServletContextListener {
 
@@ -39,6 +41,7 @@ public class GuiceContextListener implements ServletContextListener {
                 bind(TipoIdeaDAO.class).to(MyBatisTipoIdeaDAO.class);
                 bind(TipoUsuarioDAO.class).to(MyBatisTipoUsuarioDAO.class);
                 bind(UsuarioDAO.class).to(MyBatisUsuarioDAO.class);
+                bind(BancoIniciativas.class).to(BancoIniciativasImpl.class);
             }
         });
 
