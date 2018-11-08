@@ -10,15 +10,17 @@
 		<result property='nombre' column='nombre' />
 		<result property='correo' column='correo' />
 		<result property='activo' column='activo' />
-		<association property="tipoUsuarioId" column="tipo_usuario_id"
-			javaType="TipoUsuario"
-			resultMap="edu.eci.pdsw.sampleprj.dao.mybatis.mappers.TipoUsuarioMapper"></association>
+		<association property="tipoUsuarioId" 	javaType="TipoUsuario"
+			resultMap="edu.eci.pdsw.sampleprj.dao.mybatis.mappers.TipoUsuarioMapper.TipoUsuarioResult"></association>
+		
 		<collection property='ideasDeUsuario' ofType='Idea'
-			resultMap='IdeaResult'></collection>
+			resultMap='edu.eci.pdsw.sampleprj.dao.mybatis.mappers.IdeaMapper.IdeaResult'></collection>
 	</resultMap>
+	
+	
 
 
-	<select id="consultarUsuario" resultMap="UsuarioResult">
+	<select id="consultarUsuarios" resultMap="UsuarioResult">
 		select * from usuario;
 	</select>
 
@@ -26,6 +28,11 @@
 		insert into usuario (carne, nombre, correo, tipo_usuario_id, activo) values
 		(#{usuario.carne},#{usuario.nombre},#{usuario.correo},#{usuario.tipo_usuario_id},#{usuario.activo});
 	</insert>
+
+	<select id="consultarUsuario" resultMap="UsuarioResult">
+		select * from usuario where carne = #{cus};
+	</select>
+	
 
 
 

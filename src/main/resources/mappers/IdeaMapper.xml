@@ -5,7 +5,7 @@
 
 <mapper
 	namespace="edu.eci.pdsw.sampleprj.dao.mybatis.mappers.IdeaMapper">
-
+	
 	<resultMap type='Idea' id='IdeaResult'>
 		<id property='id' column='id' />
 		<result property='nombreIniciativa' column='nombre_iniciativa' />
@@ -13,10 +13,14 @@
 		<result property='votos' column='votos' />
 		<result property='fechaCreacion' column='fecha_creacion' />
 		<result property='usuarioCarne' column='usuario_carne' />
+		<result property='descripcion' column='descripcion' />
 
 		<association property="tIdeaId" javaType="TipoIdea"
-			resultMap="edu.eci.pdsw.sampleprj.dao.mybatis.mappers.TipoIdeaMapper.TipoIdeaResult'"></association>
+			resultMap='edu.eci.pdsw.sampleprj.dao.mybatis.mappers.TipoIdeaMapper.TipoIdeaResult'></association>
 	</resultMap>
+
+
+
 
 
 	<select id="consultarIdeas" resultMap="IdeaResult">
@@ -27,7 +31,7 @@
 		insert into idea
 		(id,nombre_iniciativa,t_idea_id,usuario_carne,votos,fecha_creacion,estado,descripcion)
 		values
-		(#{Idea.id},#{Idea.nombre_iniciativa},#{Idea.t_idea_id},#{Idea.usuario_carne},#{Idea.votos},#{Idea.fecha_creacion},#{Idea.estado},#{Idea.descripcion});
+		(#{Idea.id},#{Idea.nombreIniciativa},#{Idea.tIdeaId.id},#{Idea.usuarioCarne},#{Idea.votos},#{Idea.fechaCreacion},#{Idea.estado},#{Idea.descripcion});
 	</insert>
 
 

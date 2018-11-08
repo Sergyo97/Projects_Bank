@@ -8,7 +8,7 @@ import edu.eci.pdsw.samples.entities.Usuario;
 
 public interface UsuarioDAO {
 	
-	public Usuario consultarUsuario(int id) throws PersistenceException;
+	public Usuario consultarUsuario(long carne) throws PersistenceException;
     
     public void insertarUsuario(Usuario usuario);
     
