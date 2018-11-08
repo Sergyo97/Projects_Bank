@@ -5,10 +5,9 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
-<head>
-<meta charset="ISO-8859-1">
+<h:head>
 <title></title>
-</head>
+</h:head>
 <h:body>
 	<h1>Usuarios</h1>
 	<p:dataTable id="usuarios_table" var="users" value="#{UsuarioBean.usuarios}">
@@ -25,7 +24,7 @@
 		</p:column>		
 
 		<p:column headerText="Lista de propuestas">
-			<p:button outcome="IdeasPorPersona?users=#{users.carne}" value="Ver Ideas" />
+			<p:button outcome="IdeasPorPersona?users=#{users.carne}" value="Ver Propuestas" />
 		</p:column>		
 	</p:dataTable>
 </h:body>

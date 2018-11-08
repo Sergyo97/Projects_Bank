@@ -8,11 +8,10 @@ import com.google.inject.Inject;
 
 import edu.eci.pdsw.sampleprj.dao.UsuarioDAO;
 import edu.eci.pdsw.sampleprj.dao.mybatis.mappers.UsuarioMapper;
+import edu.eci.pdsw.samples.entities.Idea;
 import edu.eci.pdsw.samples.entities.Usuario;
 
-public class MyBatisUsuarioDAO implements UsuarioDAO {
-
-	
+public class MyBatisUsuarioDAO implements UsuarioDAO {	
 	
 	@Inject
 	private UsuarioMapper usuarioMapper;
@@ -30,6 +29,16 @@ public class MyBatisUsuarioDAO implements UsuarioDAO {
 	@Override
 	public List<Usuario> consultarUsuarios() {
 		return usuarioMapper.consultarUsuarios();
+	}
+
+	@Override
+	public List<Idea> consultarIdeasUsuario(int carne) throws PersistenceException {
+		try {
+			return usuarioMapper.consultarIdeasUsuario(carne);
+		} catch (Exception e) {
+			throw new PersistenceException("Error al consultar tipo usuario", e);
+		}
+		
 	}
 
 }

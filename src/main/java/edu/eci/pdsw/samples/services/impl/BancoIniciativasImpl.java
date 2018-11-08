@@ -41,6 +41,14 @@ public class BancoIniciativasImpl implements BancoIniciativas{
 			throw new ExcepcionBancoIniciativas("Error al consultar los usuarios", e);
 		}
 	};
+	
+	public List<Idea> consultarIdeasUsuario(int carne) throws ExcepcionBancoIniciativas {
+		try {
+			return usuarioDAO.consultarIdeasUsuario(carne);
+		} catch (PersistenceException e) {
+			throw new ExcepcionBancoIniciativas("Error al consultar las ideas del usuario :" + carne, e);
+		}
+	};
 
 	public Usuario consultarUsuario(int id) throws ExcepcionBancoIniciativas{
 		try {
@@ -138,5 +146,6 @@ public class BancoIniciativasImpl implements BancoIniciativas{
 		} catch (PersistenceException e) {
 			throw new ExcepcionBancoIniciativas("Error al intentar consultar el tipo de usuario: "+id, e);
 		}
-	};
+	}	
+	
 }
