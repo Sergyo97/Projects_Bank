@@ -3,7 +3,8 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="edu.eci.pdsw.sampleprj.dao.mybatis.mappers.IdeaMapper">
+<mapper
+	namespace="edu.eci.pdsw.sampleprj.dao.mybatis.mappers.IdeaMapper">
 
 	<resultMap type='Idea' id='IdeaResult'>
 		<id property='id' column='id' />
@@ -12,8 +13,9 @@
 		<result property='votos' column='votos' />
 		<result property='fechaCreacion' column='fecha_creacion' />
 		<result property='usuarioCarne' column='usuario_carne' />
-		<association property="tIdeaId" column="t_idea_id"
-			javaType="TipoIdea" resultMap="edu.eci.pdsw.sampleprj.dao.mybatis.mappers.TipoIdeaMapper"></association>
+
+		<association property="tIdeaId" javaType="TipoIdea"
+			resultMap="edu.eci.pdsw.sampleprj.dao.mybatis.mappers.TipoIdeaMapper.TipoIdeaResult'"></association>
 	</resultMap>
 
 
@@ -30,7 +32,8 @@
 
 
 	<select id="consultarIdea" resultMap="IdeaResult">
-		select * from idea where id = #{id};
+		select * from idea where id
+		= #{id};
 	</select>
 
 </mapper>
