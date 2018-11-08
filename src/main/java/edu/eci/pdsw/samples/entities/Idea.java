@@ -17,6 +17,8 @@ public class Idea implements Serializable{
 	Date fechaCreacion;
 	int usuarioCarne;
 	String descripcion;
+
+	
 	
 	public Idea(int id, String nombreIniciativa, String estado, TipoIdea tIdeaId, int votos, Date fechaCreacion, int usuarioCarne, String descripcion) {
 		this.id = id;
@@ -28,7 +30,7 @@ public class Idea implements Serializable{
 		this.usuarioCarne = usuarioCarne;
 		this.descripcion = descripcion;
 	}
-	
+
 	public Idea() {
 	}
 
