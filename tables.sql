@@ -35,7 +35,7 @@ CREATE TABLE Usuario (
     Correo varchar(150)  NOT NULL,
     Tipo_Usuario_Id int  NOT NULL,
     Activo boolean  NOT NULL,
-    CONSTRAINT Correo_UK UNIQUE (Correo),
+    CONSTRAINT Correo_UK UNIQUE (Correo) ,
     CONSTRAINT Usuario_pk PRIMARY KEY (Carne)
 );
 
@@ -44,24 +44,18 @@ CREATE TABLE Usuario (
 ALTER TABLE Idea ADD CONSTRAINT Idea_T_Idea
     FOREIGN KEY (T_Idea_Id)
     REFERENCES T_Idea (Id)  
-    NOT DEFERRABLE 
-    INITIALLY IMMEDIATE
 ;
 
 -- Reference: Idea_Usuario (table: Idea)
 ALTER TABLE Idea ADD CONSTRAINT Idea_Usuario
     FOREIGN KEY (Usuario_Carne)
     REFERENCES Usuario (Carne)  
-    NOT DEFERRABLE 
-    INITIALLY IMMEDIATE
 ;
 
 -- Reference: Usuario_T_Tipo (table: Usuario)
 ALTER TABLE Usuario ADD CONSTRAINT Usuario_T_Tipo
     FOREIGN KEY (Tipo_Usuario_Id)
     REFERENCES Tipo_Usuario (Id)  
-    NOT DEFERRABLE 
-    INITIALLY IMMEDIATE
 ;
 
 -- End of file.
