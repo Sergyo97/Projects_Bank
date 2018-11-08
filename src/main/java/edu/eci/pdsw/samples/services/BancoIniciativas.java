@@ -11,6 +11,8 @@ import edu.eci.pdsw.samples.entities.Usuario;
 public interface BancoIniciativas {
 
 	//USUARIO
+	public List<Usuario> consultarUsuarios() throws ExcepcionBancoIniciativas;
+	
 	public Usuario consultarUsuario(int id) throws ExcepcionBancoIniciativas;
 
 	public void agregarPropuestaUsuario(int id,String nombre_iniciativa,String estado,	TipoIdea t_idea_id,int votos,Date fecha_creacion,int usuario_carne, String descripcion) throws ExcepcionBancoIniciativas;
