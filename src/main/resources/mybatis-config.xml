@@ -19,9 +19,9 @@
 			<dataSource type="POOLED">
 				<property name="driver" value="org.postgresql.Driver" />
 				<property name="url"
-					value="jdbc:postgresql://ec2-23-23-253-106.compute-1.amazonaws.com:5432/ddf5fuf27fkq65?ssl=true&amp;sslfactory=org.postgresql.ssl.NonValidatingFactory" />
-				<property name="username" value="ucqksgldbffyhl" />
-				<property name="password" value="df48ae62b659dc76d481232663b6a45321781240b168cf30131c96fc709c4335" />
+					value="jdbc:postgresql://ec2-107-21-93-132.compute-1.amazonaws.com:5432/dbc60str6v2js4?ssl=true&amp;sslfactory=org.postgresql.ssl.NonValidatingFactory" />
+				<property name="username" value="hodmschwtsvmpk" />
+				<property name="password" value="3adbb33e6d95faf1d73b80490d8c0b608b708dcdc743d4e9bd3984a037a38283" />
 			</dataSource>
 		</environment>
 	</environments>

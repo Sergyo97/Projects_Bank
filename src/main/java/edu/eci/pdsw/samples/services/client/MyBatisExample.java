@@ -49,9 +49,9 @@ public class MyBatisExample {
 		UsuarioMapper um = sqlss.getMapper(UsuarioMapper.class);
 		TipoIdeaMapper tim = sqlss.getMapper(TipoIdeaMapper.class);
 		
-		System.out.println(im.consultarIdeas());
+		//System.out.println(im.consultarIdeas());
 		//System.out.println(um.consultarUsuarios());
-		//System.out.println(tim.consultarTipoIdeas());
+		System.out.println(tim.consultarTipoIdeas());
 		
 		
 		sqlss.commit();
