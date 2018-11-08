@@ -60,6 +60,10 @@ public class MyBatisExample {
 		//System.out.println(im.consultarIdeas());
 		//revisar porque tipo es null		
 		//System.out.println(im.consultarIdea(1));	
+		//System.out.println(im.consultarPalabrasClave("e"));	
+		
+		//im.actualizarEstado("el neoestado", 2);
+		
 		
 		//Date date = new Date(2018, 11, 7);
 		//TipoIdea ti= new TipoIdea(1, "Bienestar Universitario");

@@ -14,4 +14,9 @@ public interface IdeaDAO {
 	
 	public Idea consultarIdea(int id) throws PersistenceException;
 	
+	public List<Idea> consultarPalabrasClave(String palabraClave) throws PersistenceException;
+	
+	public void actualizarEstado (String nuevoEstado, int id) throws PersistenceException;
+	
+	
 }

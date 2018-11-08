@@ -30,5 +30,18 @@ public class MyBatisIdeaDAO implements IdeaDAO {
 	public List<Idea> consultarIdeas() throws PersistenceException {
 		return ideaMapper.consultarIdeas();
 	}
+
+	@Override
+	public List<Idea> consultarPalabrasClave(String palabraClave) throws PersistenceException {
+		return ideaMapper.consultarPalabrasClave(palabraClave);
+	}
+
+	@Override
+	public void actualizarEstado(String nuevoEstado, int id) throws PersistenceException {
+		ideaMapper.actualizarEstado(nuevoEstado,id);
+		
+	}
+	
+	
 	
 }
