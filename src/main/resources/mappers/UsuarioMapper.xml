@@ -17,9 +17,6 @@
 			resultMap='edu.eci.pdsw.sampleprj.dao.mybatis.mappers.IdeaMapper.IdeaResult'></collection>
 	</resultMap>
 	
-	
-
-
 	<select id="consultarUsuarios" resultMap="UsuarioResult">
 		select * from usuario;
 	</select>
