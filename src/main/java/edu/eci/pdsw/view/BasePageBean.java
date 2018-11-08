@@ -6,7 +6,7 @@ import javax.faces.context.FacesContext;
 import javax.servlet.ServletContext;
 import com.google.inject.Injector;
 
-public class BasePageBean implements Serializable {
+public abstract class BasePageBean implements Serializable {
 
     /**
 	 * 
