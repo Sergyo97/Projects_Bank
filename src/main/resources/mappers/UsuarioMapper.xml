@@ -18,8 +18,8 @@
 	</resultMap>
 	
 	<select id="consultarUsuarios" resultMap="UsuarioResult">
-		select * from usuario;
-	</select>
+		select * from usuario left join tipo_usuario on id=tipo_usuario_id;
+	</select>	
 
 	<insert id="insertarUsuario">
 		insert into usuario (carne, nombre, correo, tipo_usuario_id, activo) values
@@ -27,7 +27,7 @@
 	</insert>
 
 	<select id="consultarUsuario" resultMap="UsuarioResult">
-		select * from usuario where carne = #{cus};
+		select * from usuario left join tipo_usuario on id=tipo_usuario_id where carne = #{cus};
 	</select>
 	
 

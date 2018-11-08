@@ -57,7 +57,7 @@ public class MyBatisExample {
 		
 		
 		// IDEAS 
-		//System.out.println(im.consultarIdeas());
+		System.out.println(im.consultarIdeas());
 		//revisar porque tipo es null		
 		//System.out.println(im.consultarIdea(1));	
 		//System.out.println(im.consultarPalabrasClave("e"));	

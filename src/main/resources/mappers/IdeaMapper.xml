@@ -29,11 +29,8 @@
 		id = #{id}
 	</update>
 
-
-
-
 	<select id="consultarIdeas" resultMap="IdeaResult">
-		select * from idea;
+		select * from idea as i left join t_idea as ti ON(ti.id=t_idea_id);
 	</select>
 
 	<insert id="insertarIdea">
@@ -42,11 +39,14 @@
 		values
 		(#{Idea.id},#{Idea.nombreIniciativa},#{Idea.tIdeaId.id},#{Idea.usuarioCarne},#{Idea.votos},#{Idea.fechaCreacion},#{Idea.estado},#{Idea.descripcion});
 	</insert>
-
+	
+	<select id="consultarIdeasUsuario" resultMap="IdeaResult">
+		select * from idea as i left join t_idea as ti ON(ti.id=t_idea_id) where usuario_carne = #{ucarne};
+	</select>
 
 	<select id="consultarIdea" resultMap="IdeaResult">
-		select * from idea where id
-		= #{id};
+		select * from idea as i left join t_idea as ti ON(ti.id=t_idea_id)
+		 where id= #{id};
 	</select>
 
 	<select id="consultarPalabrasClave" resultMap="IdeaResult">

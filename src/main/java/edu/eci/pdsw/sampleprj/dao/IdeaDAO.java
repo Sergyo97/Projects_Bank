@@ -18,5 +18,6 @@ public interface IdeaDAO {
 	
 	public void actualizarEstado (String nuevoEstado, int id) throws PersistenceException;
 	
+	public List<Idea> consultarIdeasUsuario(int carne) throws PersistenceException;
 	
 }

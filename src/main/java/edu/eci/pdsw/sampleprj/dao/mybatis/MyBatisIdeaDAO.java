@@ -42,6 +42,16 @@ public class MyBatisIdeaDAO implements IdeaDAO {
 		
 	}
 	
+	@Override
+	public List<Idea> consultarIdeasUsuario(int carne) throws PersistenceException {
+		try {
+			return ideaMapper.consultarIdeasUsuario(carne);
+		} catch (Exception e) {
+			throw new PersistenceException("Error al consultar tipo usuario", e);
+		}
+		
+	}
+	
 	
 	
 }

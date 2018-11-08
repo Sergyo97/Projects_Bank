@@ -15,6 +15,6 @@ public interface UsuarioDAO {
     
     public List<Usuario> consultarUsuarios() throws PersistenceException;
     
-    public List<Idea> consultarIdeasUsuario(int carne) throws PersistenceException;
+    
     
 }

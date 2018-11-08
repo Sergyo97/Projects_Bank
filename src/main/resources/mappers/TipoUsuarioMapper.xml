@@ -7,7 +7,7 @@
 
 	<resultMap type='TipoUsuario' id='TipoUsuarioResult'>
 		<id property='id' column='id' />
-		<result property='desc' column='tipo' />
+		<result property='descripcion' column='descripcion' />
 	</resultMap>
 
 	<select id="consultarTiposUsuario" resultMap="TipoUsuarioResult">

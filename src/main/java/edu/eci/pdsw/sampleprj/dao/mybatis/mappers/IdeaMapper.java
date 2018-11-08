@@ -22,5 +22,6 @@ public interface IdeaMapper {
 	public void actualizarEstado(@Param("nEstado") String nuevoEstado,
 			@Param("id") int id);
 	
+	public List<Idea> consultarIdeasUsuario(@Param("ucarne") int carne);
 
 }

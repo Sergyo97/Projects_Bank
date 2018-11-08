@@ -13,9 +13,7 @@ public interface UsuarioMapper {
 	    
 	    public void insertarUsuario(@Param("usuario") Usuario us);
 	    
-	    public List<Usuario> consultarUsuarios();
-	    
-	    public List<Idea> consultarIdeasUsuario(@Param("ucarne") int carne);
+	    public List<Usuario> consultarUsuarios();	    
 
 	}
 

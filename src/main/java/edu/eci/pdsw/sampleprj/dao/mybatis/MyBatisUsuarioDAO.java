@@ -31,14 +31,6 @@ public class MyBatisUsuarioDAO implements UsuarioDAO {
 		return usuarioMapper.consultarUsuarios();
 	}
 
-	@Override
-	public List<Idea> consultarIdeasUsuario(int carne) throws PersistenceException {
-		try {
-			return usuarioMapper.consultarIdeasUsuario(carne);
-		} catch (Exception e) {
-			throw new PersistenceException("Error al consultar tipo usuario", e);
-		}
-		
-	}
+	
 
 }
