@@ -1,25 +1,18 @@
 package edu.eci.pdsw.view;
 
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
-import javax.faces.context.FacesContext;
 import javax.persistence.PersistenceException;
-import javax.servlet.http.HttpServletRequest;
 
 import com.google.inject.Inject;
 
-import edu.eci.pdsw.samples.entities.Idea;
-import edu.eci.pdsw.samples.entities.TipoUsuario;
 import edu.eci.pdsw.samples.entities.Usuario;
 import edu.eci.pdsw.samples.services.ExcepcionBancoIniciativas;
 import edu.eci.pdsw.samples.services.impl.BancoIniciativasImpl;
 
-@SuppressWarnings("deprecation")
 @ManagedBean(name = "usuarioBean")
 @ApplicationScoped
 
