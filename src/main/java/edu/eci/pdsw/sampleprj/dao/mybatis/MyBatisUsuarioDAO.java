@@ -31,6 +31,11 @@ public class MyBatisUsuarioDAO implements UsuarioDAO {
 		return usuarioMapper.consultarUsuarios();
 	}
 
+	@Override
+	public Usuario ConsultarUsuarioPorCorreo(String correo) {		
+		return usuarioMapper.ConsultarUsuarioPorCorreo(correo);
+	}
+
 	
 
 }

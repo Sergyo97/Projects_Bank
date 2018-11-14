@@ -46,6 +46,14 @@ public class UsuarioBean extends BasePageBean{
 			throw e;
 		}
 	};
+	
+	public Usuario getUsuarioPorCorreo(String correo) throws ExcepcionBancoIniciativas{
+		try {
+			return bancoini.ConsultarUsuarioPorCorreo(correo);
+		} catch (PersistenceException e) {
+			throw e;
+		}
+	};
 
 	
 	/*public void insertarUsuario(String nombre, String correo, long carne, TipoUsuario tipoId, boolean activo, ArrayList<Idea> ideasDeUsuario) throws Exception {

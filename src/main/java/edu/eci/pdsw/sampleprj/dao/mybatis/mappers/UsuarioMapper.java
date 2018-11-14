@@ -13,7 +13,9 @@ public interface UsuarioMapper {
 	    
 	    public void insertarUsuario(@Param("usuario") Usuario us);
 	    
-	    public List<Usuario> consultarUsuarios();	    
+	    public List<Usuario> consultarUsuarios();
+
+		public Usuario ConsultarUsuarioPorCorreo(@Param("correo") String correo);	    
 
 	}
 

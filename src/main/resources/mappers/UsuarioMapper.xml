@@ -30,6 +30,10 @@
 		select * from usuario left join tipo_usuario on id=tipo_usuario_id where carne = #{cus};
 	</select>
 	
+	<select id="ConsultarUsuarioPorCorreo" resultMap="UsuarioResult">
+		select * from usuario left join tipo_usuario on id=tipo_usuario_id where correo = #{correo};
+	</select>
+	
 
 
 

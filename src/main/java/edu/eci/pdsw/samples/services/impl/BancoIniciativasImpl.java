@@ -57,6 +57,16 @@ public class BancoIniciativasImpl implements BancoIniciativas{
 			throw new ExcepcionBancoIniciativas("Error al consultar el usuario :" + id, e);
 		}
 	};
+	
+	
+	public Usuario ConsultarUsuarioPorCorreo(String correo) throws ExcepcionBancoIniciativas{
+		try {
+			return usuarioDAO.ConsultarUsuarioPorCorreo(correo);
+		} catch (PersistenceException e) {
+			throw e;
+		}
+	};
+	
 
 	public void agregarPropuestaUsuario(int id,String nombre_iniciativa,String estado,	TipoIdea t_idea_id,int votos,Date fecha_creacion,int usuario_carne, String descripcion) throws ExcepcionBancoIniciativas{
 		try {
@@ -74,6 +84,8 @@ public class BancoIniciativasImpl implements BancoIniciativas{
 		}
 	};
 
+	
+	
 
 	//IDEAS
 

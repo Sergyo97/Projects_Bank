@@ -6,29 +6,16 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-	<title>Login</title>
+	<title>login</title>
 </h:head>
 <h:body>
-	<h1>Usuarios</h1>
-	<p:dataTable id="usuarios_table" var="users" value="#{usuarioBean.usuarios}">
-		<p:column headerText="Nombre">
-			<h:outputText value="#{users.nombre}" />
-		</p:column>
-		
-		<p:column headerText="Carne">
-			<h:outputText value="#{users.carne}" />
-		</p:column>
+	<h1>login</h1>
+	<p:dataTable id="login_table" var="login" value="#{usuarioBean.UsuarioPorCorreo}"/>
+		<p:outputLabel style="font-size: 12pt" value="correo:" />
+				<h:inputText binding="#{correo}" />
 
-		<p:column headerText="Tipo de usuario">
-			<h:outputText value="#{users.tipoUsuarioId.descripcion}" />
-		</p:column>
-
-		<p:column headerText="Correo">
-			<h:outputText value="#{users.correo}" />
-		</p:column>
-
-		<p:column headerText="Lista de propuestas">
-			<p:button outcome="IdeasPorPersona?users=#{users.carne}"
+		<p:column headerText="Lista de propuestas"/>
+			<p:button outcome="usuarios?login=#{correo}"
 				value="Ver Propuestas" />
 	
 </h:body>
