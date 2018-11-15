@@ -10,7 +10,7 @@
 </h:head>
 <h:body>
 	<h1>Usuarios</h1>
-	<p:dataTable id="usuarios_table" var="users" value="#{usuarioBean.usuarios}">
+	<p:dataTable id="usuarios_table" var="users" value="#{usuarioBean.usuarioPorCorreo}">
 		<p:column headerText="Nombre">
 			<h:outputText value="#{users.nombre}" />
 		</p:column>
@@ -28,8 +28,7 @@
 		</p:column>
 
 		<p:column headerText="Lista de propuestas">
-			<p:button outcome="IdeasPorPersona?users=#{users.carne}"
-				value="Ver Propuestas" />
+			<p:button outcome="IdeasPorPersona?users=#{users.carne}" value="Ver Propuestas" />
 		</p:column>
 	</p:dataTable>
 </h:body>

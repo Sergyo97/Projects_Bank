@@ -4,23 +4,15 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
-
+	
 <h:head>
-	<title>login</title>
+	<title>HOLO</title>
 </h:head>
+
 <h:body>
-	<h1>login</h1>
-
-	<h:form id="login">
-
-		<p:outputLabel style="font-size: 12pt" value="correo: " />
-		<p:inputText value="#{loginBean.correo}" />
-
-		<h:commandButton action="#{loginBean.validarUsuario}"  value="Ver mis Propuestas" /> 
-		
-
-	</h:form>
-
-
+	<h1>Banco de iniciativas</h1>
+	
+	<p:button outcome="login" value="Login" ></p:button>
 </h:body>
+	
 </html>

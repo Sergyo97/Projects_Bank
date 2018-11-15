@@ -57,7 +57,7 @@ public class MyBatisExample {
 		
 		
 		// IDEAS 
-		System.out.println(im.consultarIdeas());
+		//System.out.println(im.consultarIdeas());
 		//revisar porque tipo es null		
 		//System.out.println(im.consultarIdea(1));	
 		//System.out.println(im.consultarPalabrasClave("e"));	
@@ -88,7 +88,9 @@ public class MyBatisExample {
 		
 		//Tipo usuario esta null
 		//System.out.println(um.consultarUsuario(2141060));
-		//System.out.println(um.consultarUsuarios());
+		//System.out.println(um.ConsultarUsuarioPorCorreo("david.diaz-d@mail.escuelaing.edu.co"));
+		
+		
 		
 		sqlss.commit();
 		sqlss.close(); 

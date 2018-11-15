@@ -5,7 +5,9 @@ import java.util.List;
 
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 import javax.persistence.PersistenceException;
+import javax.servlet.http.HttpSession;
 
 import com.google.inject.Inject;
 
@@ -47,23 +49,17 @@ public class UsuarioBean extends BasePageBean{
 		}
 	};
 	
-	public Usuario getUsuarioPorCorreo(String correo) throws ExcepcionBancoIniciativas{
+	public Usuario getUsuarioPorCorreo() throws ExcepcionBancoIniciativas{
+		FacesContext fc = FacesContext.getCurrentInstance();
+		HttpSession session  = (HttpSession) fc.getExternalContext().getSession(true); 
 		try {
-			return bancoini.ConsultarUsuarioPorCorreo(correo);
+			
+			return bancoini.ConsultarUsuarioPorCorreo((String)session.getAttribute("correo"));
 		} catch (PersistenceException e) {
 			throw e;
 		}
 	};
 
 	
-	/*public void insertarUsuario(String nombre, String correo, long carne, TipoUsuario tipoId, boolean activo, ArrayList<Idea> ideasDeUsuario) throws Exception {
-		HttpServletRequest request = (HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest();
-		us = new Usuario(nombre, correo, carne, tipoId, activo, ideasDeUsuario);
-		try {
-			bancoini.insertarUsuario(us);
-		} catch (Exception e) {
-			throw e;
-		}
-	};*/
 
 }
