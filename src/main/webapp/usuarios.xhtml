@@ -10,11 +10,12 @@
 </h:head>
 <h:body>
 	<h1>Usuarios</h1>
-	<p:dataTable id="usuarios_table" var="users" value="#{usuarioBean.usuarioPorCorreo}">
+	<p:dataTable id="usuarios_table" var="users"
+		value="#{usuarioBean.usuarioPorCorreo}">
 		<p:column headerText="Nombre">
 			<h:outputText value="#{users.nombre}" />
 		</p:column>
-		
+
 		<p:column headerText="Carne">
 			<h:outputText value="#{users.carne}" />
 		</p:column>
@@ -28,8 +29,39 @@
 		</p:column>
 
 		<p:column headerText="Lista de propuestas">
-			<p:button outcome="IdeasPorPersona?users=#{users.carne}" value="Ver Propuestas" />
+			<p:button outcome="IdeasPorPersona?users=#{users.carne}"
+				value="Ver Propuestas" />
 		</p:column>
 	</p:dataTable>
+
+	<p></p>
+
+
+
+
+	
+
+	<p></p>
+	<p></p>
+	<p></p>
+
+	<p:dataTable id="Ideas_table" var="ideas" value="#{IdeaBean.ideasGeneral}">
+		<p:column headerText="Iniciativa">
+			<h:outputText value="#{ideas.nombreIniciativa}" />
+		</p:column>
+
+		<p:column headerText="Categoria">
+			<h:outputText value="#{ideas.tIdeaId.tipo}" />
+		</p:column>
+
+		<p:column headerText="Fecha Creacion">
+			<h:outputText value="#{ideas.fechaCreacion}" />
+		</p:column>
+
+		<p:column headerText="Descripcion">
+			<h:outputText value="#{ideas.descripcion}" />
+		</p:column>
+	</p:dataTable>
+
 </h:body>
 </html>

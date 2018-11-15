@@ -1,6 +1,7 @@
 package edu.eci.pdsw.samples.services;
 
-import java.util.Date;
+
+import java.sql.Date;
 import java.util.List;
 
 import edu.eci.pdsw.samples.entities.Idea;
@@ -9,6 +10,12 @@ import edu.eci.pdsw.samples.entities.TipoUsuario;
 import edu.eci.pdsw.samples.entities.Usuario;
 
 public interface BancoIniciativas {
+	
+	//TRIGGERS
+	public int consultarid() throws ExcepcionBancoIniciativas;
+	
+	public Date consultarFecha() throws ExcepcionBancoIniciativas;
+	
 
 	//USUARIO
 	public List<Usuario> consultarUsuarios() throws ExcepcionBancoIniciativas;

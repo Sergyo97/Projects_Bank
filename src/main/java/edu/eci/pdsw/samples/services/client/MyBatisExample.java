@@ -3,6 +3,8 @@ package edu.eci.pdsw.samples.services.client;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.apache.ibatis.io.Resources;
@@ -54,6 +56,12 @@ public class MyBatisExample {
 		TipoIdeaMapper tim = sqlss.getMapper(TipoIdeaMapper.class);
 		TipoUsuarioMapper tum= sqlss.getMapper(TipoUsuarioMapper.class);
 		
+		
+		//GENERAL
+		//System.out.println(im.consultarId().getId()+1);
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		Date date = new Date();
+		System.out.println(dateFormat.format(date));
 		
 		
 		// IDEAS 

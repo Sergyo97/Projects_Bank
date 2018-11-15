@@ -1,6 +1,6 @@
 package edu.eci.pdsw.samples.services.impl;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.PersistenceException;
@@ -174,6 +174,26 @@ public class BancoIniciativasImpl implements BancoIniciativas{
 			return tipoUsuarioDAO.getTipoUsuario(id);
 		} catch (PersistenceException e) {
 			throw new ExcepcionBancoIniciativas("Error al intentar consultar el tipo de usuario: "+id, e);
+		}
+	}
+
+	//TRIGGERS
+	
+	@Override
+	public int consultarid() throws ExcepcionBancoIniciativas {
+		try {
+			return ideaDAO.consultarid();
+		}catch (Exception e) {
+			throw new ExcepcionBancoIniciativas("Error al intentar consultar el ultimo id:", e);
+		}		
+	}
+
+	@Override
+	public Date consultarFecha() throws ExcepcionBancoIniciativas {
+		try {
+			return ideaDAO.consultarFecha();
+		}catch (Exception e) {
+			throw new ExcepcionBancoIniciativas("Error al intentar consultar la fecha actual:", e);
 		}
 	}	
 	

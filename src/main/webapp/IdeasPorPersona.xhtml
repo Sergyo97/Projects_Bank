@@ -10,6 +10,37 @@
 </h:head>
 <h:body>
 	<h1>Ideas from #{IdeaBean.users}</h1>
+	
+	
+	<h:form>
+		
+		<p:growl id="growl" showDetail="true" sticky="true" />
+		
+			<fieldset style="width:0px; border:2px solid #000000;">
+			<legend>Insertar Idea</legend>
+			<h:panelGrid columns="2" cellpadding="5">
+				<p:outputLabel style="font-size: 12pt" value="Nombre de Iniciativa:" />
+				<h:inputText binding="#{nombreIniciativa}" />
+
+
+				<p:outputLabel style="font-size: 12pt" value="Tipo:" />
+				<h:inputText binding="#{tipo}" />			
+
+
+				<p:outputLabel style="font-size: 12pt" value="Descripcion:" />
+				<h:inputText binding="#{descripcion}" />	
+				
+				<!-- <p:outputLabel style="font-size: 12pt" value="FechaCreacion:" />
+				<h:inputText binding="#{fechaCreacion}" /> -->		
+
+			</h:panelGrid>
+			<h:commandButton  style="background-color:white;  border:2px solid #FF3F33;" value="Registrar" update="Ideas_table"
+				actionListener="#{IdeaBean.insertarIdea(nombreIniciativa.value,tipo.value,descripcion.value)}"></h:commandButton>
+			</fieldset>
+	</h:form>
+	
+	<p></p>
+	
 	<p:dataTable id="Ideas_table" var="ideas" value="#{IdeaBean.ideas}">
 		<p:column headerText="Iniciativa">
 			<h:outputText value="#{ideas.nombreIniciativa}" />

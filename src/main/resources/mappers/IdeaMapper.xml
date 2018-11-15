@@ -3,8 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper
-	namespace="edu.eci.pdsw.sampleprj.dao.mybatis.mappers.IdeaMapper">
+<mapper namespace="edu.eci.pdsw.sampleprj.dao.mybatis.mappers.IdeaMapper">
 
 	<resultMap type='Idea' id='IdeaResult'>
 		<id property='id' column='id' />
@@ -14,7 +13,6 @@
 		<result property='fechaCreacion' column='fecha_creacion' />
 		<result property='usuarioCarne' column='usuario_carne' />
 		<result property='descripcion' column='descripcion' />
-
 		<association property="tIdeaId" javaType="TipoIdea"
 			resultMap='edu.eci.pdsw.sampleprj.dao.mybatis.mappers.TipoIdeaMapper.TipoIdeaResult'></association>
 	</resultMap>
@@ -30,7 +28,8 @@
 	</update>
 
 	<select id="consultarIdeas" resultMap="IdeaResult">
-		select * from idea as i left join t_idea as ti ON(ti.id=t_idea_id);
+		select * from idea as i
+		left join t_idea as ti ON(ti.id=t_idea_id);
 	</select>
 
 	<insert id="insertarIdea">
@@ -39,20 +38,33 @@
 		values
 		(#{Idea.id},#{Idea.nombreIniciativa},#{Idea.tIdeaId.id},#{Idea.usuarioCarne},#{Idea.votos},#{Idea.fechaCreacion},#{Idea.estado},#{Idea.descripcion});
 	</insert>
-	
+
 	<select id="consultarIdeasUsuario" resultMap="IdeaResult">
-		select * from idea as i left join t_idea as ti ON(ti.id=t_idea_id) where usuario_carne = #{ucarne};
+		select * from idea
+		as i left join t_idea as ti ON(ti.id=t_idea_id) where usuario_carne =
+		#{ucarne};
 	</select>
 
 	<select id="consultarIdea" resultMap="IdeaResult">
-		select * from idea as i left join t_idea as ti ON(ti.id=t_idea_id)
-		 where id= #{id};
+		select * from idea as i
+		left join t_idea as ti ON(ti.id=t_idea_id)
+		where id= #{id};
 	</select>
 
 	<select id="consultarPalabrasClave" resultMap="IdeaResult">
 		select * from idea
 		where descripcion like '%' || #{clave} || '%';
 	</select>
+
+	<select id="consultarId" resultMap="IdeaResult" >
+		select * from idea
+		where id=(select max(id) from idea);
+	</select>
+
+	<select id="consultarFecha" resultMap="IdeaResult" resultType="DATE">
+		SELECT current_date;
+	</select>
+
 
 
 
