@@ -44,33 +44,25 @@ CREATE TABLE Votado (
 -- Reference: Idea_Tipo_idea (table: Idea)
 ALTER TABLE Idea ADD CONSTRAINT Idea_Tipo_idea
     FOREIGN KEY (Tipo_idea)
-    REFERENCES Tipo_idea (Id)  
-    NOT DEFERRABLE 
-    INITIALLY IMMEDIATE
+    REFERENCES Tipo_idea (Id)
 ;
 
 -- Reference: Usuario (table: Idea)
 ALTER TABLE Idea ADD CONSTRAINT Usuario
     FOREIGN KEY (Usuario)
-    REFERENCES Usuario (Correo)  
-    NOT DEFERRABLE 
-    INITIALLY IMMEDIATE
+    REFERENCES Usuario (Correo)
 ;
 
 -- Reference: Votado_Idea (table: Votado)
 ALTER TABLE Votado ADD CONSTRAINT Votado_Idea
     FOREIGN KEY (Idea_Id)
-    REFERENCES Idea (Id)  
-    NOT DEFERRABLE 
-    INITIALLY IMMEDIATE
+    REFERENCES Idea (Id)
 ;
 
 -- Reference: Votado_Usuario (table: Votado)
 ALTER TABLE Votado ADD CONSTRAINT Votado_Usuario
     FOREIGN KEY (Usuario_Correo)
-    REFERENCES Usuario (Correo)  
-    NOT DEFERRABLE 
-    INITIALLY IMMEDIATE
+    REFERENCES Usuario (Correo)
 ;
 
 -- End of file.
