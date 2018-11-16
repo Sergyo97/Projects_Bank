@@ -4,41 +4,28 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="edu.eci.pdsw.sampleprj.dao.mybatis.mappers.UsuarioMapper">
-
-	<resultMap type='Usuario' id='UsuarioResult'>
-		<id property='carne' column='carne' />
-		<result property='nombre' column='nombre' />
-		<result property='correo' column='correo' />
-		<result property='activo' column='activo' />
-		<association property="tipoUsuarioId" 	javaType="TipoUsuario"
-			resultMap="edu.eci.pdsw.sampleprj.dao.mybatis.mappers.TipoUsuarioMapper.TipoUsuarioResult"></association>
-		
-		<collection property='ideasDeUsuario' ofType='Idea'
-			resultMap='edu.eci.pdsw.sampleprj.dao.mybatis.mappers.IdeaMapper.IdeaResult'></collection>
+	
+	<resultMap type="Usuario" id="UsuarioResult">
+		<id property="correo" column="correo"/>
+		<result property="nombre" column="nombre"/>
+		<result property="clave" column="clave"/>
+		<result property="activo" column="activo"/>
+		<result property="tipo" column="tipo"/>
+		<collection property="ideas" ofType="Idea"
+			resultMap="edu.eci.pdsw.sampleprj.dao.mybatis.mappers.IdeaMapper.IdeaResult"></collection>
 	</resultMap>
 	
 	<select id="consultarUsuarios" resultMap="UsuarioResult">
-		select * from usuario left join tipo_usuario on id=tipo_usuario_id;
+		select * from usuario;
 	</select>	
 
 	<insert id="insertarUsuario">
-		insert into usuario (carne, nombre, correo, tipo_usuario_id, activo) values
-		(#{usuario.carne},#{usuario.nombre},#{usuario.correo},#{usuario.tipo_usuario_id},#{usuario.activo});
+		insert into usuario (correo, nombre, clave, activo, tipo) values
+		(#{usuario.correo},#{usuario.nombre},#{usuario.clave},#{usuario.activo},#{usuario.tipo});
 	</insert>
 
 	<select id="consultarUsuario" resultMap="UsuarioResult">
-		select * from usuario left join tipo_usuario on id=tipo_usuario_id where carne = #{cus};
+		select * from usuario as u left join idea as i on (u.correo=i.usuario) where correo = #{correo};
 	</select>
-	
-	<select id="ConsultarUsuarioPorCorreo" resultMap="UsuarioResult">
-		select * from usuario left join tipo_usuario on id=tipo_usuario_id where correo = #{correo};
-	</select>
-	
-
-
-
-
-
-
 
 </mapper>

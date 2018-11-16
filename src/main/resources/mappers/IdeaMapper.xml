@@ -5,16 +5,16 @@
 
 <mapper namespace="edu.eci.pdsw.sampleprj.dao.mybatis.mappers.IdeaMapper">
 
-	<resultMap type='Idea' id='IdeaResult'>
-		<id property='id' column='id' />
-		<result property='nombreIniciativa' column='nombre_iniciativa' />
-		<result property='estado' column='estado' />
-		<result property='votos' column='votos' />
-		<result property='fechaCreacion' column='fecha_creacion' />
-		<result property='usuarioCarne' column='usuario_carne' />
-		<result property='descripcion' column='descripcion' />
-		<association property="tIdeaId" javaType="TipoIdea"
-			resultMap='edu.eci.pdsw.sampleprj.dao.mybatis.mappers.TipoIdeaMapper.TipoIdeaResult'></association>
+	<resultMap type="Idea" id="IdeaResult">
+		<id property="id" column="id" />
+		<result property="titulo" column="titulo" />
+		<result property="estado" column="estado" />
+		<result property="votos" column="votos" />
+		<result property="fecha" column="fecha" />
+		<result property="descripcion" column="descripcion" />
+		<result property="usuario" column="usuario"/>
+		<association property="tipoIdea" javaType="TipoIdea"
+			resultMap="edu.eci.pdsw.sampleprj.dao.mybatis.mappers.TipoIdeaMapper.TipoIdeaResult"></association>
 	</resultMap>
 
 
@@ -29,26 +29,25 @@
 
 	<select id="consultarIdeas" resultMap="IdeaResult">
 		select * from idea as i
-		left join t_idea as ti ON(ti.id=t_idea_id);
+		left join tipo_idea as ti ON(ti.id=tipo_idea);
 	</select>
 
 	<insert id="insertarIdea">
 		insert into idea
-		(id,nombre_iniciativa,t_idea_id,usuario_carne,votos,fecha_creacion,estado,descripcion)
+		(id,descripcion,estado,fecha,votos,titulo,usuario,tipo_idea)
 		values
-		(#{Idea.id},#{Idea.nombreIniciativa},#{Idea.tIdeaId.id},#{Idea.usuarioCarne},#{Idea.votos},#{Idea.fechaCreacion},#{Idea.estado},#{Idea.descripcion});
+		(#{Idea.id},#{Idea.descripcion},#{Idea.estado},#{Idea.fecha},#{Idea.votos},#{Idea.titulo},#{Idea.usuario},#{Idea.tipoIdea.id});
 	</insert>
 
 	<select id="consultarIdeasUsuario" resultMap="IdeaResult">
 		select * from idea
-		as i left join t_idea as ti ON(ti.id=t_idea_id) where usuario_carne =
-		#{ucarne};
+		as i left join tipo_idea as ti ON(ti.id=tipo_idea) where usuario = #{correo};
 	</select>
 
 	<select id="consultarIdea" resultMap="IdeaResult">
 		select * from idea as i
-		left join t_idea as ti ON(ti.id=t_idea_id)
-		where id= #{id};
+		left join tipo_idea as ti ON(ti.id=tipo_idea)
+		where i.id= #{id};
 	</select>
 
 	<select id="consultarPalabrasClave" resultMap="IdeaResult">
@@ -60,12 +59,5 @@
 		select * from idea
 		where id=(select max(id) from idea);
 	</select>
-
-	<select id="consultarFecha" resultMap="IdeaResult" resultType="DATE">
-		SELECT current_date;
-	</select>
-
-
-
 
 </mapper>

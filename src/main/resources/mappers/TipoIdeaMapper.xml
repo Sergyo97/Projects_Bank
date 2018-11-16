@@ -12,16 +12,15 @@
 
 
 	<select id="consultarTipoIdeas" resultMap="TipoIdeaResult">
-		select * from t_idea;
+		select * from tipo_idea;
 	</select>
 
 	<select id="getTipoIdea" resultMap="TipoIdeaResult">
-		select * from t_idea where id
-		= #{id};
+		select * from tipo_idea where id = #{id};
 	</select>
 
 	<insert id="addTipoIdea">
-		insert into t_idea (id, tipo) values
+		insert into tipo_idea (id, tipo) values
 		(#{ti.id},#{ti.tipo});
 	</insert>
 

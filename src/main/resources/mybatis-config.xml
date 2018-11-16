@@ -9,7 +9,6 @@
 		<typeAlias type='edu.eci.pdsw.samples.entities.Usuario' alias='Usuario' />
 		<typeAlias type='edu.eci.pdsw.samples.entities.Idea' alias='Idea' />
 		<typeAlias type='edu.eci.pdsw.samples.entities.TipoIdea' alias='TipoIdea' />
-		<typeAlias type='edu.eci.pdsw.samples.entities.TipoUsuario' alias='TipoUsuario' />
 	</typeAliases>
 
 
@@ -30,7 +29,6 @@
 		<mapper resource="mappers/UsuarioMapper.xml"></mapper>
 		<mapper resource="mappers/IdeaMapper.xml"></mapper>
 		<mapper resource="mappers/TipoIdeaMapper.xml"></mapper>
-		<mapper resource="mappers/TipoUsuarioMapper.xml"></mapper>
 	</mappers>
 
 

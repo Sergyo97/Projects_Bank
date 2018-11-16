@@ -9,11 +9,9 @@ import com.google.inject.Inject;
 
 import edu.eci.pdsw.sampleprj.dao.IdeaDAO;
 import edu.eci.pdsw.sampleprj.dao.TipoIdeaDAO;
-import edu.eci.pdsw.sampleprj.dao.TipoUsuarioDAO;
 import edu.eci.pdsw.sampleprj.dao.UsuarioDAO;
 import edu.eci.pdsw.samples.entities.Idea;
 import edu.eci.pdsw.samples.entities.TipoIdea;
-import edu.eci.pdsw.samples.entities.TipoUsuario;
 import edu.eci.pdsw.samples.entities.Usuario;
 import edu.eci.pdsw.samples.services.BancoIniciativas;
 import edu.eci.pdsw.samples.services.ExcepcionBancoIniciativas;
@@ -22,9 +20,6 @@ public class BancoIniciativasImpl implements BancoIniciativas{
 
 	@Inject
 	private TipoIdeaDAO tipoIdeaDao;
-
-	@Inject
-	private TipoUsuarioDAO tipoUsuarioDAO;
 
 	@Inject
 	private UsuarioDAO usuarioDAO;
@@ -42,37 +37,27 @@ public class BancoIniciativasImpl implements BancoIniciativas{
 		}
 	};
 	
-	public List<Idea> consultarIdeasUsuario(int carne) throws ExcepcionBancoIniciativas {
+	public List<Idea> consultarIdeasUsuario(String correo) throws ExcepcionBancoIniciativas {
 		try {
-			return ideaDAO.consultarIdeasUsuario(carne);
+			return ideaDAO.consultarIdeasUsuario(correo);
 		} catch (PersistenceException e) {
-			throw new ExcepcionBancoIniciativas("Error al consultar las ideas del usuario :" + carne, e);
+			throw new ExcepcionBancoIniciativas("Error al consultar las ideas del usuario :" + correo, e);
 		}
 	};
 
-	public Usuario consultarUsuario(int id) throws ExcepcionBancoIniciativas{
+	public Usuario consultarUsuario(String correo) throws ExcepcionBancoIniciativas{
 		try {
-			return usuarioDAO.consultarUsuario(id);
+			return usuarioDAO.consultarUsuario(correo);
 		} catch (PersistenceException e) {
-			throw new ExcepcionBancoIniciativas("Error al consultar el usuario :" + id, e);
+			throw new ExcepcionBancoIniciativas("Error al consultar el usuario :" + correo, e);
 		}
 	};
-	
-	
-	public Usuario ConsultarUsuarioPorCorreo(String correo) throws ExcepcionBancoIniciativas{
-		try {
-			return usuarioDAO.ConsultarUsuarioPorCorreo(correo);
-		} catch (PersistenceException e) {
-			throw e;
-		}
-	};
-	
 
-	public void agregarPropuestaUsuario(int id,String nombre_iniciativa,String estado,	TipoIdea t_idea_id,int votos,Date fecha_creacion,int usuario_carne, String descripcion) throws ExcepcionBancoIniciativas{
+	public void agregarPropuestaUsuario(int id, String descripcion, String estado, Date fecha, int votos, String titulo, String usuario, TipoIdea tipoIdea) throws ExcepcionBancoIniciativas{
 		try {
-			ideaDAO.insertarIdea(new Idea(id, nombre_iniciativa, estado, t_idea_id, votos, fecha_creacion, usuario_carne, descripcion));
+			ideaDAO.insertarIdea(new Idea(id, descripcion, estado, fecha, votos, titulo, usuario, tipoIdea));
 		} catch (PersistenceException e) {
-			throw new ExcepcionBancoIniciativas("Error al intentar ingresar la propuesta :" + nombre_iniciativa, e);
+			throw new ExcepcionBancoIniciativas("Error al intentar ingresar la propuesta :" + titulo, e);
 		}
 	};
 
@@ -101,7 +86,7 @@ public class BancoIniciativasImpl implements BancoIniciativas{
 		try {
 			ideaDAO.insertarIdea(idea);
 		} catch (PersistenceException e) {
-			throw new ExcepcionBancoIniciativas("Error al intentar insertar la idea :" + idea.getnombreIniciativa(), e);
+			throw new ExcepcionBancoIniciativas("Error al intentar insertar la idea :" + idea.getTitulo(), e);
 		}
 	};
 
@@ -115,7 +100,7 @@ public class BancoIniciativasImpl implements BancoIniciativas{
 	}
 	
 	
-	public List<Idea> consultarPalabrasClave(String palabraClave ) throws ExcepcionBancoIniciativas{
+	public List<Idea> consultarPalabrasClave(String palabraClave) throws ExcepcionBancoIniciativas{
 		try {
 			return ideaDAO.consultarPalabrasClave(palabraClave);
 		} catch (PersistenceException e) {
@@ -158,43 +143,15 @@ public class BancoIniciativasImpl implements BancoIniciativas{
 		}
 	};
 
-
-	//TipoUsuarios
-
-	public List<TipoUsuario> consultarTiposUsuario() throws ExcepcionBancoIniciativas{
-		try {
-			return tipoUsuarioDAO.consultarTiposUsuario();
-		} catch (PersistenceException e) {
-			throw new ExcepcionBancoIniciativas("Error al intentar consultar los tipos de usuario", e);
-		}
-	};
-
-	public TipoUsuario consultarTipoUsuario(int id) throws ExcepcionBancoIniciativas{
-		try {
-			return tipoUsuarioDAO.getTipoUsuario(id);
-		} catch (PersistenceException e) {
-			throw new ExcepcionBancoIniciativas("Error al intentar consultar el tipo de usuario: "+id, e);
-		}
-	}
-
 	//TRIGGERS
 	
 	@Override
-	public int consultarid() throws ExcepcionBancoIniciativas {
+	public int consultarId() throws ExcepcionBancoIniciativas {
 		try {
 			return ideaDAO.consultarid();
 		}catch (Exception e) {
 			throw new ExcepcionBancoIniciativas("Error al intentar consultar el ultimo id:", e);
 		}		
 	}
-
-	@Override
-	public Date consultarFecha() throws ExcepcionBancoIniciativas {
-		try {
-			return ideaDAO.consultarFecha();
-		}catch (Exception e) {
-			throw new ExcepcionBancoIniciativas("Error al intentar consultar la fecha actual:", e);
-		}
-	}	
 	
 }

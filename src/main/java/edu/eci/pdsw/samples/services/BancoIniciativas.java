@@ -6,25 +6,22 @@ import java.util.List;
 
 import edu.eci.pdsw.samples.entities.Idea;
 import edu.eci.pdsw.samples.entities.TipoIdea;
-import edu.eci.pdsw.samples.entities.TipoUsuario;
 import edu.eci.pdsw.samples.entities.Usuario;
 
 public interface BancoIniciativas {
 	
 	//TRIGGERS
-	public int consultarid() throws ExcepcionBancoIniciativas;
-	
-	public Date consultarFecha() throws ExcepcionBancoIniciativas;
+	public int consultarId() throws ExcepcionBancoIniciativas;
 	
 
 	//USUARIO
 	public List<Usuario> consultarUsuarios() throws ExcepcionBancoIniciativas;
 	
-	public Usuario consultarUsuario(int id) throws ExcepcionBancoIniciativas;
+	public Usuario consultarUsuario(String correo) throws ExcepcionBancoIniciativas;
 	
-	public List<Idea> consultarIdeasUsuario(int carne) throws ExcepcionBancoIniciativas;
+	public List<Idea> consultarIdeasUsuario(String correo) throws ExcepcionBancoIniciativas;
 
-	public void agregarPropuestaUsuario(int id,String nombre_iniciativa,String estado,	TipoIdea t_idea_id,int votos,Date fecha_creacion,int usuario_carne, String descripcion) throws ExcepcionBancoIniciativas;
+	public void agregarPropuestaUsuario(int id, String descripcion, String estado, Date fecha, int votos, String titulo, String usuario, TipoIdea tipoIdea) throws ExcepcionBancoIniciativas;
 
 	public void insertarUsuario(Usuario usuario) throws ExcepcionBancoIniciativas;
 
@@ -33,7 +30,6 @@ public interface BancoIniciativas {
 	public Idea consultarIdea(int id) throws ExcepcionBancoIniciativas;
 	
 	public void insertarIdea(Idea idea) throws ExcepcionBancoIniciativas;
-
 
 	public List<Idea> consultarIdeas() throws ExcepcionBancoIniciativas;
 
@@ -44,11 +40,5 @@ public interface BancoIniciativas {
 	public TipoIdea consultarTipoIdea(int id) throws ExcepcionBancoIniciativas;
 
 	public void insertarTipoIdea(TipoIdea ti) throws ExcepcionBancoIniciativas;
-
-
-	//TipoUsuarios
-	public List<TipoUsuario> consultarTiposUsuario() throws ExcepcionBancoIniciativas;
-
-	public TipoUsuario consultarTipoUsuario(int id) throws ExcepcionBancoIniciativas;
 
 }

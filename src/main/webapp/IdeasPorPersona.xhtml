@@ -9,7 +9,7 @@
 <title></title>
 </h:head>
 <h:body>
-	<h1>Ideas from #{IdeaBean.users}</h1>
+	<h1>Ideas from #{IdeaBean.correo}</h1>
 	
 	
 	<h:form>
@@ -19,8 +19,8 @@
 			<fieldset style="width:0px; border:2px solid #000000;">
 			<legend>Insertar Idea</legend>
 			<h:panelGrid columns="2" cellpadding="5">
-				<p:outputLabel style="font-size: 12pt" value="Nombre de Iniciativa:" />
-				<h:inputText binding="#{nombreIniciativa}" />
+				<p:outputLabel style="font-size: 12pt" value="Titulo:" />
+				<h:inputText binding="#{titulo}" />
 
 
 				<p:outputLabel style="font-size: 12pt" value="Tipo:" />
@@ -29,13 +29,10 @@
 
 				<p:outputLabel style="font-size: 12pt" value="Descripcion:" />
 				<h:inputText binding="#{descripcion}" />	
-				
-				<!-- <p:outputLabel style="font-size: 12pt" value="FechaCreacion:" />
-				<h:inputText binding="#{fechaCreacion}" /> -->		
 
 			</h:panelGrid>
 			<h:commandButton  style="background-color:white;  border:2px solid #FF3F33;" value="Registrar" update="Ideas_table"
-				actionListener="#{IdeaBean.insertarIdea(nombreIniciativa.value,tipo.value,descripcion.value)}"></h:commandButton>
+				actionListener="#{IdeaBean.insertarIdea(titulo.value,tipo.value,descripcion.value)}"></h:commandButton>
 			</fieldset>
 	</h:form>
 	
@@ -43,19 +40,27 @@
 	
 	<p:dataTable id="Ideas_table" var="ideas" value="#{IdeaBean.ideas}">
 		<p:column headerText="Iniciativa">
-			<h:outputText value="#{ideas.nombreIniciativa}" />
+			<h:outputText value="#{ideas.titulo}" />
 		</p:column>
 		
 		<p:column headerText="Categoria">
-			<h:outputText value="#{ideas.tIdeaId.tipo}" />
+			<h:outputText value="#{ideas.tipoIdea.tipo}" />
 		</p:column>
 		
 		<p:column headerText="Fecha Creacion">
-			<h:outputText value="#{ideas.fechaCreacion}" />
+			<h:outputText value="#{ideas.fecha}" />
 		</p:column>	
 		
 		<p:column headerText="Descripcion">
 			<h:outputText value="#{ideas.descripcion}" />
+		</p:column>
+		
+		<p:column headerText="Votos">
+			<h:outputText value="#{ideas.votos}" />
+		</p:column>
+		
+		<p:column headerText="Estado">
+			<h:outputText value="#{ideas.estado}" />
 		</p:column>						
 	</p:dataTable>
 </h:body>

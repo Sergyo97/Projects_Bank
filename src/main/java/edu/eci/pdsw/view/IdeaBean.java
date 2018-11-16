@@ -8,6 +8,7 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.persistence.PersistenceException;
 import javax.servlet.http.HttpServletRequest;
@@ -30,34 +31,31 @@ public class IdeaBean extends BasePageBean{
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	@ManagedProperty(value="#{param.users}")
+	@ManagedProperty(value="#{param.correo}")
 	
-	private int users;	
-	
+	private String correo;	
 	private Idea idea;
-	
-	public int getUsers() {
-		return users;
-	}
-
-
-	public void setUsers(int users) {
-		this.users = users;
-	}
-
 
 	@Inject
 	private BancoIniciativasImpl bancoini;
 
+	public String getCorreo() {
+		return correo;
+	}
+
+	public void setCorreo(String correo) {
+		this.correo = correo;
+	}
 	
 	public List<Idea> getIdeas() throws ExcepcionBancoIniciativas{
+		FacesContext fc = FacesContext.getCurrentInstance();
+		HttpSession session = (HttpSession) fc.getExternalContext().getSession(true);
 		try {
-			return bancoini.consultarIdeasUsuario(users);
+			return bancoini.consultarIdeasUsuario((String)session.getAttribute("correo"));
 		}catch (PersistenceException e) {
 			throw new ExcepcionBancoIniciativas("Error al consultar la idea", e);
 		}
 	};
-	
 
 	public List<Idea> getIdeasGeneral() throws ExcepcionBancoIniciativas{
 		try {
@@ -67,18 +65,17 @@ public class IdeaBean extends BasePageBean{
 		}
 	};
 	
-	public void insertarIdea(String nombreIniciativa,int tipo,String descripcion) throws ExcepcionBancoIniciativas{
+	public void insertarIdea(String titulo,int tipo, String descripcion) throws ExcepcionBancoIniciativas{
 		FacesContext fc = FacesContext.getCurrentInstance();
 		HttpSession session = (HttpSession) fc.getExternalContext().getSession(true);
 		HttpServletRequest request = (HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest();
-		int id = bancoini.consultarid();
+		int id = bancoini.consultarId();
 		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		Date date = new Date();
 		Date date1 = new Date(dateFormat.format(date));		
 		TipoIdea tIdeaId= bancoini.consultarTipoIdea(tipo);
-		int usuarioCarne = 2138850;
-		System.out.println("ID: "+id+" nombreIniciativa: "+nombreIniciativa+" fechaCreacion: "+date1+" descripcion "+descripcion +" usuarioCarne: " +usuarioCarne);
-		idea =new Idea(id, nombreIniciativa, "En Espera", tIdeaId, 0,date1 , usuarioCarne, descripcion);
+		//System.out.println("ID: "+id+" nombreIniciativa: "+nombreIniciativa+" fechaCreacion: "+date1+" descripcion "+descripcion +" usuarioCarne: " +usuarioCarne);
+		idea =new Idea(id, descripcion, "En espera", date1, 0, titulo, bancoini.consultarUsuario((String)session.getAttribute("correo")).getCorreo(), tIdeaId);
 		try {
 			bancoini.insertarIdea(idea);
 		}catch (Exception e) {

@@ -7,15 +7,17 @@ public class TipoIdea implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	int id;
-	String tipo;
+	private int id;
+	private String tipo;
 	
 	public TipoIdea(int id, String tipo) {
+		super();
 		this.id = id;
 		this.tipo = tipo;
 	}
 	
 	public TipoIdea() {
+		
 	}
 
 	public int getId() {
@@ -33,9 +35,10 @@ public class TipoIdea implements Serializable{
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "TipoIdea [id=" + id + ", tipo=" + tipo + "]";
 	}
+	
 }

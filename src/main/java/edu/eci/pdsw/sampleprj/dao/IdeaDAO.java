@@ -1,6 +1,5 @@
 package edu.eci.pdsw.sampleprj.dao;
 
-import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.PersistenceException;
@@ -19,10 +18,8 @@ public interface IdeaDAO {
 	
 	public void actualizarEstado (String nuevoEstado, int id) throws PersistenceException;
 	
-	public List<Idea> consultarIdeasUsuario(int carne) throws PersistenceException;
+	public List<Idea> consultarIdeasUsuario(String correo) throws PersistenceException;
 	
 	public int consultarid()  throws PersistenceException;
-	
-	public Date consultarFecha()  throws PersistenceException;
 	
 }

@@ -8,7 +8,6 @@ import com.google.inject.Inject;
 
 import edu.eci.pdsw.sampleprj.dao.UsuarioDAO;
 import edu.eci.pdsw.sampleprj.dao.mybatis.mappers.UsuarioMapper;
-import edu.eci.pdsw.samples.entities.Idea;
 import edu.eci.pdsw.samples.entities.Usuario;
 
 public class MyBatisUsuarioDAO implements UsuarioDAO {	
@@ -17,8 +16,8 @@ public class MyBatisUsuarioDAO implements UsuarioDAO {
 	private UsuarioMapper usuarioMapper;
 	
 	@Override
-	public Usuario consultarUsuario(long carne) throws PersistenceException {
-		return usuarioMapper.consultarUsuario(carne);
+	public Usuario consultarUsuario(String correo) throws PersistenceException {
+		return usuarioMapper.consultarUsuario(correo);
 	}
 
 	@Override
@@ -30,12 +29,5 @@ public class MyBatisUsuarioDAO implements UsuarioDAO {
 	public List<Usuario> consultarUsuarios() {
 		return usuarioMapper.consultarUsuarios();
 	}
-
-	@Override
-	public Usuario ConsultarUsuarioPorCorreo(String correo) {		
-		return usuarioMapper.ConsultarUsuarioPorCorreo(correo);
-	}
-
-	
 
 }

@@ -1,7 +1,6 @@
 package edu.eci.pdsw.sampleprj.dao.mybatis.mappers;
 
 
-import java.sql.Date;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
@@ -22,12 +21,8 @@ public interface IdeaMapper {
 
 	public void actualizarEstado(@Param("nEstado") String nuevoEstado, @Param("id") int id);
 
-	public List<Idea> consultarIdeasUsuario(@Param("ucarne") int carne);
+	public List<Idea> consultarIdeasUsuario(@Param("correo")String correo);
 
 	public Idea consultarId();
-
-	public Date consultarFecha();
-
-
-
+	
 }

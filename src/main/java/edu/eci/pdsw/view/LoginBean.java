@@ -24,9 +24,7 @@ public class LoginBean extends BasePageBean{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
 	private String correo;
-	private int carne;
 
 	
 	@Inject
@@ -34,17 +32,15 @@ public class LoginBean extends BasePageBean{
 		
 	public void validarUsuario() throws ExcepcionBancoIniciativas,IOException{
 		FacesContext fc = FacesContext.getCurrentInstance();
-		Usuario user = bancoini.ConsultarUsuarioPorCorreo(correo);
+		Usuario user = bancoini.consultarUsuario(correo);
 		if(user != null) {
 			HttpSession session = (HttpSession) fc.getExternalContext().getSession(true);
 			session.setAttribute("correo",correo);
-			session.setAttribute("carne", carne);
 			fc.getExternalContext().redirect("/faces/usuarios.xhtml");
 		}else {
 			fc.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error al encontrar el usuario","Error"));
 		}
 	}
-
 
 	public String getCorreo() {
 		return correo;

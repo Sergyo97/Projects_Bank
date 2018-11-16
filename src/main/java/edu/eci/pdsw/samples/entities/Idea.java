@@ -9,29 +9,30 @@ public class Idea implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	int id;
-	String nombreIniciativa;
-	String estado;
-	TipoIdea tIdeaId;
-	int votos;
-	Date fechaCreacion;
-	int usuarioCarne;
-	String descripcion;
-
+	private int id;
+	private String descripcion;
+	private String estado;
+	private Date fecha;
+	private int votos;
+	private String titulo;
+	private String usuario;
+	private TipoIdea tipoIdea;
 	
-	
-	public Idea(int id, String nombreIniciativa, String estado, TipoIdea tIdeaId, int votos, Date fechaCreacion, int usuarioCarne, String descripcion) {
+	public Idea(int id, String descripcion, String estado, Date fecha, int votos, String titulo, String usuario,
+			TipoIdea tipoIdea) {
+		super();
 		this.id = id;
-		this.nombreIniciativa = nombreIniciativa;
-		this.estado = estado;
-		this.tIdeaId = tIdeaId;
-		this.votos = votos;
-		this.fechaCreacion = fechaCreacion;
-		this.usuarioCarne = usuarioCarne;
 		this.descripcion = descripcion;
+		this.estado = estado;
+		this.fecha = fecha;
+		this.votos = votos;
+		this.titulo = titulo;
+		this.usuario = usuario;
+		this.tipoIdea = tipoIdea;
 	}
-
+	
 	public Idea() {
+	
 	}
 
 	public int getId() {
@@ -42,12 +43,12 @@ public class Idea implements Serializable{
 		this.id = id;
 	}
 
-	public String getnombreIniciativa() {
-		return nombreIniciativa;
+	public String getDescripcion() {
+		return descripcion;
 	}
 
-	public void setnombreIniciativa(String nombreIniciativa) {
-		this.nombreIniciativa = nombreIniciativa;
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 
 	public String getEstado() {
@@ -58,12 +59,12 @@ public class Idea implements Serializable{
 		this.estado = estado;
 	}
 
-	public TipoIdea gettIdeaId() {
-		return tIdeaId;
+	public Date getFecha() {
+		return fecha;
 	}
 
-	public void settIdeaId(TipoIdea tIdeaId) {
-		this.tIdeaId = tIdeaId;
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
 	}
 
 	public int getVotos() {
@@ -74,34 +75,34 @@ public class Idea implements Serializable{
 		this.votos = votos;
 	}
 
-	public Date getfechaCreacion() {
-		return fechaCreacion;
+	public String getTitulo() {
+		return titulo;
 	}
 
-	public void setfechaCreacion(Date fechaCreacion) {
-		this.fechaCreacion = fechaCreacion;
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
 	}
 
-	public int getusuarioCarne() {
-		return usuarioCarne;
+	public String getUsuario() {
+		return usuario;
 	}
 
-	public void setusuarioCarne(int usuarioCarne) {
-		this.usuarioCarne = usuarioCarne;
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
 	}
 
-	public String getDescripcion() {
-		return descripcion;
+	public TipoIdea getTipoIdea() {
+		return tipoIdea;
 	}
 
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
+	public void setTipoIdea(TipoIdea tipoIdea) {
+		this.tipoIdea = tipoIdea;
 	}
 
 	@Override
 	public String toString() {
-		return "Idea [id=" + id + ", nombreIniciativa=" + nombreIniciativa + ", estado=" + estado + ", tIdeaId="
-				+ tIdeaId + ", votos=" + votos + ", fechaCreacion=" + fechaCreacion + ", usuarioCarne=" + usuarioCarne
-				+ ", descripcion=" + descripcion + "]";
+		return "Idea [id=" + id + ", descripcion=" + descripcion + ", estado=" + estado + ", fecha=" + fecha
+				+ ", votos=" + votos + ", titulo=" + titulo + ", usuario=" + usuario + ", tipoIdea=" + tipoIdea + "]";
 	}
+	
 }

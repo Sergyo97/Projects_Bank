@@ -1,6 +1,5 @@
 package edu.eci.pdsw.sampleprj.dao.mybatis;
 
-import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.PersistenceException;
@@ -44,9 +43,9 @@ public class MyBatisIdeaDAO implements IdeaDAO {
 	}
 	
 	@Override
-	public List<Idea> consultarIdeasUsuario(int carne) throws PersistenceException {
+	public List<Idea> consultarIdeasUsuario(String correo) throws PersistenceException {
 		try {
-			return ideaMapper.consultarIdeasUsuario(carne);
+			return ideaMapper.consultarIdeasUsuario(correo);
 		} catch (Exception e) {
 			throw new PersistenceException("Error al consultar tipo usuario", e);
 		}
@@ -63,15 +62,4 @@ public class MyBatisIdeaDAO implements IdeaDAO {
 		
 	}
 
-	@Override
-	public Date consultarFecha() throws PersistenceException {
-		try {
-			return ideaMapper.consultarFecha();
-		} catch (Exception e) {
-			throw new PersistenceException("Error al consultar Fecha", e);
-		}
-	}
-	
-	
-	
 }
