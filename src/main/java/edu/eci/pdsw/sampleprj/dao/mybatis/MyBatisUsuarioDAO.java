@@ -30,4 +30,9 @@ public class MyBatisUsuarioDAO implements UsuarioDAO {
 		return usuarioMapper.consultarUsuarios();
 	}
 
+	@Override
+	public Usuario consultarLogin(String correo, String contra) throws PersistenceException {
+		return usuarioMapper.consultarLogin(correo, contra);
+	}
+
 }

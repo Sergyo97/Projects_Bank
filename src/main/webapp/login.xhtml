@@ -12,12 +12,17 @@
 	<h1>login</h1>
 
 	<h:form id="login">
+	
+		<h:panelGrid columns="2" id="matchGrid" cellpadding="5">  
 
-		<p:outputLabel style="font-size: 12pt" value="correo: " />
-		<p:inputText value="#{loginBean.correo}" />
-
-		<h:commandButton action="#{loginBean.validarUsuario}"  value="Ver mis Propuestas" /> 
+		<p:outputLabel style="font-size: 12pt" value="Correo: " />
+		<p:inputText value="#{loginBean.correo}" required="true"/>
 		
+		<h:outputLabel value="Contraseña: " />
+        <p:password value="#{loginBean.contra}" required="true" />
+
+			<h:commandButton action="#{loginBean.validarUsuario}"  value="Ver mis Propuestas" /> 
+		</h:panelGrid>
 
 	</h:form>
 

@@ -70,11 +70,11 @@ public class MyBatisExample {
 		//im.actualizarEstado("En espera", 2);
 		
 		
-		Date date = new Date(2018, 11, 7);
-		TipoIdea ti= new TipoIdea(1, "BIENESTAR UNIVERSITARIO");
-		Idea idea1 = new Idea(6,"Esto es una prueba","En espera",date,0,"Prueba","sergio.ruiz@mail.escuelaing.edu.co",ti);
+		//Date date = new Date(2018, 11, 7);
+		//TipoIdea ti= new TipoIdea(1, "BIENESTAR UNIVERSITARIO");
+		//Idea idea1 = new Idea(6,"Esto es una prueba","En espera",date,0,"Prueba","sergio.ruiz@mail.escuelaing.edu.co",ti);
 		
-		im.insertarIdea(idea1);
+		//im.insertarIdea(idea1);
 		
 		
 		//TipoIdea
@@ -86,6 +86,7 @@ public class MyBatisExample {
 		
 		//USUARIOS
 		//System.out.println(um.consultarUsuario("sergio.ruiz@mail.escuelaing.edu.co"));
+		//System.out.println(um.consultarLogin("italo.cufino@mail.escuelaing.edu.co", "12345"));
 		
 		
 		

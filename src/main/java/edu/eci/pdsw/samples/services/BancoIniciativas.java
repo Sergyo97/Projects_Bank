@@ -24,6 +24,8 @@ public interface BancoIniciativas {
 	public void agregarPropuestaUsuario(int id, String descripcion, String estado, Date fecha, int votos, String titulo, String usuario, TipoIdea tipoIdea) throws ExcepcionBancoIniciativas;
 
 	public void insertarUsuario(Usuario usuario) throws ExcepcionBancoIniciativas;
+	
+	public Usuario consultarLogin(String correo, String contra) throws ExcepcionBancoIniciativas;
 
 
 	//IDEAS

@@ -23,6 +23,7 @@ import edu.eci.pdsw.samples.services.impl.BancoIniciativasImpl;
 
 @ManagedBean(name = "IdeaBean")
 @RequestScoped
+@SessionScoped
 @SuppressWarnings("deprecation")
 
 public class IdeaBean extends BasePageBean{
@@ -30,23 +31,17 @@ public class IdeaBean extends BasePageBean{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	@ManagedProperty(value="#{param.correo}")
-	
-	private String correo;	
+
+	private String correo;
 	private Idea idea;
+
 
 	@Inject
 	private BancoIniciativasImpl bancoini;
 
-	public String getCorreo() {
-		return correo;
-	}
 
-	public void setCorreo(String correo) {
-		this.correo = correo;
-	}
-	
 	public List<Idea> getIdeas() throws ExcepcionBancoIniciativas{
 		FacesContext fc = FacesContext.getCurrentInstance();
 		HttpSession session = (HttpSession) fc.getExternalContext().getSession(true);
@@ -57,6 +52,7 @@ public class IdeaBean extends BasePageBean{
 		}
 	};
 
+
 	public List<Idea> getIdeasGeneral() throws ExcepcionBancoIniciativas{
 		try {
 			return bancoini.consultarIdeas();
@@ -64,7 +60,17 @@ public class IdeaBean extends BasePageBean{
 			throw new ExcepcionBancoIniciativas("Error al consultar la idea", e);
 		}
 	};
-	
+
+
+	public List<Idea> consultarIdea(String palabraClave) throws ExcepcionBancoIniciativas{
+
+		try {
+			return bancoini.consultarPalabrasClave(palabraClave);
+		}catch (PersistenceException e) {
+			throw new ExcepcionBancoIniciativas("Error al consultar la idea", e);
+		}
+	};
+
 	public void insertarIdea(String titulo,int tipo, String descripcion) throws ExcepcionBancoIniciativas{
 		FacesContext fc = FacesContext.getCurrentInstance();
 		HttpSession session = (HttpSession) fc.getExternalContext().getSession(true);
@@ -81,5 +87,13 @@ public class IdeaBean extends BasePageBean{
 		}catch (Exception e) {
 			throw new ExcepcionBancoIniciativas("Error al insertar la idea", e);
 		}
+	}
+
+	public String getCorreo() {
+		return correo;
+	}
+
+	public void setCorreo(String correo) {
+		this.correo = correo;
 	}
 }

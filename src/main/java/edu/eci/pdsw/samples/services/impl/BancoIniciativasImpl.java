@@ -37,6 +37,14 @@ public class BancoIniciativasImpl implements BancoIniciativas{
 		}
 	};
 	
+	public Usuario consultarLogin(String correo, String contra) throws ExcepcionBancoIniciativas {
+		try {
+			return usuarioDAO.consultarLogin(correo, contra);
+		} catch (PersistenceException e) {
+			throw new ExcepcionBancoIniciativas("Error al consultar la contraseña", e);
+		}
+	}
+	
 	public List<Idea> consultarIdeasUsuario(String correo) throws ExcepcionBancoIniciativas {
 		try {
 			return ideaDAO.consultarIdeasUsuario(correo);

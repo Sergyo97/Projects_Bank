@@ -25,17 +25,18 @@ public class LoginBean extends BasePageBean{
 	 */
 	private static final long serialVersionUID = 1L;
 	private String correo;
+	private String contra;
 
-	
 	@Inject
 	private BancoIniciativasImpl bancoini;
 		
 	public void validarUsuario() throws ExcepcionBancoIniciativas,IOException{
 		FacesContext fc = FacesContext.getCurrentInstance();
-		Usuario user = bancoini.consultarUsuario(correo);
+		Usuario user = bancoini.consultarLogin(correo,contra);
 		if(user != null) {
 			HttpSession session = (HttpSession) fc.getExternalContext().getSession(true);
 			session.setAttribute("correo",correo);
+			session.setAttribute("contra", contra);
 			fc.getExternalContext().redirect("/faces/usuarios.xhtml");
 		}else {
 			fc.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error al encontrar el usuario","Error"));
@@ -50,7 +51,12 @@ public class LoginBean extends BasePageBean{
 		this.correo = correo;
 	};
 	
-	
-	
+	public String getContra() {
+		return contra;
+	}
+
+	public void setContra(String contra) {
+		this.contra = contra;
+	}
 
 }

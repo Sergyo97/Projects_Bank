@@ -3,7 +3,6 @@ package edu.eci.pdsw.view;
 
 import java.util.List;
 
-import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
@@ -41,7 +40,7 @@ public class UsuarioBean extends BasePageBean{
 		FacesContext fc = FacesContext.getCurrentInstance();
 		HttpSession session  = (HttpSession) fc.getExternalContext().getSession(true); 
 		try {
-			return bancoini.consultarUsuario((String)session.getAttribute("correo"));
+			return bancoini.consultarLogin((String)session.getAttribute("correo"), (String)session.getAttribute("contra"));
 		} catch (PersistenceException e) {
 			throw e;
 		}

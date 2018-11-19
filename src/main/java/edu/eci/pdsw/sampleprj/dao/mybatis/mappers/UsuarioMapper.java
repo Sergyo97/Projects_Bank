@@ -14,6 +14,8 @@ public interface UsuarioMapper {
 	    
 	    public List<Usuario> consultarUsuarios();
 
+		public Usuario consultarLogin(@Param("correo")String correo,@Param("contraseña")String contra);
+
 	}
 
 
