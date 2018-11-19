@@ -65,7 +65,7 @@ public class MyBatisExample {
 		// IDEAS 
 		//System.out.println(im.consultarIdeas());
 		//System.out.println(im.consultarIdea(1));	
-		//System.out.println(im.consultarPalabrasClave("ciclas"));	
+		System.out.println(im.consultarPalabrasClave(""));	
 		
 		//im.actualizarEstado("En espera", 2);
 		

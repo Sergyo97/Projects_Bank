@@ -52,7 +52,7 @@
 
 	<select id="consultarPalabrasClave" resultMap="IdeaResult">
 		select * from idea
-		where descripcion like '%' || #{clave} || '%';
+		where descripcion like '%' || #{clave} || '%' OR  titulo like '%' || #{clave} || '%';
 	</select>
 
 	<select id="consultarId" resultMap="IdeaResult" >

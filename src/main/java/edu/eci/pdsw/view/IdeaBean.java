@@ -36,7 +36,8 @@ public class IdeaBean extends BasePageBean{
 
 	private String correo;
 	private Idea idea;
-
+	private boolean buscar=false;
+	private String palabraClave;
 
 	@Inject
 	private BancoIniciativasImpl bancoini;
@@ -54,21 +55,26 @@ public class IdeaBean extends BasePageBean{
 
 
 	public List<Idea> getIdeasGeneral() throws ExcepcionBancoIniciativas{
-		try {
-			return bancoini.consultarIdeas();
-		}catch (PersistenceException e) {
-			throw new ExcepcionBancoIniciativas("Error al consultar la idea", e);
+		if(!buscar) {
+			try {
+				return bancoini.consultarIdeas();
+			}catch (PersistenceException e) {
+				throw new ExcepcionBancoIniciativas("Error al consultar la idea", e);
+			}
+		}else {
+			try {				
+				return bancoini.consultarPalabrasClave(palabraClave);
+			}catch (PersistenceException e) {
+				throw new ExcepcionBancoIniciativas("Error al consultar la idea", e);
+			}
 		}
 	};
 
 
-	public List<Idea> consultarIdea(String palabraClave) throws ExcepcionBancoIniciativas{
-
-		try {
-			return bancoini.consultarPalabrasClave(palabraClave);
-		}catch (PersistenceException e) {
-			throw new ExcepcionBancoIniciativas("Error al consultar la idea", e);
-		}
+	public void consultarIdea(String palabraClave) throws ExcepcionBancoIniciativas{
+		this.palabraClave=palabraClave;
+		buscar = true;
+		getIdeasGeneral();		
 	};
 
 	public void insertarIdea(String titulo,int tipo, String descripcion) throws ExcepcionBancoIniciativas{
@@ -80,7 +86,6 @@ public class IdeaBean extends BasePageBean{
 		Date date = new Date();
 		Date date1 = new Date(dateFormat.format(date));		
 		TipoIdea tIdeaId= bancoini.consultarTipoIdea(tipo);
-		//System.out.println("ID: "+id+" nombreIniciativa: "+nombreIniciativa+" fechaCreacion: "+date1+" descripcion "+descripcion +" usuarioCarne: " +usuarioCarne);
 		idea =new Idea(id, descripcion, "En espera", date1, 0, titulo, bancoini.consultarUsuario((String)session.getAttribute("correo")).getCorreo(), tIdeaId);
 		try {
 			bancoini.insertarIdea(idea);

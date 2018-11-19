@@ -40,7 +40,9 @@ public class UsuarioBean extends BasePageBean{
 		FacesContext fc = FacesContext.getCurrentInstance();
 		HttpSession session  = (HttpSession) fc.getExternalContext().getSession(true); 
 		try {
-			return bancoini.consultarLogin((String)session.getAttribute("correo"), (String)session.getAttribute("contra"));
+			Usuario us=  bancoini.consultarLogin((String)session.getAttribute("correo"), (String)session.getAttribute("contra"));
+			return us;
+			
 		} catch (PersistenceException e) {
 			throw e;
 		}
