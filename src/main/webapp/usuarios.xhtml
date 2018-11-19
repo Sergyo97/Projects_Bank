@@ -34,7 +34,7 @@
 
 
 
-	<!-- <h:form>
+	<h:form>
 		
 		<p:growl id="growl" showDetail="true" sticky="true" />
 		
@@ -42,15 +42,16 @@
 			<legend>Buscar Idea</legend>
 			<h:panelGrid columns="2" cellpadding="5">
 
-				<p:outputLabel style="font-size: 12pt" value="busqueda" />
+				<p:outputLabel style="font-size: 12pt" value="Busqueda: " />
 				<h:inputText binding="#{busqueda}" />	
 
 			</h:panelGrid>
 			<h:commandButton  style="background-color:white;  border:2px solid #FF3F33;" value="Buscar"
-				actionListener="#{IdeaBean.consultarIdea(busqueda.value)}"></h:commandButton>
+				actionListener="#{IdeaBean.consultarIdea(busqueda.value)}">
+			</h:commandButton>
 			</fieldset>
 	</h:form>
-	 -->
+	
 	
 
 
