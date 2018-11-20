@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 import org.apache.ibatis.io.Resources;
@@ -15,8 +16,12 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import edu.eci.pdsw.sampleprj.dao.mybatis.mappers.IdeaMapper;
 import edu.eci.pdsw.sampleprj.dao.mybatis.mappers.TipoIdeaMapper;
 import edu.eci.pdsw.sampleprj.dao.mybatis.mappers.UsuarioMapper;
+import edu.eci.pdsw.sampleprj.dao.mybatis.mappers.VotadoMapper;
 import edu.eci.pdsw.samples.entities.Idea;
 import edu.eci.pdsw.samples.entities.TipoIdea;
+import edu.eci.pdsw.samples.entities.TipoUsuario;
+import edu.eci.pdsw.samples.entities.Usuario;
+import edu.eci.pdsw.samples.entities.Votado;
 
 public class MyBatisExample {
 
@@ -53,6 +58,7 @@ public class MyBatisExample {
 		IdeaMapper im= sqlss.getMapper(IdeaMapper.class);
 		UsuarioMapper um = sqlss.getMapper(UsuarioMapper.class);
 		TipoIdeaMapper tim = sqlss.getMapper(TipoIdeaMapper.class);
+		VotadoMapper vm = sqlss.getMapper(VotadoMapper.class);
 		
 		
 		//GENERAL
@@ -65,9 +71,10 @@ public class MyBatisExample {
 		// IDEAS 
 		//System.out.println(im.consultarIdeas());
 		//System.out.println(im.consultarIdea(1));	
-		System.out.println(im.consultarPalabrasClave(""));	
-		
+		//System.out.println(im.consultarPalabrasClave(""));	
 		//im.actualizarEstado("En espera", 2);
+		
+		//im.actualizarVoto(1);
 		
 		
 		//Date date = new Date(2018, 11, 7);
@@ -89,7 +96,14 @@ public class MyBatisExample {
 		//System.out.println(um.consultarLogin("italo.cufino@mail.escuelaing.edu.co", "12345"));
 		
 		
+		//VOTADO
+		/*Idea idea=im.consultarIdea(2);
+		Usuario usuario = um.consultarUsuario("sergio.ruiz@mail.escuelaing.edu.co");
+		//Votado voto = new Votado(idea, usuario, date);
+		vm.insertarVoto(usuario.getCorreo(),idea.getId());*/
 		
+		
+
 		sqlss.commit();
 		sqlss.close(); 
 	}

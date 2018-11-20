@@ -13,9 +13,11 @@ import com.google.inject.Injector;
 import edu.eci.pdsw.sampleprj.dao.IdeaDAO;
 import edu.eci.pdsw.sampleprj.dao.TipoIdeaDAO;
 import edu.eci.pdsw.sampleprj.dao.UsuarioDAO;
+import edu.eci.pdsw.sampleprj.dao.VotoDAO;
 import edu.eci.pdsw.sampleprj.dao.mybatis.MyBatisIdeaDAO;
 import edu.eci.pdsw.sampleprj.dao.mybatis.MyBatisTipoIdeaDAO;
 import edu.eci.pdsw.sampleprj.dao.mybatis.MyBatisUsuarioDAO;
+import edu.eci.pdsw.sampleprj.dao.mybatis.MyBatisVotadoDAO;
 import edu.eci.pdsw.samples.services.BancoIniciativas;
 import edu.eci.pdsw.samples.services.impl.BancoIniciativasImpl;
 
@@ -38,6 +40,7 @@ public class GuiceContextListener implements ServletContextListener {
                 bind(IdeaDAO.class).to(MyBatisIdeaDAO.class);               
                 bind(TipoIdeaDAO.class).to(MyBatisTipoIdeaDAO.class);
                 bind(UsuarioDAO.class).to(MyBatisUsuarioDAO.class);
+                bind(VotoDAO.class).to(MyBatisVotadoDAO.class);
                 bind(BancoIniciativas.class).to(BancoIniciativasImpl.class);
             }
         });

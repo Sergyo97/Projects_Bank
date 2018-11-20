@@ -75,6 +75,9 @@
 		
 		<p:column headerText="Votos">
 			<h:outputText value="#{ideas.votos}" />
+			<h:form>
+				<h:commandButton actionListener="#{IdeaBean.registrarVoto(ideas.id)}" update="Ideas_Table" value="Vote"/>
+			</h:form>
 		</p:column>
 		
 		<p:column headerText="Estado">

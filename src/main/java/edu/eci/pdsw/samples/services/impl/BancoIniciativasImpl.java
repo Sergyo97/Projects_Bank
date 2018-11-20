@@ -10,9 +10,11 @@ import com.google.inject.Inject;
 import edu.eci.pdsw.sampleprj.dao.IdeaDAO;
 import edu.eci.pdsw.sampleprj.dao.TipoIdeaDAO;
 import edu.eci.pdsw.sampleprj.dao.UsuarioDAO;
+import edu.eci.pdsw.sampleprj.dao.VotoDAO;
 import edu.eci.pdsw.samples.entities.Idea;
 import edu.eci.pdsw.samples.entities.TipoIdea;
 import edu.eci.pdsw.samples.entities.Usuario;
+import edu.eci.pdsw.samples.entities.Votado;
 import edu.eci.pdsw.samples.services.BancoIniciativas;
 import edu.eci.pdsw.samples.services.ExcepcionBancoIniciativas;
 
@@ -26,6 +28,9 @@ public class BancoIniciativasImpl implements BancoIniciativas{
 
 	@Inject
 	private IdeaDAO ideaDAO;
+	
+	@Inject
+	private VotoDAO votoDAO;
 
 
 	//USUARIOS
@@ -124,6 +129,15 @@ public class BancoIniciativasImpl implements BancoIniciativas{
 			throw new ExcepcionBancoIniciativas("Error al intentar actualizar las ideas", e);
 		}
 	}
+	
+	public void actualizarVoto(int id, String correo) throws ExcepcionBancoIniciativas {
+		try {
+			ideaDAO.actualizarVoto(id,correo);
+		} catch (PersistenceException e) {
+			throw new ExcepcionBancoIniciativas("Error al actualizar voto", e);
+		}
+		
+	}
 
 	//TipoIdeas
 
@@ -150,6 +164,16 @@ public class BancoIniciativasImpl implements BancoIniciativas{
 			throw new ExcepcionBancoIniciativas("Error al intentar insertar el tipo idea: "+ ti.getTipo(), e);
 		}
 	};
+	
+	//VOTOS
+	@Override
+	public void insertarVoto(int id,String correo) throws ExcepcionBancoIniciativas {
+		try {
+			votoDAO.insertarVoto(id,correo);
+		} catch (PersistenceException e) {
+			throw new ExcepcionBancoIniciativas("Error al insertar voto", e);
+		}
+	}
 
 	//TRIGGERS
 	

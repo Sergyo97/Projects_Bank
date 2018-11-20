@@ -30,7 +30,7 @@
 	
 	<select id="consultarLogin" resultMap="UsuarioResult">
 		select * from usuario as u left join idea as i on (u.correo=i.usuario)
-			where correo = #{correo} and clave = #{contraseña};
+		where correo = #{correo} and clave = #{contraseña};
 	</select>
 
 </mapper>

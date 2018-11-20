@@ -35,7 +35,6 @@ public class IdeaBean extends BasePageBean{
 	@ManagedProperty(value="#{param.correo}")
 
 	private String correo;
-	private Idea idea;
 	private boolean buscar=false;
 	private String palabraClave;
 
@@ -70,12 +69,22 @@ public class IdeaBean extends BasePageBean{
 		}
 	};
 
-
 	public void consultarIdea(String palabraClave) throws ExcepcionBancoIniciativas{
 		this.palabraClave=palabraClave;
 		buscar = true;
 		getIdeasGeneral();		
 	};
+	
+	public void registrarVoto(int id) throws ExcepcionBancoIniciativas{
+		FacesContext fc = FacesContext.getCurrentInstance();
+		HttpSession session = (HttpSession) fc.getExternalContext().getSession(true);
+		try {
+			bancoini.actualizarVoto(id,(String)session.getAttribute("correo"));
+			bancoini.insertarVoto(id,(String)session.getAttribute("correo"));
+		} catch (PersistenceException e) {
+			throw new ExcepcionBancoIniciativas("Error al registra voto", e);
+		}
+	}
 
 	public void insertarIdea(String titulo,int tipo, String descripcion) throws ExcepcionBancoIniciativas{
 		FacesContext fc = FacesContext.getCurrentInstance();
@@ -86,7 +95,7 @@ public class IdeaBean extends BasePageBean{
 		Date date = new Date();
 		Date date1 = new Date(dateFormat.format(date));		
 		TipoIdea tIdeaId= bancoini.consultarTipoIdea(tipo);
-		idea =new Idea(id, descripcion, "En espera", date1, 0, titulo, bancoini.consultarUsuario((String)session.getAttribute("correo")).getCorreo(), tIdeaId);
+		Idea idea =new Idea(id, descripcion, "En espera", date1, 0, titulo, bancoini.consultarUsuario((String)session.getAttribute("correo")).getCorreo(), tIdeaId);
 		try {
 			bancoini.insertarIdea(idea);
 		}catch (Exception e) {

@@ -29,19 +29,21 @@
 
 	<select id="consultarIdeas" resultMap="IdeaResult">
 		select * from idea as i
-		left join tipo_idea as ti ON(ti.id=tipo_idea);
+		left join tipo_idea as ti ON(ti.id=tipo_idea)
+		order by votos desc;;
 	</select>
 
 	<insert id="insertarIdea">
 		insert into idea
 		(id,descripcion,estado,fecha,votos,titulo,usuario,tipo_idea)
 		values
-		(#{Idea.id},#{Idea.descripcion},#{Idea.estado},#{Idea.fecha},#{Idea.votos},#{Idea.titulo},#{Idea.usuario},#{Idea.tipoIdea.id});
+		(#{Idea.id},#{Idea.descripcion},#{Idea.estado},current_date,#{Idea.votos},#{Idea.titulo},#{Idea.usuario},#{Idea.tipoIdea.id});
 	</insert>
 
 	<select id="consultarIdeasUsuario" resultMap="IdeaResult">
 		select * from idea
-		as i left join tipo_idea as ti ON(ti.id=tipo_idea) where usuario = #{correo};
+		as i left join tipo_idea as ti ON(ti.id=tipo_idea) where usuario = #{correo}
+		order by votos desc;
 	</select>
 
 	<select id="consultarIdea" resultMap="IdeaResult">
@@ -51,13 +53,21 @@
 	</select>
 
 	<select id="consultarPalabrasClave" resultMap="IdeaResult">
-		select * from idea
-		where descripcion like '%' || #{clave} || '%' OR  titulo like '%' || #{clave} || '%';
+		select * from idea as i
+		left join tipo_idea as ti ON(ti.id=tipo_idea)
+		where descripcion like '%' || #{clave} || '%' OR  titulo like '%' || #{clave} || '%'
+		order by votos desc;
 	</select>
 
 	<select id="consultarId" resultMap="IdeaResult" >
 		select * from idea
 		where id=(select max(id) from idea);
 	</select>
+	
+	<update id="actualizarVoto">
+		UPDATE idea SET votos=votos+1 WHERE id = #{id} and 
+		(select COUNT(usuario_correo) from votado
+			where idea_id=#{id} and usuario_correo=#{correo})=0;
+	</update>
 
 </mapper>

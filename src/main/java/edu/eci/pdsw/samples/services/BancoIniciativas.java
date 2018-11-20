@@ -7,6 +7,7 @@ import java.util.List;
 import edu.eci.pdsw.samples.entities.Idea;
 import edu.eci.pdsw.samples.entities.TipoIdea;
 import edu.eci.pdsw.samples.entities.Usuario;
+import edu.eci.pdsw.samples.entities.Votado;
 
 public interface BancoIniciativas {
 	
@@ -34,6 +35,12 @@ public interface BancoIniciativas {
 	public void insertarIdea(Idea idea) throws ExcepcionBancoIniciativas;
 
 	public List<Idea> consultarIdeas() throws ExcepcionBancoIniciativas;
+	
+	public void actualizarVoto(int id,String correo) throws ExcepcionBancoIniciativas;
+	
+	
+	//VOTADOS
+	public void insertarVoto(int id,String correo) throws ExcepcionBancoIniciativas;
 
 
 	//TipoIdeas

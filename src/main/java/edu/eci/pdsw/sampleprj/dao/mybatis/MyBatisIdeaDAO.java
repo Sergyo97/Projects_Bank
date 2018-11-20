@@ -62,4 +62,14 @@ public class MyBatisIdeaDAO implements IdeaDAO {
 		
 	}
 
+	@Override
+	public void actualizarVoto(int id,String correo) throws PersistenceException {
+		try {
+			ideaMapper.actualizarVoto(id,correo);
+		} catch(Exception e) {
+			throw new PersistenceException("Error al registrar voto", e);
+		}
+		
+	}
+
 }

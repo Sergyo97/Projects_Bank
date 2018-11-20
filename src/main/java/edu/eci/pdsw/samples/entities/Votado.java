@@ -1,47 +1,53 @@
 package edu.eci.pdsw.samples.entities;
 
-import java.util.ArrayList;
+import java.util.Date;
 
 public class Votado {
 
 	
-	private ArrayList<Idea> ideas;
+	private Idea ideas;
 	private Usuario usuario;
+	private Date fecha;
 	
 	
-	public Votado(ArrayList<Idea> ideas, Usuario usuario) {
+	public Votado(Idea ideas, Usuario usuario, Date fecha) {
 		super();
 		this.ideas = ideas;
 		this.usuario = usuario;
+		this.fecha = fecha;
 	}
 
 	public Votado() {
 		
 	}
 
-	public ArrayList<Idea> getIdeas() {
+	public Idea getIdeas() {
 		return ideas;
 	}
 
-
-	public void setIdeas(ArrayList<Idea> ideas) {
+	public void setIdeas(Idea ideas) {
 		this.ideas = ideas;
 	}
-
 
 	public Usuario getUsuario() {
 		return usuario;
 	}
 
+	public Date getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
+	}
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
 
-
 	@Override
 	public String toString() {
-		return "Votado [ideas=" + ideas + ", usuario=" + usuario + "]";
+		return "Votado [ideas=" + ideas + ", usuario=" + usuario + ", fecha=" + fecha + "]";
 	}
 	
 }

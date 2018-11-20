@@ -24,5 +24,7 @@ public interface IdeaMapper {
 	public List<Idea> consultarIdeasUsuario(@Param("correo")String correo);
 
 	public Idea consultarId();
+
+	public void actualizarVoto(@Param("id")int id, @Param("correo") String correo);
 	
 }
