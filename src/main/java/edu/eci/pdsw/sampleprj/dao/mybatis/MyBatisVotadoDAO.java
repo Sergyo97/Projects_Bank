@@ -20,6 +20,15 @@ public class MyBatisVotadoDAO implements VotoDAO{
 		} catch (Exception e) {
 			throw new PersistenceException("Error al registrar voto", e);
 		}
+	}
+
+	@Override
+	public Votado consultarVotosIdea(int id) throws PersistenceException {
+		try {
+			return votadoMapper.consultarVotosIdea(id);
+		} catch (Exception e) {
+			throw new PersistenceException("Error al consultar voto", e);
+		}
 	}	
 
 }

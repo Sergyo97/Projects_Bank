@@ -19,5 +19,12 @@
  			WHERE (SELECT (select COUNT(usuario_correo) from votado
 			where idea_id=#{id} and usuario_correo=#{correo})=0);
 	</insert>
+	
+	<select id="consultarVoto" resultMap="UsuarioResult">
+		select * from votado as v left join idea as i on (v.ideas=i.usuario)
+		where correo = #{correo} and clave = #{contraseña};
+	</select>
+	
+	
 
 </mapper>

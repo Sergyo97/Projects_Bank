@@ -4,6 +4,8 @@ package edu.eci.pdsw.samples.services;
 import java.sql.Date;
 import java.util.List;
 
+import javax.persistence.PersistenceException;
+
 import edu.eci.pdsw.samples.entities.Idea;
 import edu.eci.pdsw.samples.entities.TipoIdea;
 import edu.eci.pdsw.samples.entities.Usuario;
@@ -41,6 +43,7 @@ public interface BancoIniciativas {
 	
 	//VOTADOS
 	public void insertarVoto(int id,String correo) throws ExcepcionBancoIniciativas;
+	public Votado consultarVotosIdea(int id) throws ExcepcionBancoIniciativas;
 
 
 	//TipoIdeas

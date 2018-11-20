@@ -6,6 +6,8 @@ import edu.eci.pdsw.samples.entities.Votado;
 
 public interface VotoDAO {
 	
-	public void insertarVoto(int id,String correo) throws PersistenceException;;
+	public void insertarVoto(int id,String correo) throws PersistenceException;
+	
+	public Votado consultarVotosIdea(int id) throws PersistenceException;
 
 }
