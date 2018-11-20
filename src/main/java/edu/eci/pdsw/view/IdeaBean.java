@@ -75,6 +75,7 @@ public class IdeaBean extends BasePageBean{
 		getIdeasGeneral();		
 	};
 	
+	
 	public void registrarVoto(int id) throws ExcepcionBancoIniciativas{
 		FacesContext fc = FacesContext.getCurrentInstance();
 		HttpSession session = (HttpSession) fc.getExternalContext().getSession(true);
