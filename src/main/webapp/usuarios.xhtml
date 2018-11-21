@@ -46,25 +46,25 @@
 
 
 
-<!-- 	<h:form> -->
+	<!-- 	<h:form> -->
 
-<!-- 		<p:growl id="growl" showDetail="true" sticky="true" /> -->
+	<!-- 		<p:growl id="growl" showDetail="true" sticky="true" /> -->
 
-<!-- 		<fieldset style="width: 0px; border: 2px solid #000000;"> -->
-<!-- 			<legend>Buscar Idea</legend> -->
-<!-- 			<h:panelGrid columns="2" cellpadding="5"> -->
+	<!-- 		<fieldset style="width: 0px; border: 2px solid #000000;"> -->
+	<!-- 			<legend>Buscar Idea</legend> -->
+	<!-- 			<h:panelGrid columns="2" cellpadding="5"> -->
 
-<!-- 				<p:outputLabel style="font-size: 12pt" value="Busqueda: " /> -->
-<!-- 				<h:inputText binding="#{busqueda}" /> -->
+	<!-- 				<p:outputLabel style="font-size: 12pt" value="Busqueda: " /> -->
+	<!-- 				<h:inputText binding="#{busqueda}" /> -->
 
-<!-- 			</h:panelGrid> -->
-<!-- 			<h:commandButton -->
-<!-- 				style="background-color:white;  border:2px solid #FF3F33;" -->
-<!-- 				value="Buscar" -->
-<!-- 				actionListener="#{IdeaBean.consultarIdea(busqueda.value)}"> -->
-<!-- 			</h:commandButton> -->
-<!-- 		</fieldset> -->
-<!-- 	</h:form> -->
+	<!-- 			</h:panelGrid> -->
+	<!-- 			<h:commandButton -->
+	<!-- 				style="background-color:white;  border:2px solid #FF3F33;" -->
+	<!-- 				value="Buscar" -->
+	<!-- 				actionListener="#{IdeaBean.consultarIdea(busqueda.value)}"> -->
+	<!-- 			</h:commandButton> -->
+	<!-- 		</fieldset> -->
+	<!-- 	</h:form> -->
 
 
 
@@ -83,6 +83,7 @@
 					<th>Descripcion</th>
 					<th>Votos</th>
 					<th>estado</th>
+					<th>ver votos</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -91,7 +92,7 @@
 						<td>#{ideas.titulo}</td>
 						<td>#{ideas.tipoIdea.tipo}</td>
 						<td>#{ideas.fecha}</td>
-						<td>#{ideas.descripcion}</td>						
+						<td>#{ideas.descripcion}</td>
 						<td>#{ideas.votos} <h:form>
 								<h:commandButton
 									actionListener="#{IdeaBean.registrarVoto(ideas.id)}"
@@ -99,6 +100,10 @@
 							</h:form>
 						</td>
 						<td>#{ideas.estado}</td>
+						<td><h:form>
+								<p:button outcome="votos?ideas=#{ideas.id}"
+									value="Ver Votos" />
+							</h:form></td>
 
 					</tr>
 				</r:repeat>
@@ -107,9 +112,9 @@
 	</h:panelGroup>
 
 	<script>
- 		$(document).ready(function() {
+		$(document).ready(function() {
 			$('#Ideas_table').DataTable();
- 		});
+		});
 	</script>
 
 </h:body>

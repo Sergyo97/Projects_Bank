@@ -174,6 +174,15 @@ public class BancoIniciativasImpl implements BancoIniciativas{
 			throw new ExcepcionBancoIniciativas("Error al insertar voto", e);
 		}
 	}
+	
+	@Override
+	public Votado consultarVotosIdea(int id) throws ExcepcionBancoIniciativas {
+		try {
+			return votoDAO.consultarVotosIdea(id);
+		}catch (Exception e) {
+			throw new ExcepcionBancoIniciativas("Error al intentar consultar los votos:", e);
+		}	
+	}
 
 	//TRIGGERS
 	
@@ -186,13 +195,6 @@ public class BancoIniciativasImpl implements BancoIniciativas{
 		}		
 	}
 
-	@Override
-	public Votado consultarVotosIdea(int id) throws ExcepcionBancoIniciativas {
-		try {
-			return votoDAO.consultarVotosIdea(id);
-		}catch (Exception e) {
-			throw new ExcepcionBancoIniciativas("Error al intentar consultar los votos:", e);
-		}	
-	}
+	
 	
 }

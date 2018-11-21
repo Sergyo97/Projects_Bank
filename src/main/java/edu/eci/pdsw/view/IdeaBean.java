@@ -86,6 +86,14 @@ public class IdeaBean extends BasePageBean{
 			throw new ExcepcionBancoIniciativas("Error al registra voto", e);
 		}
 	}
+	
+	public void consultarVotoIdea(int id) throws ExcepcionBancoIniciativas {
+		try {
+			bancoini.consultarVotosIdea(id);
+		} catch (PersistenceException e) {
+			throw new ExcepcionBancoIniciativas("Error al consultar voto", e);
+		}		
+	}
 
 	public void insertarIdea(String titulo,int tipo, String descripcion) throws ExcepcionBancoIniciativas{
 		FacesContext fc = FacesContext.getCurrentInstance();

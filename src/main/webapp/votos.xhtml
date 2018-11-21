@@ -26,26 +26,17 @@
 		<table id="votos_table">
 			<thead>
 				<tr>
-					<th>Usuario</th>
-					<th>idea</th>
-					<th></th>					
+					<th>correo</th>
+					<th>nombre</th>
+					<th>fecha</th>					
 				</tr>
 			</thead>
 			<tbody>
-				<r:repeat var="votos" value="#{IdeaBean.ideas}">
+				<r:repeat var="votos" value="#{IdeaBean.consultarVotoIdea(ideas.id)}">
 					<tr>
-						<td>#{ideas.titulo}</td>
-						<td>#{ideas.tipoIdea.tipo}</td>
-						<td>#{ideas.fecha}</td>
-						<td>#{ideas.descripcion}</td>						
-						<td>#{ideas.votos} <h:form>
-								<h:commandButton
-									actionListener="#{IdeaBean.registrarVoto(ideas.id)}"
-									update="Ideas_Table" value="Vote" />
-							</h:form>
-						</td>
-						<td>#{ideas.estado}</td>
-
+						<td>#{votos.Usuario.correo}</td>
+						<td>#{votos.Usuario.nombre}</td>
+						<td>#{votos.fecha}</td>
 					</tr>
 				</r:repeat>
 			</tbody>
@@ -55,7 +46,7 @@
 
 	<script>
  		$(document).ready(function() {
-			$('#Ideas_table').DataTable();
+			$('#votos_table').DataTable();
  		});
 	</script>
 </h:body>

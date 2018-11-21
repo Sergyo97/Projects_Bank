@@ -43,6 +43,7 @@ public interface BancoIniciativas {
 	
 	//VOTADOS
 	public void insertarVoto(int id,String correo) throws ExcepcionBancoIniciativas;
+	
 	public Votado consultarVotosIdea(int id) throws ExcepcionBancoIniciativas;
 
 
