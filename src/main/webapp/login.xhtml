@@ -17,11 +17,48 @@
 		href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
 		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
 		crossorigin="anonymous"></link>
+	<link rel="stylesheet" href="login.css"></link>
 
 	<title>login</title>
 </h:head>
 <h:body>
-	<h1>login</h1>
+	<img src="images/minilogoecicorner.png" class="minilogoecicorner"></img>
+	<div class="container-fluid">
+		<div class="d-flex justify-content-center h-100">
+			<div class="card">
+				<div class="card-header">
+					<h1 class="panel-title">Log In</h1>
+				</div>
+				<div class="card-body">
+					<h:form>
+						<div class="input-group form-group">
+							<span class="input-group-prepend"> <span
+								class="input-group-text"> <i class="fas fa-envelope">
+								</i>
+							</span>
+							</span>
+							<p:inputText class="form-control" value="#{loginBean.correo}"
+								required="true" placeholder="Correo" />
+						</div>
+						<div class="input-group form-group">
+							<span class="input-group-prepend"> <span
+								class="input-group-text"> <i class="fa fa-key"> </i>
+							</span>
+							</span>
+							<p:password class="form-control" value="#{loginBean.contra}"
+								required="true" />
+						</div>
+						<div class="form-group">
+							<h:commandButton action="#{loginBean.validarUsuario}"
+								value="Ver mis Propuestas" class="myclass" />
+						</div>
+					</h:form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
 
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -36,23 +73,5 @@
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
 		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
 		crossorigin="anonymous"></script>
-
-	<h:form id="login">
-
-		<h:panelGrid columns="2" id="matchGrid" cellpadding="5">
-
-			<p:outputLabel style="font-size: 12pt" value="Correo: " />
-			<p:inputText value="#{loginBean.correo}" required="true" />
-
-			<h:outputLabel value="Contraseña: " />
-			<p:password value="#{loginBean.contra}" required="true" />
-
-			<h:commandButton action="#{loginBean.validarUsuario}"
-				value="Ver mis Propuestas" />
-		</h:panelGrid>
-
-	</h:form>
-
-
 </h:body>
 </html>

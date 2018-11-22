@@ -1,0 +1,127 @@
+html{
+	margin: 0px;
+	padding: 0px;
+	background: url(images/MainBackground.jpg) no-repeat center center fixed, url(images/fondoindex.jpg) no-repeat top center; 
+	
+}
+body {	
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.428571429;
+    color: #333333;
+    background-color: #fff;
+}
+.panel-group .panel {
+	position: absolute;
+	border-color: rgba(0, 0, 0, 0.3);
+	top: 50%;
+	left: 50%;
+	transform: translateX(-50%) translateY(-50%);   
+    width: 350px;
+    border-radius: 5px;
+    border-width: 10px 10px; 
+    border-top-width: 70px;   
+}
+.panel-group{
+	margin-bottom: 20px;	
+}
+.panel-primary > .panel-heading {
+	background-color: rgb(48, 126, 204);
+	
+    padding: 15px 15px;
+/*     border: px solid transparent; */
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px; 
+}
+.panel-title {    
+	text-align: center;
+    font-size: 32px;
+    color: inherit;       
+}
+.container-fluid{
+	margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;   
+}
+* {
+	webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+div {
+	display: block;
+}
+.panel-transparent {
+    background-color:rgba(0, 0, 0, 0.5);
+}
+.button {
+  -moz-box-shadow: 0px 0px 0px 0px rgb(11, 88, 192);
+	-webkit-box-shadow: 0px 0px 0px 0px rgb(11, 88, 192);
+	box-shadow: 0px 0px 0px 0px rgb(11, 88, 192);
+	background-color:transparent;
+	-moz-border-radius:8px;
+	-webkit-border-radius:8px;
+	border-radius:4px;
+	border:2px solid rgb(11, 88, 192);
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:19px;
+	font-weight:bold;
+	padding:10px 63px;
+	text-decoration:none;
+	text-shadow:0px 1px 1px #000000;
+}
+
+.button:hover {
+	background-color:rgb(40, 159, 199);
+}
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 8;
+  right: -30px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 1px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;  
+}
+img{
+	background-color:transparent;
+}
+.loginicon{
+	width: 100px;
+    height: 109px;    
+    position: absolute;
+    top: -140px;
+    left: calc(50% - 50px);
+}
+.minilogoecicorner{
+	width: 261px;
+    height: 110px;    
+    position: absolute;
+    top: calc(1% + 1%);
+    left: calc(100% - 260px);
+}
+.logiecifondo{    
+    position: absolute;
+    top: calc(40% + 10px);
+    left: calc(52% - 35px);
+}
+
