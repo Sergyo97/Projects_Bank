@@ -21,7 +21,7 @@
 	</insert>
 	
 	<select id="consultarVotosIdea" resultMap="VotadoResult">
-		select * from votado
+		select * from votado  as V left join usuario as U on(v.usuario_correo=U.correo) left join idea as i on (i.id=v.idea_id)
 		where idea_id= #{id}; 
 	</select>
 	

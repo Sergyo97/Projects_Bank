@@ -32,11 +32,12 @@
 				</tr>
 			</thead>
 			<tbody>
-				<r:repeat var="votos" value="#{IdeaBean.consultarVotoIdea(ideas.id)}">
+				<r:repeat var="votos" value="#{IdeaBean.consultarVotoIdea(1)}">
 					<tr>
-						<td>#{votos.Usuario.correo}</td>
-						<td>#{votos.Usuario.nombre}</td>
+						<td>#{votos.usuario.correo}</td>
+						<td>#{votos.usuario.nombre}</td>
 						<td>#{votos.fecha}</td>
+						
 					</tr>
 				</r:repeat>
 			</tbody>

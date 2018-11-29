@@ -18,6 +18,7 @@ import com.google.inject.Inject;
 
 import edu.eci.pdsw.samples.entities.Idea;
 import edu.eci.pdsw.samples.entities.TipoIdea;
+import edu.eci.pdsw.samples.entities.Votado;
 import edu.eci.pdsw.samples.services.ExcepcionBancoIniciativas;
 import edu.eci.pdsw.samples.services.impl.BancoIniciativasImpl;
 
@@ -33,6 +34,7 @@ public class IdeaBean extends BasePageBean{
 	private static final long serialVersionUID = 1L;
 
 	@ManagedProperty(value="#{param.correo}")
+
 
 	private String correo;
 	private boolean buscar=false;
@@ -87,9 +89,10 @@ public class IdeaBean extends BasePageBean{
 		}
 	}
 	
-	public void consultarVotoIdea(int id) throws ExcepcionBancoIniciativas {
+	public List<Votado> consultarVotoIdea(int id) throws ExcepcionBancoIniciativas {
 		try {
-			bancoini.consultarVotosIdea(id);
+			System.out.println("el id es: "+ id);
+			return bancoini.consultarVotosIdea(id);
 		} catch (PersistenceException e) {
 			throw new ExcepcionBancoIniciativas("Error al consultar voto", e);
 		}		

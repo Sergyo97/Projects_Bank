@@ -1,5 +1,7 @@
 package edu.eci.pdsw.sampleprj.dao.mybatis;
 
+import java.util.List;
+
 import javax.persistence.PersistenceException;
 
 import com.google.inject.Inject;
@@ -23,7 +25,7 @@ public class MyBatisVotadoDAO implements VotoDAO{
 	}
 
 	@Override
-	public Votado consultarVotosIdea(int id) throws PersistenceException {
+	public List<Votado> consultarVotosIdea(int id) throws PersistenceException {
 		try {
 			return votadoMapper.consultarVotosIdea(id);
 		} catch (Exception e) {

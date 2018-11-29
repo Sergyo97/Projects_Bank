@@ -101,7 +101,7 @@ public class MyBatisExample {
 		Usuario usuario = um.consultarUsuario("sergio.ruiz@mail.escuelaing.edu.co");
 		//Votado voto = new Votado(idea, usuario, date);
 		vm.insertarVoto(usuario.getCorreo(),idea.getId());*/
-		System.out.println(vm.consultarVotosIdea(1));
+		System.out.println(vm.consultarVotosIdea(1).size());
 		
 		
 

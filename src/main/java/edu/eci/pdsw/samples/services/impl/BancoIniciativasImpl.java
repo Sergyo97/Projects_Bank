@@ -176,7 +176,7 @@ public class BancoIniciativasImpl implements BancoIniciativas{
 	}
 	
 	@Override
-	public Votado consultarVotosIdea(int id) throws ExcepcionBancoIniciativas {
+	public List<Votado> consultarVotosIdea(int id) throws ExcepcionBancoIniciativas {
 		try {
 			return votoDAO.consultarVotosIdea(id);
 		}catch (Exception e) {
