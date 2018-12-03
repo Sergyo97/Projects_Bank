@@ -84,6 +84,7 @@
 					<th>Votos</th>
 					<th>estado</th>
 					<th>ver votos</th>
+					
 				</tr>
 			</thead>
 			<tbody>
@@ -94,6 +95,7 @@
 						<td>#{ideas.fecha}</td>
 						<td>#{ideas.descripcion}</td>
 						<td>#{ideas.votos} <h:form>
+
 								<h:commandButton
 									actionListener="#{IdeaBean.registrarVoto(ideas.id)}"
 									update="Ideas_Table" value="Vote" />
@@ -101,8 +103,7 @@
 						</td>
 						<td>#{ideas.estado}</td>
 						<td><h:form>
-								<p:button outcome="votos?ideas=#{ideas.id}"
-									value="Ver Votos" />
+								<p:button outcome="votos?ideas=#{ideas.id}" value="Ver Votos" />
 							</h:form></td>
 
 					</tr>

@@ -33,7 +33,7 @@ public class IdeaBean extends BasePageBean{
 	 */
 	private static final long serialVersionUID = 1L;
 
-	@ManagedProperty(value="#{param.correo}")
+	@ManagedProperty(value="#{param.correo}, #{param.idIni}")
 
 
 	private String correo;
