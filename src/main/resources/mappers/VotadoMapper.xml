@@ -2,29 +2,27 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
-<mapper namespace="edu.eci.pdsw.sampleprj.dao.mybatis.mappers.VotadoMapper">
+
+<mapper
+	namespace="edu.eci.pdsw.sampleprj.dao.mybatis.mappers.VotadoMapper">
 
 	<resultMap type="Votado" id="VotadoResult">
-		<result property="fecha" column="fecha"/>
-		<association property="usuario" javaType="Usuario"
-			resultMap="edu.eci.pdsw.sampleprj.dao.mybatis.mappers.UsuarioMapper.UsuarioResult"></association>
+		<result property="fecha" column="fecha" />
+		<result property="correoUsuario" column="usuario_correo" />
 		<association property="ideas" javaType="Idea"
 			resultMap="edu.eci.pdsw.sampleprj.dao.mybatis.mappers.IdeaMapper.IdeaResult"></association>
 	</resultMap>
-	
+
 	<insert id="insertarVoto">
-		insert into votado (usuario_correo,idea_id,fecha) 
-			select #{correo},#{id},current_date
- 			WHERE (SELECT (select COUNT(usuario_correo) from votado
-			where idea_id=#{id} and usuario_correo=#{correo})=0);
+		insert into votado (usuario_correo,idea_id,fecha)
+		select #{correo},#{id},current_date
+		WHERE (SELECT (select COUNT(usuario_correo) from votado
+		where idea_id=#{id} and usuario_correo=#{correo})=0);
 	</insert>
-	
+
 	<select id="consultarVotosIdea" resultMap="VotadoResult">
-		select * from votado  as V left join usuario as U on(v.usuario_correo=U.correo) left join idea as i on (i.id=v.idea_id)
-		where idea_id= #{id}; 
+		select * from votado as V left join usuario as U	on(v.usuario_correo=U.correo) left join idea as i on (i.id=v.idea_id)
+		where idea_id= #{id};
 	</select>
-	
-	
 
 </mapper>

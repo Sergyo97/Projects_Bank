@@ -26,15 +26,15 @@
 			<thead>
 				<tr>
 					<th>correo</th>
-					<th>nombre</th>
+					<th>titulo de la idea</th>
 					<th>fecha</th>					
 				</tr>
 			</thead>
 			<tbody>
 				<r:repeat var="votos" value="#{IdeaBean.consultarVotoIdea(param['ideas'])}">
 					<tr>
-						<td>#{votos.usuario.correo}</td>
-						<td>#{votos.usuario.nombre}</td>
+						<td>#{votos.correoUsuario}</td>
+						<td>#{votos.ideas.titulo}</td>
 						<td>#{votos.fecha}</td>
 						
 					</tr>

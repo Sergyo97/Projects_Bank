@@ -91,7 +91,6 @@ public class IdeaBean extends BasePageBean{
 	
 	public List<Votado> consultarVotoIdea(int id) throws ExcepcionBancoIniciativas {
 		try {
-			System.out.println("el id es: "+ id);
 			return bancoini.consultarVotosIdea(id);
 		} catch (PersistenceException e) {
 			throw new ExcepcionBancoIniciativas("Error al consultar voto", e);

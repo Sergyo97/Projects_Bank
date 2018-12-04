@@ -102,6 +102,9 @@ public class MyBatisExample {
 		//Votado voto = new Votado(idea, usuario, date);
 		vm.insertarVoto(usuario.getCorreo(),idea.getId());*/
 		System.out.println(vm.consultarVotosIdea(1).size());
+		for(int i=0;i<vm.consultarVotosIdea(1).size();i++) {
+			System.out.println(vm.consultarVotosIdea(1).get(i).getCorreoUsuario()+", "+vm.consultarVotosIdea(1).get(i).getIdeas().getTitulo()+", "+vm.consultarVotosIdea(1).get(i).getFecha());
+		}
 		
 		
 
