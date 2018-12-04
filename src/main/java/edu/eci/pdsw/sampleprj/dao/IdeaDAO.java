@@ -23,5 +23,9 @@ public interface IdeaDAO {
 	public int consultarid()  throws PersistenceException;
 	
 	public void actualizarVoto(int id,String correo) throws PersistenceException;
+
+	public void ponerVoto(int id, String correo) throws PersistenceException;
+
+	public void quitarVoto(int id, String correo) throws PersistenceException;
 	
 }

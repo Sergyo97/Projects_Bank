@@ -82,12 +82,20 @@ public class IdeaBean extends BasePageBean{
 		FacesContext fc = FacesContext.getCurrentInstance();
 		HttpSession session = (HttpSession) fc.getExternalContext().getSession(true);
 		try {
-			bancoini.actualizarVoto(id,(String)session.getAttribute("correo"));
-			bancoini.insertarVoto(id,(String)session.getAttribute("correo"));
+			if (votadoPorEstaIdea(id, (String)session.getAttribute("correo"))) {
+				bancoini.quitarVoto(id,(String)session.getAttribute("correo"));
+				bancoini.eliminarVoto(id,(String)session.getAttribute("correo"));
+				
+			}else {
+				bancoini.ponerVoto(id,(String)session.getAttribute("correo"));
+				bancoini.insertarVoto(id,(String)session.getAttribute("correo"));
+			}
 		} catch (PersistenceException e) {
 			throw new ExcepcionBancoIniciativas("Error al registra voto", e);
 		}
 	}
+	
+	
 	
 	public List<Votado> consultarVotoIdea(int id) throws ExcepcionBancoIniciativas {
 		try {
@@ -95,6 +103,10 @@ public class IdeaBean extends BasePageBean{
 		} catch (PersistenceException e) {
 			throw new ExcepcionBancoIniciativas("Error al consultar voto", e);
 		}		
+	}
+	
+	public boolean votadoPorEstaIdea(int id, String correo) throws ExcepcionBancoIniciativas {
+		return bancoini.consultarVotoPorEstaIdea(id,correo);
 	}
 
 	public void insertarIdea(String titulo,int tipo, String descripcion) throws ExcepcionBancoIniciativas{

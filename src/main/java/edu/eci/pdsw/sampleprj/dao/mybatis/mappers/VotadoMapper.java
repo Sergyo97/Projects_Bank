@@ -10,6 +10,12 @@ public interface VotadoMapper {
 	
 	public void insertarVoto(@Param("correo")String correo,@Param("id") int id);
 	
+	public void borrarVoto(@Param("correo")String correo,@Param("id") int id);
+	
 	public List<Votado> consultarVotosIdea(@Param("id")int id);
+
+	public int consultarVotoPorEstaIdea(@Param("id") int id,@Param("correo") String correo);
+
+	
 
 }

@@ -11,7 +11,7 @@ import edu.eci.pdsw.sampleprj.dao.mybatis.mappers.VotadoMapper;
 import edu.eci.pdsw.samples.entities.Votado;
 
 public class MyBatisVotadoDAO implements VotoDAO{
-	
+
 	@Inject
 	private VotadoMapper votadoMapper;
 
@@ -23,6 +23,12 @@ public class MyBatisVotadoDAO implements VotoDAO{
 			throw new PersistenceException("Error al registrar voto", e);
 		}
 	}
+	
+	@Override
+	public void eliminarVoto(int id, String correo) {
+		votadoMapper.borrarVoto(correo,id);
+		
+	}	
 
 	@Override
 	public List<Votado> consultarVotosIdea(int id) throws PersistenceException {
@@ -31,6 +37,22 @@ public class MyBatisVotadoDAO implements VotoDAO{
 		} catch (Exception e) {
 			throw new PersistenceException("Error al consultar voto", e);
 		}
-	}	
+	}
+
+	@Override
+	public boolean consultarVotoPorEstaIdea(int id, String correo)  throws PersistenceException {
+		try {
+			if (votadoMapper.consultarVotoPorEstaIdea(id,correo) == 1) {
+				return true;
+			}else { 
+				return false;
+			}
+		}catch (Exception e) {
+			throw new PersistenceException("Error al consultar voto", e);
+		}
+
+	}
+
+	
 
 }

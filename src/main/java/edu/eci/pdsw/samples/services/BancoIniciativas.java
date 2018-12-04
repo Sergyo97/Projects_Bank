@@ -41,6 +41,11 @@ public interface BancoIniciativas {
 	public void actualizarVoto(int id,String correo) throws ExcepcionBancoIniciativas;
 	
 	
+	public void ponerVoto(int id,String correo) throws ExcepcionBancoIniciativas;
+	
+	public void quitarVoto(int id,String correo) throws ExcepcionBancoIniciativas;
+	
+	
 	//VOTADOS
 	public void insertarVoto(int id,String correo) throws ExcepcionBancoIniciativas;
 	

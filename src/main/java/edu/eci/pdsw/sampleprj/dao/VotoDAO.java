@@ -12,4 +12,8 @@ public interface VotoDAO {
 	
 	public List<Votado> consultarVotosIdea(int id) throws PersistenceException;
 
+	public boolean consultarVotoPorEstaIdea(int id, String correo);
+
+	public void eliminarVoto(int id, String correo);
+
 }

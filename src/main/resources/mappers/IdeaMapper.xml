@@ -69,5 +69,20 @@
 		(select COUNT(usuario_correo) from votado
 			where idea_id=#{id} and usuario_correo=#{correo})=0;
 	</update>
+	
+	
+	
+	<update id="ponerVoto">
+		UPDATE idea SET votos=votos+1 WHERE id = #{id} and 
+		(select COUNT(usuario_correo) from votado
+			where idea_id=#{id} and usuario_correo=#{correo})=0;
+	</update>
+	
+	<update id="quitarVoto">
+		UPDATE idea SET votos=votos-1 WHERE id = #{id} and 
+		(select COUNT(usuario_correo) from votado
+			where idea_id=#{id} and usuario_correo=#{correo})=1;
+	</update>
+	
 
 </mapper>

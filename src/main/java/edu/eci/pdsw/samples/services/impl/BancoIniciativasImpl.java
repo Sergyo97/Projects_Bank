@@ -139,6 +139,23 @@ public class BancoIniciativasImpl implements BancoIniciativas{
 		
 	}
 
+	public void ponerVoto(int id, String correo) throws ExcepcionBancoIniciativas {
+		try {
+			ideaDAO.ponerVoto(id,correo);
+		} catch (PersistenceException e) {
+			throw new ExcepcionBancoIniciativas("Error al actualizar voto", e);
+		}
+		
+	}
+	
+	public void quitarVoto(int id, String correo) throws ExcepcionBancoIniciativas {
+		try {
+			ideaDAO.quitarVoto(id,correo);
+		} catch (PersistenceException e) {
+			throw new ExcepcionBancoIniciativas("Error al actualizar voto", e);
+		}
+		
+	}
 	//TipoIdeas
 
 	public List<TipoIdea> consultarTipoIdeas() throws ExcepcionBancoIniciativas{
@@ -175,6 +192,11 @@ public class BancoIniciativasImpl implements BancoIniciativas{
 		}
 	}
 	
+	public void eliminarVoto(int id, String correo) {
+		votoDAO.eliminarVoto(id,correo);
+		
+	}
+	
 	@Override
 	public List<Votado> consultarVotosIdea(int id) throws ExcepcionBancoIniciativas {
 		try {
@@ -183,6 +205,8 @@ public class BancoIniciativasImpl implements BancoIniciativas{
 			throw new ExcepcionBancoIniciativas("Error al intentar consultar los votos:", e);
 		}	
 	}
+	
+	
 
 	//TRIGGERS
 	
@@ -194,6 +218,12 @@ public class BancoIniciativasImpl implements BancoIniciativas{
 			throw new ExcepcionBancoIniciativas("Error al intentar consultar el ultimo id:", e);
 		}		
 	}
+
+	public boolean consultarVotoPorEstaIdea(int id, String correo) {
+		return votoDAO.consultarVotoPorEstaIdea(id, correo);
+	}
+
+	
 
 	
 	

@@ -16,13 +16,28 @@
 	<insert id="insertarVoto">
 		insert into votado (usuario_correo,idea_id,fecha)
 		select #{correo},#{id},current_date
-		WHERE (SELECT (select COUNT(usuario_correo) from votado
-		where idea_id=#{id} and usuario_correo=#{correo})=0);
+		WHERE (SELECT (select
+		COUNT(usuario_correo) from votado
+		where idea_id=#{id} and
+		usuario_correo=#{correo})=0);
 	</insert>
+	
+	<delete id="borrarVoto">
+		DELETE FROM votado WHERE idea_id = #{id} and usuario_correo = #{correo};
+	</delete>
 
 	<select id="consultarVotosIdea" resultMap="VotadoResult">
-		select * from votado as V left join usuario as U	on(v.usuario_correo=U.correo) left join idea as i on (i.id=v.idea_id)
+		select * from votado
+		as V left join usuario as U on(v.usuario_correo=U.correo) left join
+		idea as i on (i.id=v.idea_id)
 		where idea_id= #{id};
 	</select>
+	
+	<select id="consultarVotoPorEstaIdea" resultType="int">
+		select count(usuario_correo) from votado
+		as V left join usuario as U on(v.usuario_correo=U.correo) left join
+		idea as i on (i.id=v.idea_id) where idea_id = #{id} and usuario_correo = #{correo};
+	</select>
+	
 
 </mapper>

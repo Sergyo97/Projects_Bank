@@ -100,11 +100,13 @@ public class MyBatisExample {
 		/*Idea idea=im.consultarIdea(2);
 		Usuario usuario = um.consultarUsuario("sergio.ruiz@mail.escuelaing.edu.co");
 		//Votado voto = new Votado(idea, usuario, date);
-		vm.insertarVoto(usuario.getCorreo(),idea.getId());*/
+		vm.insertarVoto(usuario.getCorreo(),idea.getId());
 		System.out.println(vm.consultarVotosIdea(1).size());
 		for(int i=0;i<vm.consultarVotosIdea(1).size();i++) {
 			System.out.println(vm.consultarVotosIdea(1).get(i).getCorreoUsuario()+", "+vm.consultarVotosIdea(1).get(i).getIdeas().getTitulo()+", "+vm.consultarVotosIdea(1).get(i).getFecha());
-		}
+		}*/
+		
+		//System.out.println(vm.consultarVotoPorEstaIdea(20,"david.diaz@mail.escuelaing.edu.co"));
 		
 		
 

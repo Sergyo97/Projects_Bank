@@ -27,4 +27,10 @@ public interface IdeaMapper {
 
 	public void actualizarVoto(@Param("id")int id, @Param("correo") String correo);
 	
+	
+	
+	public void ponerVoto(@Param("id")int id, @Param("correo") String correo);
+	
+	public void quitarVoto(@Param("id")int id, @Param("correo") String correo);
+	
 }

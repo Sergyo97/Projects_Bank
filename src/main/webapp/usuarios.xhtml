@@ -84,7 +84,7 @@
 					<th>Votos</th>
 					<th>estado</th>
 					<th>ver votos</th>
-					
+
 				</tr>
 			</thead>
 			<tbody>
@@ -98,7 +98,10 @@
 
 								<h:commandButton
 									actionListener="#{IdeaBean.registrarVoto(ideas.id)}"
-									update="Ideas_Table" value="Vote" />
+									update="Ideas_Table" value="Like" />
+									
+								
+
 							</h:form>
 						</td>
 						<td>#{ideas.estado}</td>
