@@ -20,10 +20,14 @@ import edu.eci.pdsw.samples.services.impl.BancoIniciativasImpl;
 
 public class UsuarioBean extends BasePageBean{
 	
+	
+	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private String tipo;
+	private Usuario u;
 	
 	@Inject
 	private BancoIniciativasImpl bancoini;
@@ -40,12 +44,25 @@ public class UsuarioBean extends BasePageBean{
 		FacesContext fc = FacesContext.getCurrentInstance();
 		HttpSession session  = (HttpSession) fc.getExternalContext().getSession(true); 
 		try {
-			Usuario us=  bancoini.consultarLogin((String)session.getAttribute("correo"), (String)session.getAttribute("contra"));
-			return us;
+			u=  bancoini.consultarLogin((String)session.getAttribute("correo"), (String)session.getAttribute("contra"));			
+			System.out.println(tipo);
+			return u;
 			
 		} catch (PersistenceException e) {
 			throw e;
 		}
+	}
+
+	public String getTipo() {
+		tipo=u.getTipo().toString();
+		System.out.println(tipo);
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	};
+	
+	
 
 }

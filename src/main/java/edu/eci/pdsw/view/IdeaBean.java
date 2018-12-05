@@ -1,8 +1,8 @@
 package edu.eci.pdsw.view;
 
-import java.util.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -11,7 +11,6 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.persistence.PersistenceException;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import com.google.inject.Inject;
@@ -39,6 +38,7 @@ public class IdeaBean extends BasePageBean{
 	private String correo;
 	private boolean buscar=false;
 	private String palabraClave;
+	private int tipo;
 
 	@Inject
 	private BancoIniciativasImpl bancoini;
@@ -109,33 +109,48 @@ public class IdeaBean extends BasePageBean{
 		return bancoini.consultarVotoPorEstaIdea(id,correo);
 	}
 
-	public void insertarIdea(String titulo,int tipo, String descripcion) throws ExcepcionBancoIniciativas{
-		FacesContext fc = FacesContext.getCurrentInstance();
-		HttpSession session = (HttpSession) fc.getExternalContext().getSession(true);
-		HttpServletRequest request = (HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest();
-		int id = bancoini.consultarId();
-		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-		Date date = new Date();
-		Date date1 = new Date(dateFormat.format(date));		
-		TipoIdea tIdeaId= bancoini.consultarTipoIdea(tipo);
-		Idea idea =new Idea(id, descripcion, "En espera", date1, 0, titulo, bancoini.consultarUsuario((String)session.getAttribute("correo")).getCorreo(), tIdeaId);
-		try {
-			bancoini.insertarIdea(idea);
-		}catch (Exception e) {
-			throw new ExcepcionBancoIniciativas("Error al insertar la idea", e);
+	public void insertarIdea(String titulo, String descripcion) throws ExcepcionBancoIniciativas{
+		if(titulo != "" || descripcion != "") {
+			FacesContext fc = FacesContext.getCurrentInstance();
+			HttpSession session = (HttpSession) fc.getExternalContext().getSession(true);
+			int id = bancoini.consultarId();
+			DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+			Date date = new Date();
+			Date date1 = new Date(dateFormat.format(date));		
+			TipoIdea tIdeaId= bancoini.consultarTipoIdea(tipo);
+			Idea idea =new Idea(id, descripcion, "En espera", date1, 0, titulo, bancoini.consultarUsuario((String)session.getAttribute("correo")).getCorreo(), tIdeaId);
+			try {
+				bancoini.insertarIdea(idea);
+			}catch (Exception e) {
+				throw new ExcepcionBancoIniciativas("Error al insertar la idea", e);
+			}
 		}
+		
 	}
 	
 	public void modificarIdea(int id, String descripcion) throws ExcepcionBancoIniciativas{
+		FacesContext fc = FacesContext.getCurrentInstance();
+		HttpSession session = (HttpSession) fc.getExternalContext().getSession(true);
 		bancoini.modificarDescripcion(id,descripcion);
 	
 	}
 
-	public String getCorreo() {
-		return correo;
+	public String getCorreo() throws ExcepcionBancoIniciativas {
+		FacesContext fc = FacesContext.getCurrentInstance();
+		HttpSession session = (HttpSession) fc.getExternalContext().getSession(true);
+		return bancoini.consultarUsuario((String)session.getAttribute("correo")).getNombre();
 	}
 
 	public void setCorreo(String correo) {
 		this.correo = correo;
+	}
+	
+	public int getTipo() {
+		return tipo;
+	}
+
+
+	public void setTipo(int tipo) {
+		this.tipo = tipo;
 	}
 }

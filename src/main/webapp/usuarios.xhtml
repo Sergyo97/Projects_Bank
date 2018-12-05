@@ -20,14 +20,14 @@
 
 
 <h:body>
-	<h1>Usuarios</h1>
+	<h1>Usuario</h1>
 	<p:dataTable id="usuarios_table" var="users"
-		value="#{usuarioBean.consultarUsuario}">
-		<p:column headerText="Nombre">
+		value="#{usuarioBean.consultarUsuario}" rendered="#{usuarioBean.tipo != 'DE_CONSULTA'}">
+		<p:column headerText="#{usuarioBean.tipo}">
 			<h:outputText value="#{users.nombre}" />
 		</p:column>
 
-		<p:column headerText="Tipo de usuario">
+		<p:column headerText="#{usuarioBean.tipo == 'DE_CONSULTA'}">
 			<h:outputText value="#{users.tipo}" />
 		</p:column>
 
@@ -42,35 +42,6 @@
 	</p:dataTable>
 
 	<p></p>
-
-
-
-
-	<!-- 	<h:form> -->
-
-	<!-- 		<p:growl id="growl" showDetail="true" sticky="true" /> -->
-
-	<!-- 		<fieldset style="width: 0px; border: 2px solid #000000;"> -->
-	<!-- 			<legend>Buscar Idea</legend> -->
-	<!-- 			<h:panelGrid columns="2" cellpadding="5"> -->
-
-	<!-- 				<p:outputLabel style="font-size: 12pt" value="Busqueda: " /> -->
-	<!-- 				<h:inputText binding="#{busqueda}" /> -->
-
-	<!-- 			</h:panelGrid> -->
-	<!-- 			<h:commandButton -->
-	<!-- 				style="background-color:white;  border:2px solid #FF3F33;" -->
-	<!-- 				value="Buscar" -->
-	<!-- 				actionListener="#{IdeaBean.consultarIdea(busqueda.value)}"> -->
-	<!-- 			</h:commandButton> -->
-	<!-- 		</fieldset> -->
-	<!-- 	</h:form> -->
-
-
-
-
-
-
 
 
 	<h:panelGroup id="sugerencias_table">
@@ -99,8 +70,8 @@
 								<h:commandButton
 									actionListener="#{IdeaBean.registrarVoto(ideas.id)}"
 									update="Ideas_Table" value="Like" />
-									
-								
+
+
 
 							</h:form>
 						</td>
