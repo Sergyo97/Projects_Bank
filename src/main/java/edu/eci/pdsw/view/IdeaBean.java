@@ -125,6 +125,11 @@ public class IdeaBean extends BasePageBean{
 			throw new ExcepcionBancoIniciativas("Error al insertar la idea", e);
 		}
 	}
+	
+	public void modificarIdea(int id, String descripcion) throws ExcepcionBancoIniciativas{
+		bancoini.modificarDescripcion(id,descripcion);
+	
+	}
 
 	public String getCorreo() {
 		return correo;

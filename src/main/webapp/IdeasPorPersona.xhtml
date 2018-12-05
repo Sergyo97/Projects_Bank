@@ -37,7 +37,7 @@
 
 
 				<p:outputLabel style="font-size: 12pt" value="Descripcion:" />
-				<h:inputText binding="#{descripcion}" />
+				<h:inputText style="font-size: medium;" binding="#{descripcion}" />
 
 			</h:panelGrid>
 			<h:commandButton
@@ -49,34 +49,42 @@
 
 	<p></p>
 
-<!-- 	<p:dataTable id="Ideas_table" var="ideas" value="#{IdeaBean.ideas}"> -->
-<!-- 		<p:column headerText="Iniciativa"> -->
-<!-- 			<h:outputText value="#{ideas.titulo}" /> -->
-<!-- 		</p:column> -->
+	<!-- 	<p:dataTable id="Ideas_table" var="ideas" value="#{IdeaBean.ideas}"> -->
+	<!-- 		<p:column headerText="Iniciativa"> -->
+	<!-- 			<h:outputText value="#{ideas.titulo}" /> -->
+	<!-- 		</p:column> -->
 
-<!-- 		<p:column headerText="Categoria"> -->
-<!-- 			<h:outputText value="#{ideas.tipoIdea.tipo}" /> -->
-<!-- 		</p:column> -->
+	<!-- 		<p:column headerText="Categoria"> -->
+	<!-- 			<h:outputText value="#{ideas.tipoIdea.tipo}" /> -->
+	<!-- 		</p:column> -->
 
-<!-- 		<p:column headerText="Fecha Creacion"> -->
-<!-- 			<h:outputText value="#{ideas.fecha}" /> -->
-<!-- 		</p:column> -->
+	<!-- 		<p:column headerText="Fecha Creacion"> -->
+	<!-- 			<h:outputText value="#{ideas.fecha}" /> -->
+	<!-- 		</p:column> -->
 
-<!-- 		<p:column headerText="Descripcion"> -->
-<!-- 			<h:outputText value="#{ideas.descripcion}" /> -->
-<!-- 		</p:column> -->
+	<!-- 		<p:column headerText="Descripcion"> -->
+	<!-- 			<h:outputText value="#{ideas.descripcion}" /> -->
+	<!-- 		</p:column> -->
 
-<!-- 		<p:column headerText="Votos"> -->
-<!-- 			<h:outputText value="#{ideas.votos}" /> -->
-<!-- 		</p:column> -->
+	<!-- 		<p:column headerText="Votos"> -->
+	<!-- 			<h:outputText value="#{ideas.votos}" /> -->
+	<!-- 		</p:column> -->
 
-<!-- 		<p:column headerText="Estado"> -->
-<!-- 			<h:outputText value="#{ideas.estado}" /> -->
-<!-- 		</p:column> -->
-<!-- 	</p:dataTable> -->
-	
-		<h:panelGroup id="sugerencias_table">
+	<!-- 		<p:column headerText="Estado"> -->
+	<!-- 			<h:outputText value="#{ideas.estado}" /> -->
+	<!-- 		</p:column> -->
+	<!-- 	</p:dataTable> -->
+
+	<h:panelGroup id="sugerencias_table">
 		<table id="Ideas_table">
+		
+		<!-- <script type = "text/javascript">
+			function buttonclick(){
+				//window.open('http://www.google.com')
+				"document.form1.type.value ='';"
+			}
+		
+		</script> -->
 			<thead>
 				<tr>
 					<th>Iniciativa</th>
@@ -93,7 +101,13 @@
 						<td>#{ideas.titulo}</td>
 						<td>#{ideas.tipoIdea.tipo}</td>
 						<td>#{ideas.fecha}</td>
-						<td>#{ideas.descripcion}</td>						
+						<td>#{ideas.descripcion}<h:form>
+								<h:commandButton
+									actionListener="#{IdeaBean.modificarIdea(ideas.id,ideas.descripcion)}"
+									update="Ideas_Table" value="Modificar" style="margin-left: 70%" onclick="buttonclick()"/>
+							</h:form>
+						</td>
+
 						<td>#{ideas.votos} <h:form>
 								<h:commandButton
 									actionListener="#{IdeaBean.registrarVoto(ideas.id)}"
@@ -110,9 +124,9 @@
 
 
 	<script>
- 		$(document).ready(function() {
+		$(document).ready(function() {
 			$('#Ideas_table').DataTable();
- 		});
+		});
 	</script>
 </h:body>
 </html>

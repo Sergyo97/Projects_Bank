@@ -92,4 +92,10 @@ public class MyBatisIdeaDAO implements IdeaDAO {
 		
 	}
 
+	@Override
+	public void modificarDescripcion(int id, String descripcion) {
+		ideaMapper.modificarDescripcion(id, descripcion);
+		
+	}
+
 }

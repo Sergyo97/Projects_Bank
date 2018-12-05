@@ -223,6 +223,11 @@ public class BancoIniciativasImpl implements BancoIniciativas{
 		return votoDAO.consultarVotoPorEstaIdea(id, correo);
 	}
 
+	public void modificarDescripcion(int id, String descripcion) {
+		ideaDAO.modificarDescripcion(id,descripcion);
+		
+	}
+
 	
 
 	
