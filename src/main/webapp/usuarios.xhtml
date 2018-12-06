@@ -22,8 +22,7 @@
 <h:body>
 	<h1>Usuario</h1>
 	<p:dataTable id="usuarios_table" var="users"
-		value="#{usuarioBean.consultarUsuario}"  rendered="#{usuarioBean.tipo != 'DE_CONSULTA'}">
-		<!-- #{usuarioBean.tipo},#{usuarioBean.tipo == 'DE_CONSULTA'} -->
+		value="#{usuarioBean.consultarUsuario}" rendered="#{usuarioBean.tipo != 'DE_CONSULTA'}">
 		<p:column headerText="Nombre">
 			<h:outputText value="#{users.nombre}" />
 		</p:column>
@@ -67,13 +66,9 @@
 						<td>#{ideas.fecha}</td>
 						<td>#{ideas.descripcion}</td>
 						<td>#{ideas.votos} <h:form>
-
 								<h:commandButton
 									actionListener="#{IdeaBean.registrarVoto(ideas.id)}"
 									update="Ideas_Table" value="Like" />
-
-
-
 							</h:form>
 						</td>
 						<td>#{ideas.estado}</td>

@@ -19,19 +19,23 @@ import edu.eci.pdsw.samples.services.impl.BancoIniciativasImpl;
 @SessionScoped
 
 public class UsuarioBean extends BasePageBean{
-	
-	
-	
+
+
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	private String tipo;
 	private Usuario u;
-	
+
+
 	@Inject
 	private BancoIniciativasImpl bancoini;
-	
+
+	FacesContext fc = FacesContext.getCurrentInstance();
+	HttpSession session  = (HttpSession) fc.getExternalContext().getSession(true); 
+
 	public List<Usuario> getUsuarios() throws ExcepcionBancoIniciativas{
 		try {
 			return bancoini.consultarUsuarios();
@@ -41,29 +45,26 @@ public class UsuarioBean extends BasePageBean{
 	};
 
 	public Usuario getconsultarUsuario() throws ExcepcionBancoIniciativas{
-		FacesContext fc = FacesContext.getCurrentInstance();
-		HttpSession session  = (HttpSession) fc.getExternalContext().getSession(true); 
 		try {			
-			u=  bancoini.consultarLogin((String)session.getAttribute("correo"), (String)session.getAttribute("contra"));
-			tipo=u.getTipo().toString();
-			System.out.println(tipo);
+			u = bancoini.consultarLogin((String)session.getAttribute("correo"), (String)session.getAttribute("contra"));
+			tipo = u.getTipo().toString();
 			return u;
-			
+
 		} catch (PersistenceException e) {
 			throw e;
 		}
 	}
 
-	public String getTipo() {
-		
-		System.out.println(tipo);
+	public String getTipo() throws ExcepcionBancoIniciativas {
+		u = bancoini.consultarLogin((String)session.getAttribute("correo"), (String)session.getAttribute("contra"));
+		tipo = u.getTipo().toString();
 		return tipo;
 	}
 
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	};
-	
-	
+
+
 
 }

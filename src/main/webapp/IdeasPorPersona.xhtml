@@ -37,7 +37,7 @@
 					
 				<p:outputLabel for="tipo" value="Tipo:" style="font-size: 12pt"/>
 				<p:selectOneMenu id="tipo" value="#{IdeaBean.tipo}" style="height:25px;width:240px;font-size:10pt">
-					<f:selectItem itemLabel="Select One" itemValue="" />
+					<f:selectItem itemLabel="Select One" itemValue="0" />
 					<f:selectItem itemLabel="BIENESTAR UNIVERSITARIO" itemValue="1" />
 					<f:selectItem itemLabel="DECANATURA SISTEMAS" itemValue="2" />
 					<f:selectItem itemLabel="DECANATURA CIVIL" itemValue="3" />
@@ -86,8 +86,7 @@
 						<td>#{ideas.descripcion}<h:form>
 								<h:commandButton
 									actionListener="#{IdeaBean.modificarIdea(ideas.id,ideas.descripcion)}"
-									update="Ideas_Table" value="Modificar" style="margin-left: 70%"
-									onclick="buttonclick()" />
+									update="Ideas_Table" value="Modificar" rendered="#{usuarioBean.tipo != 'DE_CONSULTA'}" />
 							</h:form>
 						</td>
 

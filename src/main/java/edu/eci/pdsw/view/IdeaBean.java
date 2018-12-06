@@ -43,10 +43,10 @@ public class IdeaBean extends BasePageBean{
 	@Inject
 	private BancoIniciativasImpl bancoini;
 
+	FacesContext fc = FacesContext.getCurrentInstance();
+	HttpSession session = (HttpSession) fc.getExternalContext().getSession(true);
 
 	public List<Idea> getIdeas() throws ExcepcionBancoIniciativas{
-		FacesContext fc = FacesContext.getCurrentInstance();
-		HttpSession session = (HttpSession) fc.getExternalContext().getSession(true);
 		try {
 			return bancoini.consultarIdeasUsuario((String)session.getAttribute("correo"));
 		}catch (PersistenceException e) {
@@ -79,8 +79,6 @@ public class IdeaBean extends BasePageBean{
 	
 	
 	public void registrarVoto(int id) throws ExcepcionBancoIniciativas{
-		FacesContext fc = FacesContext.getCurrentInstance();
-		HttpSession session = (HttpSession) fc.getExternalContext().getSession(true);
 		try {
 			if (votadoPorEstaIdea(id, (String)session.getAttribute("correo"))) {
 				bancoini.quitarVoto(id,(String)session.getAttribute("correo"));
@@ -116,14 +114,11 @@ public class IdeaBean extends BasePageBean{
 			for (Idea i:bancoini.consultarIdeas()) {			
 				if(i.getTitulo().equals(titulo) || i.getTitulo().equals(descripcion) || i.getDescripcion().equals(titulo) || i.getDescripcion().equals(descripcion)) {
 					esta=true;
-					//System.out.println("esta");
 					break;
 				} 
 			}		
 			
-			if(titulo != "" && descripcion != "" && esta==false ) {
-				FacesContext fc = FacesContext.getCurrentInstance();
-				HttpSession session = (HttpSession) fc.getExternalContext().getSession(true);
+			if(titulo != "" && descripcion != "" && esta==false && tipo!=0) {
 				int id = bancoini.consultarId();
 				DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 				Date date = new Date();
@@ -141,15 +136,11 @@ public class IdeaBean extends BasePageBean{
 	
 	
 	public void modificarIdea(int id, String descripcion) throws ExcepcionBancoIniciativas{
-		FacesContext fc = FacesContext.getCurrentInstance();
-		HttpSession session = (HttpSession) fc.getExternalContext().getSession(true);
 		bancoini.modificarDescripcion(id,descripcion);
 	
 	}
 
 	public String getCorreo() throws ExcepcionBancoIniciativas {
-		FacesContext fc = FacesContext.getCurrentInstance();
-		HttpSession session = (HttpSession) fc.getExternalContext().getSession(true);
 		return bancoini.consultarUsuario((String)session.getAttribute("correo")).getNombre();
 	}
 
