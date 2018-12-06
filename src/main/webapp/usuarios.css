@@ -1,5 +1,5 @@
 html, body {
-	background-color: rgb(26, 160, 244);
+	background-color: rgba(25, 72, 80,1);
 	font-family: 'Numans', sans-serif;
 	margin-top: 0px;
 	margin-bottom: 0px;
@@ -9,18 +9,21 @@ html, body {
 
 .ui-datatable .ui-datatable-header {
 	text-align: right !important;
+	
+	
 }
 
 .ui-selectcheckboxmenu-panel .ui-selectcheckboxmenu-header .ui-chkbox {
 	display: none;
 }
 .panelusuarios{
-	background-color: rgba(100, 100, 100, 0.9);
+	background-color: rgba(5, 52, 60, 1);
 	color: black;
 	border-radius: 6px;
 	border: 1px solid rgb(0, 0, 0);
 	margin-top: 5px;
 	margin-bottom: 5px;
+	width: 90% !important;
 }
 
 .columnusuarios{
@@ -34,7 +37,7 @@ html, body {
 	border-radius: 0px;
 }
 .panelideas{
-	background-color: rgba(100, 100, 100, 0.9);
+	background-color: rgba(94, 52, 0, 1);
 	color: black;
 	border-radius: 6px;
 	border: 1px solid rgb(0, 0, 0);

@@ -20,7 +20,7 @@
 
 
 <h:body>
-	<h1>Usuario</h1>
+	<h1>Usuario</h1>	
 	<p:panel class="panelusuarios">
 		<p:dataTable class="panelusuariosT" id="usuarios_table" var="users"
 			value="#{usuarioBean.consultarUsuario}"
@@ -93,7 +93,8 @@
 							</td>
 
 							<td><h:form>
-									<p:button class="mybuttons" outcome="votos?ideas=#{ideas.id}" value="Ver Votos" />
+									<p:button class="mybuttons" outcome="votos?ideas=#{ideas.id}"
+										value="Ver Votos" />
 								</h:form></td>
 
 						</tr>

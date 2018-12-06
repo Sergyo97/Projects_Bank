@@ -1,0 +1,17 @@
+html, body {
+	background-color: rgba(25, 72, 80, 1);
+	font-family: 'Numans', sans-serif;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	margin-right: 0px;
+	margin-left: 0px;
+}
+.backbuttonPanel{
+	background-color: transparent;
+	border: 0px solid transparent !important;
+	width: 250px !important;
+}
+.backButton{
+	background-color: ;
+	padding: 6px 40px;
+}

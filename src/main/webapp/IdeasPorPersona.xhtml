@@ -9,7 +9,7 @@
 <h:head>
 	<title></title>
 
-
+	<link rel="stylesheet" href="ideasporpersona.css"></link>
 	<link rel="stylesheet" type="text/css"
 		href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css" />
 
@@ -19,6 +19,12 @@
 
 <h:body>
 	<h1>Ideas from #{IdeaBean.correo}</h1>
+	<p:panel class="backbuttonPanel">
+		<p:button class="backButton" outcome="usuarios" value="Back" icon="pi pi-star"
+			style="margin-right:20px;">
+			<f:param name="back" value="20" />
+		</p:button>
+	</p:panel>
 
 
 	<h:form>
@@ -31,12 +37,13 @@
 				<p:outputLabel style="font-size: 12pt" value="Titulo:" />
 				<h:inputText binding="#{titulo}" />
 
-				
+
 				<p:outputLabel style="font-size:10pts" value="Descripcion:" />
-				<h:inputText  binding="#{descripcion}" />	
-					
-				<p:outputLabel for="tipo" value="Tipo:" style="font-size: 12pt"/>
-				<p:selectOneMenu id="tipo" value="#{IdeaBean.tipo}" style="height:25px;width:240px;font-size:10pt">
+				<h:inputText binding="#{descripcion}" />
+
+				<p:outputLabel for="tipo" value="Tipo:" style="font-size: 12pt" />
+				<p:selectOneMenu id="tipo" value="#{IdeaBean.tipo}"
+					style="height:25px;width:240px;font-size:10pt">
 					<f:selectItem itemLabel="Select One" itemValue="0" />
 					<f:selectItem itemLabel="BIENESTAR UNIVERSITARIO" itemValue="1" />
 					<f:selectItem itemLabel="DECANATURA SISTEMAS" itemValue="2" />
@@ -86,7 +93,8 @@
 						<td>#{ideas.descripcion}<h:form>
 								<h:commandButton
 									actionListener="#{IdeaBean.modificarIdea(ideas.id,ideas.descripcion)}"
-									update="Ideas_Table" value="Modificar" rendered="#{usuarioBean.tipo != 'DE_CONSULTA'}" />
+									update="Ideas_Table" value="Modificar"
+									rendered="#{usuarioBean.tipo != 'DE_CONSULTA'}" />
 							</h:form>
 						</td>
 

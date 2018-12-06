@@ -2,7 +2,7 @@
 
 html, body {
 	background: url(images/MainBackground.jpg) no-repeat center center fixed;
-	background-color: rgb(26, 160, 244);
+	background-color: rgba(25, 72, 80,1);
 	font-family: 'Numans', sans-serif;
 	color: white;
 	margin-top: 0px;
