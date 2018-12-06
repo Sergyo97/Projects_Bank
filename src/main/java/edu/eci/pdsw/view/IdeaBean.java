@@ -2,6 +2,7 @@ package edu.eci.pdsw.view;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -40,6 +41,28 @@ public class IdeaBean extends BasePageBean{
 	private String palabraClave;
 	private int tipo;	
 	private String estado;
+	private List<Idea> filteredIdeas;
+	
+	private final static String[] tiposIdeas;
+
+	static {                
+		tiposIdeas = new String[12];
+		tiposIdeas[0] = "BIENESTAR UNIVERSITARIO";
+		tiposIdeas[1] = "DECANATURA SISTEMAS";
+		tiposIdeas[2] = "DECANATURA CIVIL";
+		tiposIdeas[3] = "DECANATURA INDUSTRIAL";
+		tiposIdeas[4] = "DECANATURA AMBIENTAL";
+		tiposIdeas[5] = "DECANATURA MECANICA";
+		tiposIdeas[6] = "DECANATURA ELÉCTRICA";
+		tiposIdeas[7] = "ECONOMÍA";
+		tiposIdeas[8] = "ADMINISTRACIÓN";
+		tiposIdeas[9] = "MATEMÁTICAS";
+		tiposIdeas[10] = "OFICINA DE PROYECTOS (PMO)"; 
+		tiposIdeas[11] = "DECANATURA ELECTRÓNICA"; }
+
+	public List<String> getTiposIdeas() {
+		return Arrays.asList(tiposIdeas);
+	}
 
 	@Inject
 	private BancoIniciativasImpl bancoini;
@@ -167,4 +190,14 @@ public class IdeaBean extends BasePageBean{
 		System.out.println(estado);
 		this.estado = estado;
 	}
+	
+	public void setFilteredIdeas(List<Idea> filteredIdeas) {
+		this.filteredIdeas = filteredIdeas;
+	}
+
+	public List<Idea> getFilteredIdeas() {
+		return filteredIdeas;
+	}
+
+	
 }

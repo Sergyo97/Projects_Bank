@@ -9,7 +9,7 @@
 <h:head>
 	<title>Usuarios</title>
 
-
+	<link rel="stylesheet" href="usuarios.css"></link>
 	<link rel="stylesheet" type="text/css"
 		href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css" />
 
@@ -21,83 +21,155 @@
 
 <h:body>
 	<h1>Usuario</h1>
-	<p:dataTable id="usuarios_table" var="users"
-		value="#{usuarioBean.consultarUsuario}"
-		rendered="#{usuarioBean.tipo != 'DE_CONSULTA'}">
-		<p:column headerText="Nombre">
-			<h:outputText value="#{users.nombre}" />
-		</p:column>
+	<p:panel class="panelusuarios">
+		<p:dataTable class="panelusuariosT" id="usuarios_table" var="users"
+			value="#{usuarioBean.consultarUsuario}"
+			rendered="#{usuarioBean.tipo != 'DE_CONSULTA'}">
+			<p:column class="columnusuarios" headerText="Nombre">
+				<h:outputText value="#{users.nombre}" />
+			</p:column>
 
-		<p:column headerText="Tipo">
-			<h:outputText value="#{users.tipo}" />
-		</p:column>
+			<p:column class="columnusuarios" headerText="Tipo">
+				<h:outputText value="#{users.tipo}" />
+			</p:column>
 
-		<p:column headerText="Correo">
-			<h:outputText value="#{users.correo}" />
-		</p:column>
+			<p:column class="columnusuarios" headerText="Correo">
+				<h:outputText value="#{users.correo}" />
+			</p:column>
 
-		<p:column headerText="Lista de propuestas">
-			<p:button outcome="IdeasPorPersona?users=#{users.correo}"
-				value="Ver Propuestas" />
-		</p:column>
-	</p:dataTable>
+			<p:column class="columnusuarios" headerText="Lista de propuestas">
+				<p:button outcome="IdeasPorPersona?users=#{users.correo}"
+					value="Ver Propuestas" />
+			</p:column>
+		</p:dataTable>
+	</p:panel>
 
 	<p></p>
 
+	<!-- 	<h:form id="form"> -->
 
-	<h:panelGroup id="sugerencias_table">
-		<table id="Ideas_table">
-			<thead>
-				<tr>
-					<th>Iniciativa</th>
-					<th>Categoria</th>
-					<th>Fecha Creacion</th>
-					<th>Descripcion</th>
-					<th>Votos</th>
-					<th>Estado</th>
-					<th>ver votos</th>
+<!-- 		<p:dataTable id="ideatableState" var="idea" -->
+<!-- 			value="#{IdeaBean.ideasGeneral}" -->
+<!-- 			widgetVar="ideastable" multiViewState="true" rows="10" -->
+<!-- 			paginator="true" -->
+<!-- 			paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" -->
+<!-- 			rowsPerPageTemplate="5,10,15" selectionMode="multiple" -->
+<!-- 			rowKey="#{idea.id}" emptyMessage="No ideas found with given criteria" -->
+<!-- 			filteredValue="#{IdeaBean.filteredIdeas}"> -->
 
-				</tr>
-			</thead>
-			<tbody>
-				<r:repeat var="ideas" value="#{IdeaBean.ideasGeneral}">
+<!-- 			<f:facet name="header"> -->
+<!-- 				<p:outputPanel> -->
+<!-- 					<h:outputText value="Buscar:" /> -->
+<!-- 					<p:inputText id="globalFilter" onkeyup="PF('ideastable').filter()" -->
+<!-- 						style="width:150px" placeholder="Palabra clave" /> -->
+<!-- 				</p:outputPanel> -->
+<!-- 			</f:facet> -->
+
+<!-- 			<p:column headerText="Iniciativa" filterBy="#{idea.titulo}" -->
+<!-- 				sortBy="#{idea.titulo}" filterMatchMode="contains"> -->
+<!-- 				<h:outputText value="#{idea.titulo}" /> -->
+<!-- 			</p:column> -->
+
+<!-- 			<p:column headerText="Categoria" filterBy="#{idea.tipoIdea.tipo}" -->
+<!-- 				sortBy="#{idea.tipoIdea.tipo}" filterMatchMode="exact"> -->
+<!-- 				<f:facet name="filter"> -->
+<!-- 					<p:selectOneMenu onchange="PF('ideastable').filter()" -->
+<!-- 						style="width:100%; box-sizing: border-box;"> -->
+<!-- 						<f:selectItem itemLabel="Select One" itemValue="#{null}" -->
+<!-- 							noSelectionOption="true" /> -->
+<!-- 						<f:selectItems value="#{IdeaBean.tiposIdeas}" /> -->
+<!-- 					</p:selectOneMenu> -->
+<!-- 				</f:facet> -->
+<!-- 				<h:outputText value="#{idea.tipoIdea.tipo}" /> -->
+<!-- 			</p:column> -->
+
+<!-- 			<p:column headerText="Fecha Creacion" filterBy="#{idea.fecha}" -->
+<!-- 				sortBy="#{idea.fecha}" filterMatchMode="contains"> -->
+<!-- 				<h:outputText value="#{idea.fecha}" /> -->
+<!-- 			</p:column> -->
+
+<!-- 			<p:column headerText="Descripcion" filterBy="#{idea.descripcion}" -->
+<!-- 				sortBy="#{idea.descripcion}" filterMatchMode="contains"> -->
+<!-- 				<h:outputText value="#{idea.descripcion}" /> -->
+<!-- 			</p:column> -->
+
+<!-- 			<p:column headerText="Votos" filterBy="#{idea.votos}" -->
+<!-- 				sortBy="#{idea.votos}" filterMatchMode="contains"> -->
+<!-- 				<h:outputText value="#{idea.votos}" /> -->
+<!-- 				<h:commandButton id="iconOnly" -->
+<!-- 					actionListener="#{IdeaBean.registrarVoto(idea.id)}" -->
+<!-- 					update="ideatableState" icon="fa-thumbs-o-up" /> -->
+<!-- 			</p:column> -->
+
+<!-- 			<p:column headerText="Estado" filterBy="#{idea.estado}" -->
+<!-- 				sortBy="#{idea.estado}" filterMatchMode="contains"> -->
+<!-- 				<h:outputText value="#{idea.estado}" /> -->
+<!-- 			</p:column> -->
+
+<!-- 			<p:column headerText="Ver Votos"> -->
+<!-- 				<p:button outcome="votos?idea=#{idea.id}" value="Ver Votos" /> -->
+<!-- 			</p:column> -->
+
+<!-- 		</p:dataTable> -->
+<!-- 	</h:form> -->
+	
+
+	<p:panel class="panelideas">
+		<h:panelGroup class="panelideas" id="sugerencias_table">
+			<table class="panelideasF" id="Ideas_table">
+				<thead class="panelideasH">
 					<tr>
-						<td>#{ideas.titulo}</td>
-						<td>#{ideas.tipoIdea.tipo}</td>
-						<td>#{ideas.fecha}</td>
-						<td>#{ideas.descripcion}</td>
-						<td>#{ideas.votos} <h:form>
-								<h:commandButton
-									actionListener="#{IdeaBean.registrarVoto(ideas.id)}"
-									update="Ideas_Table" value="Like" />
-							</h:form>
-						</td>
-						<td>#{ideas.estado} 
-							<h:form>
-								<h:commandButton
-									actionListener="#{IdeaBean.actualizarEstadoIdea(ideas.id)}" 
-									update="Ideas_Table" value="Update" />
-								<p:outputLabel for="estado" /> 
-									<p:selectOneMenu id="estado" value="#{IdeaBean.estado}" style="height:25px;width:240px;font-size:10pt" 
-										rendered="#{usuarioBean.tipo != 'DE_CONSULTA'}">
-									<f:selectItem itemLabel="Select One" itemValue=" " />
-									<f:selectItem itemLabel="En espera de revisión" itemValue="En espera de revisión" />
-									<f:selectItem itemLabel="En revisión" itemValue="En revisión" />
-									<f:selectItem itemLabel="Proyecto" itemValue="Proyecto" />
-									<f:selectItem itemLabel="Solucionado" itemValue="Solucionado" />
-									</p:selectOneMenu>
-							</h:form>
-							</td>
-
-						<td><h:form>
-								<p:button outcome="votos?ideas=#{ideas.id}" value="Ver Votos" />
-							</h:form></td>
+						<th>Iniciativa</th>
+						<th>Categoria</th>
+						<th>Fecha Creacion</th>
+						<th>Descripcion</th>
+						<th>Votos</th>
+						<th>Estado</th>
+						<th>ver votos</th>
 
 					</tr>
-				</r:repeat>
-			</tbody>
-		</table>
-	</h:panelGroup>
+				</thead>
+				<tbody>
+					<r:repeat var="ideas" value="#{IdeaBean.ideasGeneral}">
+						<tr>
+							<td class="columnideas">#{ideas.titulo}</td>
+							<td class="columnideas">#{ideas.tipoIdea.tipo}</td>
+							<td class="columnideas">#{ideas.fecha}</td>
+							<td class="columnideas">#{ideas.descripcion}</td>
+							<td class="columnideas">#{ideas.votos} <h:form>
+									<h:commandButton class="mybuttons"
+										actionListener="#{IdeaBean.registrarVoto(ideas.id)}"
+										update="Ideas_Table" value="Like" />
+								</h:form>
+							</td>
+							<td>#{ideas.estado} <h:form>
+									<h:commandButton class="mybuttons"
+										actionListener="#{IdeaBean.actualizarEstadoIdea(ideas.id)}"
+										update="Ideas_Table" value="Update" />
+									<p:outputLabel for="estado" />
+									<p:selectOneMenu id="estado" value="#{IdeaBean.estado}"
+										style="height:25px;width:240px;font-size:10pt"
+										rendered="#{usuarioBean.tipo != 'DE_CONSULTA'}">
+										<f:selectItem itemLabel="Select One" itemValue=" " />
+										<f:selectItem itemLabel="En espera de revisión"
+											itemValue="En espera de revisión" />
+										<f:selectItem itemLabel="En revisión" itemValue="En revisión" />
+										<f:selectItem itemLabel="Proyecto" itemValue="Proyecto" />
+										<f:selectItem itemLabel="Solucionado" itemValue="Solucionado" />
+									</p:selectOneMenu>
+								</h:form>
+							</td>
+
+							<td><h:form>
+									<p:button class="mybuttons" outcome="votos?ideas=#{ideas.id}" value="Ver Votos" />
+								</h:form></td>
+
+						</tr>
+					</r:repeat>
+				</tbody>
+			</table>
+		</h:panelGroup>
+	</p:panel>
 
 	<script>
 		$(document).ready(function() {

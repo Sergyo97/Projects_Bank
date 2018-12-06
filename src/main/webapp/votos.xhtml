@@ -10,7 +10,7 @@
 <h:head>
 	<title></title>
 
-
+	<link rel="stylesheet" href="votos.css"></link>
 	<link rel="stylesheet" type="text/css"
 		href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css" />
 
@@ -21,33 +21,35 @@
 
 <h:body>
 	<h1>Votos</h1>
-		<h:panelGroup id="likes_table">
-		<table id="votos_table">
-			<thead>
-				<tr>
-					<th>correo</th>
-					<th>titulo de la idea</th>
-					<th>fecha</th>					
-				</tr>
-			</thead>
-			<tbody>
-				<r:repeat var="votos" value="#{IdeaBean.consultarVotoIdea(param['ideas'])}">
+	<p:panel class="fatherpanel">
+		<h:panelGroup class="fatherpanel2" id="likes_table">
+			<table id="votos_table">
+				<thead class="fatherpanel2">
 					<tr>
-						<td>#{votos.correoUsuario}</td>
-						<td>#{votos.ideas.titulo}</td>
-						<td>#{votos.fecha}</td>
-						
+						<th>correo</th>
+						<th>titulo de la idea</th>
+						<th>fecha</th>
 					</tr>
-				</r:repeat>
-			</tbody>
-		</table>
-	</h:panelGroup>
+				</thead>
+				<tbody>
+					<r:repeat var="votos"
+						value="#{IdeaBean.consultarVotoIdea(param['ideas'])}">
+						<tr>
+							<td class="columnideas">#{votos.correoUsuario}</td>
+							<td class="columnideas">#{votos.ideas.titulo}</td>
+							<td class="columnideas">#{votos.fecha}</td>
 
+						</tr>
+					</r:repeat>
+				</tbody>
+			</table>
+		</h:panelGroup>
+	</p:panel>
 
 	<script>
- 		$(document).ready(function() {
+		$(document).ready(function() {
 			$('#votos_table').DataTable();
- 		});
+		});
 	</script>
 </h:body>
 </html>

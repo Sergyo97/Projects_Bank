@@ -1,78 +1,99 @@
 @import url('https://fonts.googleapis.com/css?family=Numans');
 
-html,body{
-background: url(images/MainBackground.jpg) no-repeat center center fixed, url(images/fondoindex.jpg) no-repeat top center;
-height: 50%;
-font-family: 'Numans', sans-serif;
-display: block;
-color: white;
+html, body {
+	background: url(images/MainBackground.jpg) no-repeat center center fixed;
+	background-color: rgb(26, 160, 244);
+	font-family: 'Numans', sans-serif;
+	color: white;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	margin-right: 0px;
+	margin-left: 0px;	
 }
-.h-100{
-	height: 100%!important;
-}
-.justify-content-center {
-    -ms-flex-pack: center!important;
-    justify-content: center!important;
-}
-.d-flex {
-    display: -ms-flexbox!important;
-    display: flex!important;
-}
-@media (min-width: 576px)
-.container {
-    max-width: 540px;
-}
-.container{
-	height: 100%;
+.fatherpanel{
+	position: absolute;
+	background-color: rgb(20, 20, 20,0.5);
+	max-height:100%;
+	max-width:100%; 
 	width: 100%;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
-	align-content: center;
+	height: 100%;	
 }
-.card{
-	top:200px;
-	left: calc(50% - 50);
-	position: relative;
-	height: 370px;
-	margin-top: auto;
-	margin-bottom: auto;
-	width: 400px;
-	background-color: rgba(0,0,0,0.7) !important;
-}
-.input-group-prepend span{
-width: 50px;
-background-color: #FFC312;
-color: black;
-border:0 !important;
-}
-.myclass  {
-	-moz-box-shadow:inset 0px 1px 0px 0px rgb(40, 159, 199) !important;
-	-webkit-box-shadow:inset 0px 1px 0px 0px rgb(40, 159, 199) !important;
-	box-shadow:inset 0px 1px 0px 0px rgb(40, 159, 199) !important;
-	background-image:none !important;
-	background-color:rgb(40, 159, 199) !important;
-	-moz-border-radius:6px !important;
-	-webkit-border-radius:6px !important;
-	border-radius:6px !important;
-	border:1px solid rgb(40, 159, 199) !important;
-	display:inline-block !important;
-	color:#ffffff !important;
-	font-family:Trebuchet MS !important;
-	font-size:17px !important;                    // Not applied
-	font-weight:bold !important;
-	padding:18px 18px !important;
-	text-decoration:none !important;
-	text-shadow:1px 1px 0px rgb(40, 159, 199) !important;
-}
-.minilogoecicorner{
+
+.minilogoecicorner {
 	width: 261px;
-    height: 110px;    
-    position: absolute;
-    top: calc(1% + 1%);
-    left: calc(100% - 260px);
+	height: 110px;
+	position: absolute;
+	top: calc(1% + 1%);
+	left: calc(50% - 50px);
 }
-.input-group-text{
-	background-color:rgb(40, 159, 199) !important;
+
+.loginimagelink {
+	width: 150px;
+	height: 163px;
+	position: absolute;
+	top: calc(50% - 81px);
+	left: calc(50% - 75px);
+}
+.panellogin .ui-panel-titlebar{
+	display: none;
+}
+.panellogin {
+	width: 440px;
+	height: 320px;
+	position: absolute;
+	top: calc(50% - 150px);
+	left: calc(50% - 220px);
+	border-radius: 6px;
+	border: 1px solid rgb(0, 0, 0);
+	background-color: rgba(20, 20, 20, 0.9);
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	margin-right: 0px;
+	margin-left: 0px;
+}
+.logincomponenents{
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-right: 0px;
+	margin-left: 0px;
+}
+.logintext {
+	color: rgba(255, 255, 255, 1);
+}
+
+.logindialogclass {
+	position: absolute !important;			
+	width: 352px !important;
+	height: 256px  !important;
+	margin-top: 32px;
+	margin-bottom: 0px;
+	margin-right: 0px;
+	margin-left: 0px;
+	border-radius: 6px;
+	border: 2px solid rgb(0, 0, 0);
+	
+}
+
+.ui-dialog {
+	background-color: rgba(20, 20, 20, 0.9);	
+}
+
+.ui-dialog-titlebar {
+	background-color: rgba(100, 100, 100, 1);
+}
+
+.ui-dialog-title-dialog {
+	
+}
+
+.ui-dialog-titlebar-close {
+	
+}
+
+.ui-dialog-content Dialog {
+	
 }

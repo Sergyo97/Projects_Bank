@@ -1,0 +1,67 @@
+html, body {
+	background-color: rgb(26, 160, 244);
+	font-family: 'Numans', sans-serif;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	margin-right: 0px;
+	margin-left: 0px;
+}
+
+.ui-datatable .ui-datatable-header {
+	text-align: right !important;
+}
+
+.ui-selectcheckboxmenu-panel .ui-selectcheckboxmenu-header .ui-chkbox {
+	display: none;
+}
+.panelusuarios{
+	background-color: rgba(100, 100, 100, 0.9);
+	color: black;
+	border-radius: 6px;
+	border: 1px solid rgb(0, 0, 0);
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.columnusuarios{
+	background-color: rgba(100, 100, 100, 0.5);
+	border: 0px solid rgb(0, 0, 0);
+	border-radius: 0px;
+}
+
+.panelusuariosT{
+	border: 0px solid rgb(0, 0, 0);
+	border-radius: 0px;
+}
+.panelideas{
+	background-color: rgba(100, 100, 100, 0.9);
+	color: black;
+	border-radius: 6px;
+	border: 1px solid rgb(0, 0, 0);
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+.panelideasH{
+	background-color: rgba(100, 100, 100, 1);
+	color: black;
+	border-radius: 6px !important;
+	border: 0px solid rgb(0, 0, 0) !important;
+}
+.panelideasF{
+	background-color: transparent;
+}
+.columnideas{
+	border-radius: 6px;
+	border: 1px solid rgb(0, 0, 0) !important;
+	margin-top: 2px;
+	margin-bottom: 2px;
+	margin-right: 2px;
+	margin-left: 2px;
+	
+}
+.mybuttons{
+	background-color: rgba(100, 100, 100, 1);
+	border-radius: 6px;
+	border: 0px solid rgb(0, 0, 0) !important;
+	
+}
