@@ -22,7 +22,8 @@
 <h:body>
 	<h1>Usuario</h1>
 	<p:dataTable id="usuarios_table" var="users"
-		value="#{usuarioBean.consultarUsuario}" rendered="#{usuarioBean.tipo != 'DE_CONSULTA'}">
+		value="#{usuarioBean.consultarUsuario}"
+		rendered="#{usuarioBean.tipo != 'DE_CONSULTA'}">
 		<p:column headerText="Nombre">
 			<h:outputText value="#{users.nombre}" />
 		</p:column>
@@ -53,7 +54,7 @@
 					<th>Fecha Creacion</th>
 					<th>Descripcion</th>
 					<th>Votos</th>
-					<th>estado</th>
+					<th>Estado</th>
 					<th>ver votos</th>
 
 				</tr>
@@ -71,7 +72,23 @@
 									update="Ideas_Table" value="Like" />
 							</h:form>
 						</td>
-						<td>#{ideas.estado}</td>
+						<td>#{ideas.estado} 
+							<h:form>
+								<h:commandButton
+									actionListener="#{IdeaBean.actualizarEstadoIdea(ideas.id)}" 
+									update="Ideas_Table" value="Update" />
+								<p:outputLabel for="estado" /> 
+									<p:selectOneMenu id="estado" value="#{IdeaBean.estado}" style="height:25px;width:240px;font-size:10pt" 
+										rendered="#{usuarioBean.tipo != 'DE_CONSULTA'}">
+									<f:selectItem itemLabel="Select One" itemValue=" " />
+									<f:selectItem itemLabel="En espera de revisión" itemValue="En espera de revisión" />
+									<f:selectItem itemLabel="En revisión" itemValue="En revisión" />
+									<f:selectItem itemLabel="Proyecto" itemValue="Proyecto" />
+									<f:selectItem itemLabel="Solucionado" itemValue="Solucionado" />
+									</p:selectOneMenu>
+							</h:form>
+							</td>
+
 						<td><h:form>
 								<p:button outcome="votos?ideas=#{ideas.id}" value="Ver Votos" />
 							</h:form></td>

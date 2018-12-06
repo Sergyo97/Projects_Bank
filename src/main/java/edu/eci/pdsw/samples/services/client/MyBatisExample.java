@@ -108,7 +108,7 @@ public class MyBatisExample {
 		
 		//System.out.println(vm.consultarVotoPorEstaIdea(20,"david.diaz@mail.escuelaing.edu.co"));
 		
-		//im.modificarDescripcion(2,"Holo");
+		//im.actualizarEstado("Solucionado", 2);
 		
 		sqlss.commit();
 		sqlss.close(); 

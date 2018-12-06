@@ -39,6 +39,7 @@ public class IdeaBean extends BasePageBean{
 	private boolean buscar=false;
 	private String palabraClave;
 	private int tipo;	
+	private String estado;
 
 	@Inject
 	private BancoIniciativasImpl bancoini;
@@ -124,8 +125,7 @@ public class IdeaBean extends BasePageBean{
 				Date date = new Date();
 				Date date1 = new Date(dateFormat.format(date));		
 				TipoIdea tIdeaId= bancoini.consultarTipoIdea(tipo);
-				Idea idea =new Idea(id, descripcion, "En espera", date1, 0, titulo, bancoini.consultarUsuario((String)session.getAttribute("correo")).getCorreo(), tIdeaId);
-				bancoini.insertarIdea(idea);
+				Idea idea =new Idea(id, descripcion, "En espera de revisión", date1, 0, titulo, bancoini.consultarUsuario((String)session.getAttribute("correo")).getCorreo(), tIdeaId);
 				bancoini.insertarIdea(idea);
 			}				
 		}catch (Exception e) {
@@ -133,11 +133,13 @@ public class IdeaBean extends BasePageBean{
 		}
 	}
 		
-	
-	
 	public void modificarIdea(int id, String descripcion) throws ExcepcionBancoIniciativas{
 		bancoini.modificarDescripcion(id,descripcion);
 	
+	}
+	
+	public void actualizarEstadoIdea(int id) throws ExcepcionBancoIniciativas {
+		bancoini.actualizarEstado(estado, id);
 	}
 
 	public String getCorreo() throws ExcepcionBancoIniciativas {
@@ -152,8 +154,17 @@ public class IdeaBean extends BasePageBean{
 		return tipo;
 	}
 
-
 	public void setTipo(int tipo) {
 		this.tipo = tipo;
+	}
+	
+	public String getEstado() {
+		return estado;
+	}
+
+
+	public void setEstado(String estado) {
+		System.out.println(estado);
+		this.estado = estado;
 	}
 }
