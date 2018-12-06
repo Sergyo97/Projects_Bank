@@ -63,7 +63,7 @@ public class IdeaBean extends BasePageBean{
 	public List<String> getTiposIdeas() {
 		return Arrays.asList(tiposIdeas);
 	}
-
+		
 	@Inject
 	private BancoIniciativasImpl bancoini;
 
@@ -162,7 +162,17 @@ public class IdeaBean extends BasePageBean{
 	}
 	
 	public void actualizarEstadoIdea(int id) throws ExcepcionBancoIniciativas {
-		bancoini.actualizarEstado(estado, id);
+		if (bancoini.consultarIdea(id).getEstado()!="Solucionado") {
+			if (bancoini.consultarIdea(id).getEstado().equals("En espera de revisión")) {
+				bancoini.actualizarEstado("En revisión", id);
+			}
+			else if (bancoini.consultarIdea(id).getEstado().equals("En revisión")) {
+				bancoini.actualizarEstado("Proyecto", id);
+			}else if (bancoini.consultarIdea(id).getEstado().equals("Proyecto")) {
+				bancoini.actualizarEstado("Solucionado", id);
+			}
+		}
+		
 	}
 
 	public String getCorreo() throws ExcepcionBancoIniciativas {

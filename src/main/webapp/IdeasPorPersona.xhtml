@@ -19,9 +19,10 @@
 
 <h:body>
 	<h1>Ideas from #{IdeaBean.correo}</h1>
+
 	<p:panel class="backbuttonPanel">
-		<p:button class="backButton" outcome="usuarios" value="Back" icon="pi pi-star"
-			style="margin-right:20px;">
+		<p:button class="backButton" outcome="usuarios" value="Back"
+			icon="pi pi-star" style="margin-right:10px;">
 			<f:param name="back" value="20" />
 		</p:button>
 	</p:panel>
@@ -91,10 +92,16 @@
 						<td>#{ideas.tipoIdea.tipo}</td>
 						<td>#{ideas.fecha}</td>
 						<td>#{ideas.descripcion}<h:form>
-								<h:commandButton
-									actionListener="#{IdeaBean.modificarIdea(ideas.id,ideas.descripcion)}"
-									update="Ideas_Table" value="Modificar"
-									rendered="#{usuarioBean.tipo != 'DE_CONSULTA'}" />
+								<p:commandButton value="Modificar" type="button"
+									onclick="PF('dlg1').show();" />
+								<p:dialog header="Basic Dialog" widgetVar="dlg1" minHeight="180">
+									<h:inputText binding="#{descrip}" />
+									<h:commandButton
+										style="background-color:cyan;  border:2px solid #FF3F33;"
+										value="Actualizar" update="Ideas_table"
+										actionListener="#{IdeaBean.modificarIdea(ideas.id,descripcion.value)}" />
+								</p:dialog>
+
 							</h:form>
 						</td>
 

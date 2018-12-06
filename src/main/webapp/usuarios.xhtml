@@ -77,18 +77,7 @@
 							<td>#{ideas.estado} <h:form>
 									<h:commandButton class="mybuttons"
 										actionListener="#{IdeaBean.actualizarEstadoIdea(ideas.id)}"
-										update="Ideas_Table" value="Update" />
-									<p:outputLabel for="estado" />
-									<p:selectOneMenu id="estado" value="#{IdeaBean.estado}"
-										style="height:25px;width:240px;font-size:10pt"
-										rendered="#{usuarioBean.tipo != 'DE_CONSULTA'}">
-										<f:selectItem itemLabel="Select One" itemValue=" " />
-										<f:selectItem itemLabel="En espera de revisión"
-											itemValue="En espera de revisión" />
-										<f:selectItem itemLabel="En revisión" itemValue="En revisión" />
-										<f:selectItem itemLabel="Proyecto" itemValue="Proyecto" />
-										<f:selectItem itemLabel="Solucionado" itemValue="Solucionado" />
-									</p:selectOneMenu>
+										update="Ideas_Table" value="Avanzar" />									
 								</h:form>
 							</td>
 
