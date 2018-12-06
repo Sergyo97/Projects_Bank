@@ -38,7 +38,7 @@ public class IdeaBean extends BasePageBean{
 	private String correo;
 	private boolean buscar=false;
 	private String palabraClave;
-	private int tipo;
+	private int tipo;	
 
 	@Inject
 	private BancoIniciativasImpl bancoini;
@@ -57,7 +57,7 @@ public class IdeaBean extends BasePageBean{
 
 	public List<Idea> getIdeasGeneral() throws ExcepcionBancoIniciativas{
 		if(!buscar) {
-			try {
+			try {				
 				return bancoini.consultarIdeas();
 			}catch (PersistenceException e) {
 				throw new ExcepcionBancoIniciativas("Error al consultar la idea", e);
@@ -110,23 +110,35 @@ public class IdeaBean extends BasePageBean{
 	}
 
 	public void insertarIdea(String titulo, String descripcion) throws ExcepcionBancoIniciativas{
-		if(titulo != "" || descripcion != "") {
-			FacesContext fc = FacesContext.getCurrentInstance();
-			HttpSession session = (HttpSession) fc.getExternalContext().getSession(true);
-			int id = bancoini.consultarId();
-			DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-			Date date = new Date();
-			Date date1 = new Date(dateFormat.format(date));		
-			TipoIdea tIdeaId= bancoini.consultarTipoIdea(tipo);
-			Idea idea =new Idea(id, descripcion, "En espera", date1, 0, titulo, bancoini.consultarUsuario((String)session.getAttribute("correo")).getCorreo(), tIdeaId);
-			try {
-				bancoini.insertarIdea(idea);
-			}catch (Exception e) {
-				throw new ExcepcionBancoIniciativas("Error al insertar la idea", e);
-			}
-		}
 		
+		try {
+			boolean esta=false;
+			for (Idea i:bancoini.consultarIdeas()) {			
+				if(i.getTitulo().equals(titulo) || i.getTitulo().equals(descripcion) || i.getDescripcion().equals(titulo) || i.getDescripcion().equals(descripcion)) {
+					esta=true;
+					//System.out.println("esta");
+					break;
+				} 
+			}		
+			
+			if(titulo != "" && descripcion != "" && esta==false ) {
+				FacesContext fc = FacesContext.getCurrentInstance();
+				HttpSession session = (HttpSession) fc.getExternalContext().getSession(true);
+				int id = bancoini.consultarId();
+				DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+				Date date = new Date();
+				Date date1 = new Date(dateFormat.format(date));		
+				TipoIdea tIdeaId= bancoini.consultarTipoIdea(tipo);
+				Idea idea =new Idea(id, descripcion, "En espera", date1, 0, titulo, bancoini.consultarUsuario((String)session.getAttribute("correo")).getCorreo(), tIdeaId);
+				bancoini.insertarIdea(idea);
+				bancoini.insertarIdea(idea);
+			}				
+		}catch (Exception e) {
+			throw new ExcepcionBancoIniciativas("Error al insertar la idea", e);
+		}
 	}
+		
+	
 	
 	public void modificarIdea(int id, String descripcion) throws ExcepcionBancoIniciativas{
 		FacesContext fc = FacesContext.getCurrentInstance();

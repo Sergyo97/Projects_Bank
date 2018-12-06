@@ -43,8 +43,9 @@ public class UsuarioBean extends BasePageBean{
 	public Usuario getconsultarUsuario() throws ExcepcionBancoIniciativas{
 		FacesContext fc = FacesContext.getCurrentInstance();
 		HttpSession session  = (HttpSession) fc.getExternalContext().getSession(true); 
-		try {
-			u=  bancoini.consultarLogin((String)session.getAttribute("correo"), (String)session.getAttribute("contra"));			
+		try {			
+			u=  bancoini.consultarLogin((String)session.getAttribute("correo"), (String)session.getAttribute("contra"));
+			tipo=u.getTipo().toString();
 			System.out.println(tipo);
 			return u;
 			
@@ -54,7 +55,7 @@ public class UsuarioBean extends BasePageBean{
 	}
 
 	public String getTipo() {
-		tipo=u.getTipo().toString();
+		
 		System.out.println(tipo);
 		return tipo;
 	}

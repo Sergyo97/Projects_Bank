@@ -22,12 +22,13 @@
 <h:body>
 	<h1>Usuario</h1>
 	<p:dataTable id="usuarios_table" var="users"
-		value="#{usuarioBean.consultarUsuario}" rendered="#{usuarioBean.tipo != 'DE_CONSULTA'}">
-		<p:column headerText="#{usuarioBean.tipo}">
+		value="#{usuarioBean.consultarUsuario}"  rendered="#{usuarioBean.tipo != 'DE_CONSULTA'}">
+		<!-- #{usuarioBean.tipo},#{usuarioBean.tipo == 'DE_CONSULTA'} -->
+		<p:column headerText="Nombre">
 			<h:outputText value="#{users.nombre}" />
 		</p:column>
 
-		<p:column headerText="#{usuarioBean.tipo == 'DE_CONSULTA'}">
+		<p:column headerText="Tipo">
 			<h:outputText value="#{users.tipo}" />
 		</p:column>
 
