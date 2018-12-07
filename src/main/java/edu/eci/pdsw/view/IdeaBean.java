@@ -157,7 +157,16 @@ public class IdeaBean extends BasePageBean{
 	}
 		
 	public void modificarIdea(int id, String descripcion) throws ExcepcionBancoIniciativas{
-		bancoini.modificarDescripcion(id,descripcion);
+		boolean esta=false;
+		for (Idea i:bancoini.consultarIdeas()) {			
+			if( i.getTitulo().equals(descripcion) || i.getDescripcion().equals(descripcion)) {
+				esta=true;
+				break;
+			} 
+		}
+		if( descripcion != "" && esta==false && tipo!=0) {
+			bancoini.modificarDescripcion(id,descripcion);
+		}
 	
 	}
 	
