@@ -42,6 +42,7 @@ public class IdeaBean extends BasePageBean{
 	private int tipo;	
 	private String estado;
 	private List<Idea> filteredIdeas;
+	private int id;
 	
 	private final static String[] tiposIdeas;
 
@@ -104,6 +105,7 @@ public class IdeaBean extends BasePageBean{
 	
 	public void registrarVoto(int id) throws ExcepcionBancoIniciativas{
 		try {
+			System.out.println(id);
 			if (votadoPorEstaIdea(id, (String)session.getAttribute("correo"))) {
 				bancoini.quitarVoto(id,(String)session.getAttribute("correo"));
 				bancoini.eliminarVoto(id,(String)session.getAttribute("correo"));
@@ -158,18 +160,30 @@ public class IdeaBean extends BasePageBean{
 		
 	public void modificarIdea(int id, String descripcion) throws ExcepcionBancoIniciativas{
 		boolean esta=false;
+		
 		for (Idea i:bancoini.consultarIdeas()) {			
 			if( i.getTitulo().equals(descripcion) || i.getDescripcion().equals(descripcion)) {
 				esta=true;
 				break;
 			} 
 		}
-		if( descripcion != "" && esta==false && tipo!=0) {
+		
+		if( descripcion != "" && esta==false ) {
 			bancoini.modificarDescripcion(id,descripcion);
 		}
 	
 	}
 	
+	public int getId() {
+		return id;
+	}
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
 	public void actualizarEstadoIdea(int id) throws ExcepcionBancoIniciativas {
 		if (bancoini.consultarIdea(id).getEstado()!="Solucionado") {
 			if (bancoini.consultarIdea(id).getEstado().equals("En espera de revisión")) {

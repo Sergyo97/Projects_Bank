@@ -93,13 +93,14 @@
 						<td>#{ideas.fecha}</td>
 						<td>#{ideas.descripcion}<h:form>
 								<p:commandButton value="Modificar" type="button"
+									action="#{IdeaBean.setId(ideas.id)}"
 									onclick="PF('dlg1').show();" />
 								<p:dialog header="Basic Dialog" widgetVar="dlg1" minHeight="180">
 									<h:inputText binding="#{descrip}" />
 									<h:commandButton
 										style="background-color:cyan;  border:2px solid #FF3F33;"
 										value="Actualizar" update="Ideas_table"
-										actionListener="#{IdeaBean.modificarIdea(ideas.id,descripcion.value)}" />
+										actionListener="#{IdeaBean.modificarIdea(ideas.id,descrip.value)}" />
 								</p:dialog>
 
 							</h:form>
